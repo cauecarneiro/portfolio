@@ -52,7 +52,7 @@ h3{font-size:1.32rem;letter-spacing:-.03em;line-height:1.12}
 .pill.blue:hover{background:var(--white);color:var(--black);border-color:var(--white)}
 
 /* barra de navegação flutuante */
-.bar{position:fixed;z-index:50;left:0;right:0;top:calc(env(safe-area-inset-top,0px) + 14px);display:flex;justify-content:space-between;align-items:center;gap:12px;padding-left:max(24px,var(--gl));padding-right:max(24px,var(--gr));pointer-events:none}
+.bar{position:fixed;z-index:50;left:0;right:0;top:calc(env(safe-area-inset-top,0px) + 14px);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px;padding-left:max(24px,var(--gl));padding-right:max(24px,var(--gr));pointer-events:none}
 .bar>*{pointer-events:auto}
 .brand{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 18px 0 8px;border-radius:99px;background:var(--glass);border:1px solid var(--glass-line);backdrop-filter:blur(16px) saturate(160%);-webkit-backdrop-filter:blur(16px) saturate(160%);text-decoration:none;letter-spacing:-.02em;font-size:.98rem}
 .ring{width:30px;height:30px;border-radius:50%;display:inline-grid;place-items:center;background:var(--black);box-shadow:0 0 0 2px var(--blue);font-size:.72rem;letter-spacing:-.03em}
@@ -60,6 +60,8 @@ h3{font-size:1.32rem;letter-spacing:-.03em;line-height:1.12}
 .menu a{display:inline-flex;align-items:center;min-height:36px;padding:0 13px;border-radius:99px;font-size:.88rem;text-decoration:none;color:rgba(255,255,255,.78);transition:background-color .2s ease,color .2s ease}
 .menu a:hover{color:var(--white)}
 .menu a.on{background:rgba(255,255,255,.2);color:var(--white)}
+.menu{grid-column:2}
+.cnav,.burger{grid-column:3;justify-self:end}
 .burger{display:none}
 @media(max-width:1180px){.menu a{padding:0 10px}}
 @media(max-width:1060px){.menu,.cnav{display:none}.burger{display:inline-flex}}
@@ -234,7 +236,6 @@ footer .w{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 <a class="skip" href="#sobre">Pular para o conteúdo</a>
 
 <div class="bar">
-  <a class="brand" href="#topo" aria-label="Cauê Crillanovick, início"><span class="ring">cc</span><span class="n">Cauê Crillanovick</span></a>
   <nav class="menu" aria-label="Seções">
     <a href="#sobre">sobre</a><a href="#orquestracao">orquestração</a><a href="#automacoes">automações</a><a href="#ferramentas">ferramentas</a><a href="#prompts">prompts</a><a href="#producao">em produção</a><a href="#codigo">código aberto</a><a href="#trajetoria">trajetória</a><a href="#redes">redes</a>
   </nav>
