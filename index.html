@@ -27,15 +27,15 @@
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;background:var(--black)}
-body{margin:0;background:var(--black);color:var(--white);font-family:var(--font);font-weight:500;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{font-kerning:normal;text-rendering:optimizeLegibility;font-feature-settings:"kern","liga";margin:0;background:var(--black);color:var(--white);font-family:var(--font);font-weight:500;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit}
 :focus-visible{outline:2px solid var(--white);outline-offset:3px;border-radius:6px}
 h1,h2,h3,h4{margin:0;font-weight:500;text-wrap:balance}
 p{margin:0;max-width:62ch;text-wrap:pretty}
 .w{max-width:1280px;margin:0 auto;padding-left:var(--gl);padding-right:var(--gr)}
 section{padding-block:clamp(72px,10vw,140px);scroll-margin-top:24px}
-h2{font-size:clamp(2.2rem,5.6vw,4.6rem);letter-spacing:-.04em;line-height:.98;max-width:17ch}
-h3{font-size:1.32rem;letter-spacing:-.03em;line-height:1.12}
+h2{font-size:clamp(2.2rem,5.6vw,4.6rem);letter-spacing:-.026em;line-height:1;max-width:17ch}
+h3{font-size:1.32rem;letter-spacing:-.02em;line-height:1.12}
 .sub{color:var(--gray);font-size:1.1rem;margin-top:22px;max-width:54ch;line-height:1.45}
 .sub b,.hl{color:var(--white);font-weight:500}
 .skip{position:absolute;left:-999px;top:8px;background:var(--white);color:var(--black);padding:10px 16px;border-radius:99px;z-index:100}
@@ -77,7 +77,7 @@ h3{font-size:1.32rem;letter-spacing:-.03em;line-height:1.12}
 .hero::before{content:"";position:absolute;inset:0;z-index:-2;background:linear-gradient(0deg,rgba(0,0,40,.62) 0%,rgba(0,0,40,.18) 45%,transparent 70%)}
 .ribs{position:absolute;inset:0;z-index:-1;pointer-events:none;background:repeating-linear-gradient(90deg,rgba(255,255,255,.1) 0 2px,rgba(0,0,40,.06) 2px 3px,transparent 3px 12px)}
 .hero-in{padding:clamp(110px,16vw,170px) clamp(20px,4vw,48px) clamp(28px,3vw,40px)}
-.name{font-size:clamp(3.2rem,10.5vw,9.6rem);letter-spacing:-.05em;line-height:.9}
+.name{font-size:clamp(3.2rem,10.5vw,9.6rem);letter-spacing:-.028em;line-height:.9;word-spacing:-.04em}
 .name .mask{display:block;overflow:hidden;padding-bottom:.08em}
 .name .mask>span{display:block}
 .js .name .mask>span{opacity:0}
@@ -100,7 +100,7 @@ h3{font-size:1.32rem;letter-spacing:-.03em;line-height:1.12}
 .band{margin-top:12px;background:var(--blue);padding:clamp(34px,5vw,60px) clamp(20px,4vw,48px)}
 .band .ribs{z-index:0}
 .stats{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:26px 24px}
-.stat strong{display:block;font-size:clamp(2.6rem,6.4vw,5.6rem);letter-spacing:-.06em;line-height:.95;font-variant-numeric:tabular-nums;font-weight:500}
+.stat strong{display:block;font-size:clamp(2.6rem,6.4vw,5.6rem);letter-spacing:-.04em;line-height:.95;font-variant-numeric:tabular-nums;font-weight:500}
 .stat span{display:block;margin-top:12px;font-size:.9rem;line-height:1.38;color:rgba(255,255,255,.86);max-width:25ch}
 @media(max-width:820px){.stats{grid-template-columns:1fr 1fr}}
 
@@ -120,7 +120,7 @@ h3{font-size:1.32rem;letter-spacing:-.03em;line-height:1.12}
 .lab{font-size:.85rem;color:var(--gray);margin-bottom:14px;display:block}
 
 /* frase em caixa alta (CA) com marca-texto */
-.ca{font-weight:700;text-transform:uppercase;letter-spacing:-.03em;line-height:1;font-size:clamp(1.7rem,4.4vw,3.6rem);max-width:20ch;margin-top:clamp(48px,7vw,90px)}
+.ca{font-weight:700;text-transform:uppercase;letter-spacing:-.02em;line-height:1;font-size:clamp(1.7rem,4.4vw,3.6rem);max-width:20ch;margin-top:clamp(48px,7vw,90px)}
 .ca mark{background:var(--blue);color:var(--white);padding:0 .12em;border-radius:.08em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 
 /* linhas cronológicas (mais recente primeiro) */
@@ -213,7 +213,7 @@ h3{font-size:1.32rem;letter-spacing:-.03em;line-height:1.12}
 /* bloco final em frase R2 */
 .r2{margin-top:12px;background:var(--blue);padding:clamp(54px,9vw,120px) clamp(20px,4vw,48px)}
 .r2 .ribs{z-index:0}
-.r2 .t{position:relative;font-weight:700;text-transform:uppercase;letter-spacing:-.05em;line-height:.88;font-size:clamp(2.8rem,10.5vw,9.4rem)}
+.r2 .t{position:relative;font-weight:700;text-transform:uppercase;letter-spacing:-.035em;line-height:.9;font-size:clamp(2.8rem,10.5vw,9.4rem)}
 .r2 .t span{display:block}
 .r2 .t .bl{filter:blur(.09em);opacity:.55}
 .r2 .t .bl2{filter:blur(.05em);opacity:.8}
