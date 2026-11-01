@@ -1,0 +1,685 @@
+<title>Cauê Carneiro</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Portfólio de Cauê Carneiro: produtos com IA, orquestração de agentes, automações e apps em produção.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700;800&family=JetBrains+Mono:wght@400&display=swap">
+<style>
+/* Layout: preto contínuo, uma faixa azul pura de números, uma seção branca de prompts.
+   O azul só aparece em linhas, preenchimentos e pontos de movimento. */
+:root{
+  --black:#000000;
+  --ink:#0C0C0E;
+  --line:#222226;
+  --gray:#8C8C94;
+  --gray-2:#C9C9CF;
+  --white:#FFFFFF;
+  --blue:#0000FF;
+  --blue-text:#7482FF;
+  --font:"Hanken Grotesk","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  --gutter:max(16px,env(safe-area-inset-left,0px));
+  --gutter-r:max(16px,env(safe-area-inset-right,0px));
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--black)}
+body{margin:0;background:var(--black);color:var(--white);font-family:var(--font);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--blue-text);outline-offset:3px}
+.w{max-width:1240px;margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter-r)}
+section{padding-block:clamp(72px,11vw,150px)}
+h1,h2,h3{margin:0;text-wrap:balance;letter-spacing:-.035em;line-height:1}
+h2{font-size:clamp(2.1rem,5.4vw,4.4rem);font-weight:800;max-width:18ch}
+h3{font-size:1.35rem;font-weight:700;letter-spacing:-.02em;line-height:1.15}
+p{margin:0;max-width:62ch}
+.sub{color:var(--gray);font-size:1.05rem;margin-top:22px;max-width:56ch}
+.rule{height:1px;background:var(--line);position:relative;margin-bottom:clamp(36px,5vw,64px)}
+.rule::after{content:"";position:absolute;left:0;top:0;height:1px;width:72px;background:var(--blue)}
+.small{font-size:.82rem;color:var(--gray);letter-spacing:.01em}
+
+/* nav */
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(0,0,0,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--black)}
+nav .w{display:flex;align-items:center;justify-content:space-between;height:56px}
+.logo{font-weight:800;letter-spacing:-.04em;text-decoration:none;font-size:1.1rem}
+.logo i{color:var(--blue-text);font-style:normal}
+nav ul{display:flex;gap:26px;list-style:none;margin:0;padding:0;font-size:.88rem}
+nav ul a{color:var(--gray);text-decoration:none;transition:color .2s}
+nav ul a:hover{color:var(--white)}
+@media(max-width:760px){nav ul{display:none}}
+
+/* hero */
+.hero{position:relative;padding-top:clamp(56px,9vw,120px);padding-bottom:clamp(56px,8vw,110px);overflow:hidden}
+#net{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero .w{position:relative;pointer-events:none}
+.hero a{pointer-events:auto}
+.name{font-size:clamp(3.6rem,15.5vw,13.5rem);font-weight:800;letter-spacing:-.065em;line-height:.86}
+.name .dot{color:var(--blue)}
+.mask{display:block;overflow:hidden;padding-bottom:.06em}
+.mask>span{display:block}
+.js .mask>span{transform:translateY(112%)}
+.lead{font-size:clamp(1.15rem,2.1vw,1.55rem);line-height:1.35;max-width:34ch;margin-top:clamp(28px,4vw,48px);color:var(--white);letter-spacing:-.01em}
+.lead b{font-weight:500;color:var(--gray)}
+.hero-meta{display:flex;flex-wrap:wrap;gap:12px 28px;margin-top:34px;color:var(--gray);font-size:.88rem}
+.hero-meta span{display:inline-flex;align-items:center;gap:9px}
+.pulse{width:8px;height:8px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 0 rgba(0,0,255,.7);animation:pulse 2.4s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 12px rgba(0,0,255,0)}100%{box-shadow:0 0 0 0 rgba(0,0,255,0)}}
+.scroll{position:absolute;right:var(--gutter-r);bottom:28px;width:1px;height:64px;background:var(--line);overflow:hidden}
+.scroll::after{content:"";position:absolute;left:0;top:-40%;width:1px;height:40%;background:var(--blue);animation:drop 2.2s ease-in-out infinite}
+@keyframes drop{to{top:110%}}
+
+/* blue band */
+.band{background:var(--blue);padding-block:clamp(44px,6vw,80px)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:28px 24px}
+.stat{min-width:0}
+.stat strong{display:block;font-size:clamp(2.6rem,7vw,6rem);font-weight:800;letter-spacing:-.06em;line-height:.95;font-variant-numeric:tabular-nums}
+.stat span{display:block;margin-top:12px;font-size:.9rem;line-height:1.4;color:rgba(255,255,255,.82);max-width:24ch}
+@media(max-width:820px){.stats{grid-template-columns:1fr 1fr}}
+
+/* rows (projects, automations, tools) */
+.rows{border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.5fr) minmax(0,.9fr);gap:12px 40px;padding:34px 0;border-bottom:1px solid var(--line);position:relative;transition:background .3s}
+.row::before{content:"";position:absolute;left:0;top:-1px;height:1px;width:0;background:var(--blue);transition:width .5s cubic-bezier(.2,.7,.2,1)}
+.row:hover::before{width:100%}
+.row h3 small{display:block;font-size:.8rem;font-weight:500;color:var(--blue-text);letter-spacing:0;margin-top:8px}
+.row p{color:var(--gray-2)}
+.row .meta{color:var(--gray);font-size:.88rem;line-height:1.5}
+.row .meta a{color:var(--white);text-underline-offset:4px;text-decoration-color:var(--blue-text)}
+.proof{margin-top:12px;font-size:.88rem;color:var(--gray)}
+.proof b{color:var(--white);font-weight:500}
+@media(max-width:860px){.row{grid-template-columns:1fr;padding:28px 0}}
+
+/* orchestration */
+.pipe{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:0;margin-top:clamp(40px,6vw,72px);position:relative}
+.pipe::before,.pipe .fill{content:"";position:absolute;left:0;right:0;top:7px;height:1px;background:var(--line)}
+.pipe .fill{right:auto;width:100%;background:var(--blue);transform-origin:left;transform:scaleX(1);height:2px;top:6.5px}
+.js .pipe .fill{transform:scaleX(0)}
+.step{position:relative;padding-top:34px;padding-right:18px}
+.step::before{content:"";position:absolute;left:0;top:0;width:15px;height:15px;border-radius:50%;background:var(--black);border:1px solid var(--gray)}
+.step.on::before{background:var(--blue);border-color:var(--blue)}
+.step h4{margin:0 0 6px;font-size:1rem;font-weight:700;letter-spacing:-.01em}
+.step p{font-size:.88rem;color:var(--gray)}
+@media(max-width:860px){
+  .pipe{grid-template-columns:1fr;gap:26px;padding-left:34px}
+  .pipe::before,.pipe .fill{left:7px;right:auto;top:0;bottom:0;width:1px;height:auto}
+  .pipe .fill{width:2px;left:6.5px;transform-origin:top}
+  .js .pipe .fill{transform:scaleY(0)}
+  .step{padding:0}
+  .step::before{left:-34px;top:4px}
+}
+.crew{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:clamp(48px,7vw,88px)}
+.crew>div{background:var(--black);padding:26px 24px 30px;min-width:0}
+.crew h4{margin:0 0 4px;font-size:1.05rem;font-weight:700}
+.crew em{display:block;font-style:normal;font-size:.8rem;color:var(--blue-text);margin-bottom:12px}
+.crew p{font-size:.92rem;color:var(--gray-2)}
+@media(max-width:860px){.crew{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.crew{grid-template-columns:1fr}}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,90px);margin-top:clamp(48px,7vw,88px)}
+.cols h3{margin-bottom:20px}
+.list{list-style:none;margin:0;padding:0}
+.list li{padding:14px 0;border-top:1px solid var(--line);color:var(--gray-2);font-size:.98rem}
+.list li:last-child{border-bottom:1px solid var(--line)}
+.list b{color:var(--white);font-weight:500}
+@media(max-width:820px){.cols{grid-template-columns:1fr}}
+
+/* prompts (white) */
+.paper{background:var(--white);color:var(--black)}
+.paper .rule{background:#DADADF}
+.paper .sub{color:#55555D}
+.paper h2{color:var(--black)}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-top:40px}
+.tab{font:500 .9rem var(--font);padding:11px 18px;border:1px solid #CFCFD6;background:transparent;color:var(--black);cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.tab:hover{border-color:var(--black)}
+.tab[aria-selected="true"]{background:var(--blue);border-color:var(--blue);color:var(--white)}
+.panel{margin-top:16px;background:var(--black);color:var(--gray-2);overflow-x:auto}
+.panel pre{margin:0;padding:clamp(20px,3vw,34px);font:400 .86rem/1.75 var(--mono);white-space:pre;color:#D8D8DE}
+.panel pre i{font-style:normal;color:var(--blue-text)}
+.panel .cap{padding:14px clamp(20px,3vw,34px);border-top:1px solid #1d1d22;color:var(--gray);font-size:.82rem;font-family:var(--font)}
+.exp{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:36px clamp(24px,4vw,56px);margin-top:clamp(48px,7vw,84px)}
+.exp div{border-top:1px solid var(--black);padding-top:18px}
+.exp h3{margin-bottom:10px}
+.exp p{font-size:.95rem;color:#45454D}
+@media(max-width:860px){.exp{grid-template-columns:1fr}}
+
+/* stack */
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:40px}
+.chips span{padding:9px 16px;border:1px solid var(--line);font-size:.92rem;color:var(--gray-2);transition:border-color .2s,color .2s}
+.chips span:hover{border-color:var(--blue);color:var(--white)}
+.chips span.hot{border-color:var(--blue);color:var(--white)}
+.time{margin-top:clamp(56px,8vw,100px);display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:24px;border-top:1px solid var(--line);padding-top:26px}
+.time div{min-width:0}
+.time b{display:block;font-size:.85rem;font-weight:500;color:var(--blue-text);margin-bottom:8px}
+.time p{font-size:.92rem;color:var(--gray-2)}
+@media(max-width:900px){.time{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.time{grid-template-columns:1fr}}
+
+/* contact */
+.contact{padding-block:clamp(90px,14vw,190px);border-top:1px solid var(--line)}
+.big{font-size:clamp(2.6rem,9vw,8rem);font-weight:800;letter-spacing:-.06em;line-height:.92;max-width:12ch}
+.big span{color:var(--blue)}
+.links{display:flex;flex-wrap:wrap;gap:14px;margin-top:44px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 24px;border:1px solid var(--line);background:transparent;color:var(--white);font:500 1rem var(--font);text-decoration:none;cursor:pointer;transition:background .25s,border-color .25s}
+.btn:hover{border-color:var(--blue);background:var(--blue)}
+.btn.main{background:var(--blue);border-color:var(--blue)}
+.btn.main:hover{background:var(--white);color:var(--black);border-color:var(--white)}
+footer{padding-block:34px;border-top:1px solid var(--line);color:var(--gray);font-size:.82rem}
+footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .pulse,.scroll::after{animation:none}
+  .js .mask>span{transform:none}
+  .js .pipe .fill{transform:none}
+}
+</style>
+
+<nav>
+  <div class="w">
+    <a class="logo" href="#topo">Cauê Carneiro<i>.</i></a>
+    <ul>
+      <li><a href="#producao">Em produção</a></li>
+      <li><a href="#orquestracao">Orquestração</a></li>
+      <li><a href="#automacoes">Automações</a></li>
+      <li><a href="#ferramentas">Ferramentas</a></li>
+      <li><a href="#codigo">Código aberto</a></li>
+      <li><a href="#prompts">Prompts</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="topo">
+  <canvas id="net" aria-hidden="true"></canvas>
+  <div class="w">
+    <h1 class="name" aria-label="Cauê Carneiro.">
+      <span class="mask"><span>Cauê</span></span>
+      <span class="mask"><span>Carneiro<span class="dot">.</span></span></span>
+    </h1>
+    <p class="lead" id="lead">Desenvolvedor iOS e dono de produto. Construo com IA e coloco no ar. <b>Apps nativos, backends, times de agentes e automações que trabalham sozinhas.</b></p>
+    <div class="hero-meta" id="meta">
+      <span><i class="pulse"></i>Brasília, DF</span>
+      <span>Engenharia de Software, UCB</span>
+      <span>Apple Developer Academy</span>
+      <span>Aberto a CLT, PJ ou freela</span>
+    </div>
+  </div>
+  <div class="scroll" aria-hidden="true"></div>
+</header>
+
+<div class="band">
+  <div class="w">
+    <div class="stats">
+      <div class="stat"><strong data-n="3">3</strong><span>apps publicados na App Store</span></div>
+      <div class="stat"><strong>5,0</strong><span>nota pública do app SETE na App Store</span></div>
+      <div class="stat"><strong data-n="6">6</strong><span>áreas de trabalho de agentes de IA orquestradas no Frila</span></div>
+      <div class="stat"><strong data-n="2749">2.749</strong><span>commits do time em três repositórios do Frila desde setembro</span></div>
+    </div>
+  </div>
+</div>
+
+<section id="producao">
+  <div class="w">
+    <div class="rule"></div>
+    <h2 data-r>Soluções em produção, usadas por outras pessoas.</h2>
+    <p class="sub" data-r>Apps na loja, uma plataforma a caminho do lançamento e um negócio operando. Cada um com repositório, testes e dono.</p>
+    <div class="rows" style="margin-top:56px">
+      <article class="row" data-r>
+        <h3>Frila<small>Plataforma, lançamento em 13/11/2026</small></h3>
+        <div>
+          <p>Contratação por turno avulso, começando no Distrito Federal. O backend fecha o ciclo publicar, notificar, candidatar, confirmar, executar e avaliar, com despacho fora da requisição.</p>
+          <p class="proof"><b>769</b> commits no backend, <b>1.598</b> no app, <b>382</b> na documentação. <b>10</b> Edge Functions, testes pgTAP, CI.</p>
+        </div>
+        <div class="meta">Supabase (Postgres, PostGIS, pg_cron, pgmq), SwiftUI, Kotlin. Frila Tecnologia aberta em 21/10/2026. Proposta START BSB/FAPDF de R$ 53 mil.</div>
+      </article>
+      <article class="row" data-r>
+        <h3>Prontu!<small>App Store, 2026</small></h3>
+        <div>
+          <p>Gestão de atendimentos para profissionais em movimento, com disponibilidade total sem internet. Um modelo de machine learning no próprio aparelho sugere recursos conforme exercício, objetivo e região do corpo, sem chamar API externa.</p>
+          <p class="proof">Escopo, prioridade e especificação definidos por mim antes do código. Face ID e Touch ID, testes com XCTest.</p>
+        </div>
+        <div class="meta">Swift, MVVM-C, CoreData, CreateML e CoreML, LocalAuthentication. <a href="https://github.com/cauecarneiro/Prontu" target="_blank" rel="noopener">Código</a></div>
+      </article>
+      <article class="row" data-r>
+        <h3>Liturgia Descomplicada<small>App Store, 2025</small></h3>
+        <div>
+          <p>Folheto completo da missa do dia, segundo o Missal Romano, com modo offline, cache inteligente e devocionário com busca e favoritos. Rápido mesmo em aparelhos com mais de quatro anos.</p>
+          <p class="proof">Acessibilidade com VoiceOver e Dynamic Type como decisão de produto. Desempenho ajustado com Instruments.</p>
+        </div>
+        <div class="meta">Swift, CoreData, REST e Codable, XCTest. <a href="https://github.com/cauecarneiro/Liturgia-Descomplicada" target="_blank" rel="noopener">Código</a></div>
+      </article>
+      <article class="row" data-r>
+        <h3>SETE<small>App Store, 2024</small></h3>
+        <div>
+          <p>Performance esportiva para esportes de praia, no iPhone e no Apple Watch. A sincronização em tempo real entre os dois aparelhos é o valor central e guiou a arquitetura.</p>
+          <p class="proof">Nota <b>5,0</b> na App Store. Dashboards, mapas de calor e métricas com HealthKit. Beta por TestFlight.</p>
+        </div>
+        <div class="meta">UIKit e SwiftUI, MVVM, Clean Architecture, WatchConnectivity, HealthKit</div>
+      </article>
+      <article class="row" data-r>
+        <h3>Racha<small>App em integração</small></h3>
+        <div>
+          <p>Divisão de despesas em grupo, com saldo, convites por @usuário e push. Mobile, API e infraestrutura em repositórios separados, com CI verde.</p>
+          <p class="proof">Pendências de produção mapeadas e priorizadas: <b>16</b> (2 críticas, 7 altas, 7 médias).</p>
+        </div>
+        <div class="meta">Expo, NestJS, Terraform</div>
+      </article>
+      <article class="row" data-r>
+        <h3>Newsole<small>Loja no ar</small></h3>
+        <div><p>Loja Shopify de meia invisível, com catálogo, fornecedor integrado pelo DSers e operação tocada com agentes.</p></div>
+        <div class="meta"><a href="https://newsole.com.br" target="_blank" rel="noopener">newsole.com.br</a></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="produto">
+  <div class="w">
+    <div class="rule"></div>
+    <h2 data-r>Dono do produto, não só do código.</h2>
+    <p class="sub" data-r>Nos três apps da App Store e no Frila, eu decido o que construir e o que deixar de fora. Tenho interesse real em atuar como Product Owner ou Product Manager, com a profundidade técnica de quem programa.</p>
+    <div class="cols">
+      <div data-r>
+        <h3>Como eu conduzo</h3>
+        <ul class="list">
+          <li><b>Descoberta.</b> Começo pelo problema real: profissional itinerante sem rede estável, usuário que precisa de acesso confiável, atleta que precisa de dado em tempo real.</li>
+          <li><b>Especificação antes do código.</b> Cada feature nasce num documento com problema, escopo, fora de escopo e critérios de aceite. Funciona como um PRD e deixa o code review objetivo.</li>
+          <li><b>Prioridade e corte.</b> Decido o que entra no MVP e o que fica para depois, pesando valor, esforço e risco.</li>
+          <li><b>Ciclo completo.</b> Da ideia à App Store e da publicação à manutenção.</li>
+        </ul>
+      </div>
+      <div data-r>
+        <h3>Liderança e negócio</h3>
+        <ul class="list">
+          <li><b>Code review e mentoria.</b> Liderei revisões, defini padrões de qualidade e orientei colegas em arquitetura iOS na Academy.</li>
+          <li><b>Empreendedor formalizado.</b> CCMEI e, desde 21/10/2026, a Frila Tecnologia, com sócios do Challenge 18 da Academy.</li>
+          <li><b>Fomento.</b> Proposta START BSB/FAPDF de R$ 53 mil para o Frila.</li>
+          <li><b>Comunicação.</b> Traduzo decisão técnica para quem não é técnico, em time multidisciplinar de design, backend e QA.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="orquestracao" style="background:var(--ink)">
+  <div class="w">
+    <div class="rule"></div>
+    <h2 data-r>Um time de agentes com regras de empresa.</h2>
+    <p class="sub" data-r>No Frila, seis áreas de trabalho de IA operam em paralelo sobre três modelos e nove contas. Quem faz não é quem revisa, e nada vai para o mundo sem o meu OK.</p>
+
+    <div class="pipe" id="pipe">
+      <div class="fill"></div>
+      <div class="step"><h4>Cartão</h4><p>A tarefa nasce no Trello. O orquestrador só lê.</p></div>
+      <div class="step"><h4>Brief</h4><p>Até 40 linhas: objetivo, aceite, escopo, faixa de risco.</p></div>
+      <div class="step"><h4>Líder</h4><p>Abre uma área isolada por tarefa e recruta quem precisar.</p></div>
+      <div class="step"><h4>Gate local</h4><p>Testes e build verdes antes de abrir qualquer PR.</p></div>
+      <div class="step"><h4>Revisão</h4><p>Outro modelo, sem contexto, revisa. Máximo de 2 rodadas.</p></div>
+      <div class="step"><h4>Merge</h4><p>Só com a minha aprovação e a de um sócio.</p></div>
+    </div>
+
+    <div class="crew">
+      <div data-r><h4>Orquestrador</h4><em>Claude Sonnet 5.5</em><p>Lê o cartão, escreve o brief, delega e consolida. Mede o ritmo de uso a cada rodada.</p></div>
+      <div data-r><h4>Líderes: Forja, Prisma, Matiz</h4><em>Backend, frontend e marca</em><p>Cada líder cria uma área por tarefa, controla as filas e recruta sênior e operários.</p></div>
+      <div data-r><h4>Sênior e operários</h4><em>Sonnet 5.5, Gemini Flash</em><p>Implementam com arquivos exclusivos. Só o sênior commita. Duas tentativas e vira bloqueado.</p></div>
+      <div data-r><h4>Lince</h4><em>Codex, revisor independente</em><p>Revisa PRs de risco médio e alto, sem ver a conversa que gerou o código.</p></div>
+      <div data-r><h4>Analistas</h4><em>Produto, Jurídico, Marketing</em><p>Estratégia, texto e rascunhos jurídicos, sempre sobre o que já existe no repositório.</p></div>
+      <div data-r><h4>Eu</h4><em>Decisão final</em><p>Defino prioridade, aprovo merge e qualquer coisa que saia para fora.</p></div>
+    </div>
+
+    <div class="cols">
+      <div data-r>
+        <h3>Controles que escrevi</h3>
+        <ul class="list">
+          <li><b>Termômetro de cota.</b> O líder mede antes de abrir mais um operário. No amarelo, espera.</li>
+          <li><b>Escolha de conta por script.</b> Direciona o trabalho para a conta que mais precisa de uso antes do reset semanal.</li>
+          <li><b>Vigia de contexto.</b> Agentes pedem sozinhos <i>/clear</i> ou <i>/compact</i> entre 60% e 78% da janela.</li>
+          <li><b>Filas de recurso.</b> No máximo 2 simuladores e 1 banco local por vez.</li>
+          <li><b>Painel de agentes.</b> Cotas, PRs e pendências numa tela, sem gastar token.</li>
+        </ul>
+      </div>
+      <div data-r>
+        <h3>O que medi</h3>
+        <ul class="list">
+          <li><b>6 de 6</b> entregas revisadas pelo Lince tinham bloqueio real.</li>
+          <li><b>3 de 8</b> delegações precisaram de reenvio no dia medido. Virou regra de confirmação de recebimento.</li>
+          <li><b>46</b> cartões do Trello conferidos contra o repositório: 1 pronto, 24 parciais, 21 não.</li>
+          <li><b>Consumo por tarefa e modelo</b> registrado em planilha, para calibrar quantas tarefas cabem por dia.</li>
+          <li><b>Diário de aprendizado</b> com placar: o que falhou, se repetiu e virou regra.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="automacoes">
+  <div class="w">
+    <div class="rule"></div>
+    <h2 data-r>Automações que trabalham sem mim.</h2>
+    <p class="sub" data-r>Cada uma troca um processo manual por uma fila, uma rotina ou um gatilho, com aprovação humana onde o risco pede.</p>
+    <div class="rows" style="margin-top:56px">
+      <article class="row" data-r>
+        <h3>Carteiro<small>Publicação em redes</small></h3>
+        <div>
+          <p>Antes, agendar à mão em cada rede. Agora há uma fila com rascunho, aprovação na tela e publicação pelas APIs oficiais de LinkedIn, Threads, Instagram e X.</p>
+          <p class="proof">Nada publica sem aprovação. Começa em simulação e só vai à rede real com a chave certa. <b>268</b> casos de teste automatizados.</p>
+        </div>
+        <div class="meta">Node, SQLite, chaves no Chaveiro do macOS</div>
+      </article>
+      <article class="row" data-r>
+        <h3>Gatilho<small>Comentário vira direct</small></h3>
+        <div><p>Quando alguém comenta a palavra combinada num vídeo, recebe uma mensagem privada com botão. O serviço consulta a Meta a cada minuto e usa webhook oficial.</p></div>
+        <div class="meta">Cloudflare Worker, banco D1</div>
+      </article>
+      <article class="row" data-r>
+        <h3>Rotina semanal<small>Toda terça, 14h30</small></h3>
+        <div><p>Pesquisa de tendências em várias fontes, geração de 7 carrosséis agendados, posts em rascunho e roteiros. Um modelo mais forte pesquisa, outro escreve.</p></div>
+        <div class="meta">Playwright, agendamento por rotina</div>
+      </article>
+      <article class="row" data-r>
+        <h3>Varredura de comentários<small>Todo dia, 10h</small></h3>
+        <div><p>Acha comentários sem resposta dos últimos dois dias no Instagram e no Threads e cria respostas em rascunho, na minha voz. Eu aprovo pela tela.</p></div>
+        <div class="meta">Windsor, Carteiro</div>
+      </article>
+      <article class="row" data-r>
+        <h3>Motor de edição<small>Vídeo e áudio</small></h3>
+        <div><p>Pacote de vídeo gerado em código, com cadeia de áudio padrão: redução de ruído, equalização, de-esser, compressor e normalização de volume.</p></div>
+        <div class="meta">Remotion, DeepFilterNet, ffmpeg</div>
+      </article>
+      <article class="row" data-r>
+        <h3>Teleprompter<small>App iOS</small></h3>
+        <div><p>Cola o roteiro do Notion e grava com leitura automática, por voz ou manual. Sem conta, sem internet, sem nuvem. Testado por mim no iPhone, no uso diário.</p></div>
+        <div class="meta">SwiftUI, UIKit, AVAssetWriter</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="ferramentas" style="background:var(--ink)">
+  <div class="w">
+    <div class="rule"></div>
+    <h2 data-r>Ferramentas internas que resolvem problema real.</h2>
+    <p class="sub" data-r>Painéis e utilitários que nasceram de uma dor minha. Os públicos estão abertos no GitHub.</p>
+    <div class="rows" style="margin-top:56px">
+      <article class="row" data-r>
+        <h3>Overview-Painel<small>Código aberto</small></h3>
+        <div>
+          <p>Numa tela só: o que cada agente de IA está fazendo, quanto resta de cota no Claude Code, Codex e Antigravity, quais PRs estão abertos e o que depende de mim.</p>
+          <p class="proof">Nenhuma IA participa e nenhum token é gasto. Lê os terminais por tmux. <b>14</b> estrelas e <b>4</b> forks.</p>
+        </div>
+        <div class="meta">Python (só biblioteca padrão). <a href="https://github.com/cauecarneiro/Overview-Painel" target="_blank" rel="noopener">Repositório</a></div>
+      </article>
+      <article class="row" data-r>
+        <h3>Life Track<small>Código aberto</small></h3>
+        <div><p>Painel local de saúde e treino com dados do Garmin: sono, variabilidade cardíaca, estresse e um mapa de calor de 12 meses. Não guarda nada em disco nem na nuvem.</p></div>
+        <div class="meta">Web, API pessoal da Garmin. <a href="https://github.com/cauecarneiro/life-track" target="_blank" rel="noopener">Repositório</a></div>
+      </article>
+      <article class="row" data-r>
+        <h3>Scrolling<small>Código aberto</small></h3>
+        <div><p>Extensão de Chrome que captura a página inteira, divide capturas gigantes em várias imagens e copia para a área de transferência.</p></div>
+        <div class="meta">JavaScript, Chrome. <a href="https://github.com/cauecarneiro/scrolling" target="_blank" rel="noopener">Repositório</a></div>
+      </article>
+      <article class="row" data-r>
+        <h3>Contexto<small>Uso interno</small></h3>
+        <div><p>Monitora a janela de contexto de cada agente e executa a limpeza ou a compactação quando o próprio agente pede, com protocolo, chave liga e desliga e diário.</p></div>
+        <div class="meta">Shell, hooks do Claude Code</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="codigo">
+  <div class="w">
+    <div class="rule"></div>
+    <h2 data-r>Código aberto e estudos.</h2>
+    <p class="sub" data-r>34 repositórios públicos no GitHub. Estes são os que mostram como eu estudo e experimento com o ecossistema Apple e com IA.</p>
+    <div class="rows" style="margin-top:56px">
+      <article class="row" data-r>
+        <h3>Kadush</h3>
+        <div><p>App SwiftUI que integra a API da OpenAI e guarda as conversas com SwiftData. Estudo de arquitetura para apps com IA generativa.</p></div>
+        <div class="meta">SwiftUI, SwiftData. <a href="https://github.com/cauecarneiro/Kadush" target="_blank" rel="noopener">Repositório</a></div>
+      </article>
+      <article class="row" data-r>
+        <h3>MoodMap</h3>
+        <div><p>Registro emocional geolocalizado: mapa interativo, sincronização por CloudKit e sugestões contextuais com IA no aparelho, via Foundation Models.</p></div>
+        <div class="meta">MapKit, CloudKit, Foundation Models. <a href="https://github.com/cauecarneiro/MoodMap" target="_blank" rel="noopener">Repositório</a></div>
+      </article>
+      <article class="row" data-r>
+        <h3>Rolezando</h3>
+        <div><p>Descoberta de eventos próximos num mapa, com filtros por categoria, distância e data. Feito no HackaTruck, do Instituto Eldorado e da IBM.</p></div>
+        <div class="meta">MapKit, CoreLocation. <a href="https://github.com/cauecarneiro/Rolezando" target="_blank" rel="noopener">Repositório</a></div>
+      </article>
+      <article class="row" data-r>
+        <h3>Altura do salto com Apple Watch</h3>
+        <div><p>Algoritmo para watchOS que detecta decolagem e aterrissagem pelos sensores, mede o tempo de voo e estima a altura do salto por h = g·t²/8. Pensado para futevôlei.</p></div>
+        <div class="meta">watchOS, Swift. <a href="https://github.com/cauecarneiro/Calculo-altura-do-salto-com-Apple-Watch" target="_blank" rel="noopener">Repositório</a></div>
+      </article>
+      <article class="row" data-r>
+        <h3>Chroma Knight</h3>
+        <div><p>Plataforma 2D em SpriteKit controlada pela posição da mão: a câmera lê o gesto e o personagem anda e pula.</p></div>
+        <div class="meta">SpriteKit, Vision. <a href="https://github.com/cauecarneiro/Jogo-HandGestures" target="_blank" rel="noopener">Repositório</a></div>
+      </article>
+      <article class="row" data-r>
+        <h3>Arquitetura e fundamentos</h3>
+        <div><p>Clean Architecture com Strategy e Composite, MVVM, UIKit com Storyboard e ViewCode, SwiftData contra CoreData, MapKit, EventKit, notificações locais e push, widgets.</p></div>
+        <div class="meta"><a href="https://github.com/cauecarneiro?tab=repositories" target="_blank" rel="noopener">Todos os repositórios</a></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="paper" id="prompts">
+  <div class="w">
+    <div class="rule"></div>
+    <h2 data-r>Prompts bem estruturados e experimentos com LLMs.</h2>
+    <p class="sub" data-r>Prompt como contrato: formato fixo, aceite verificável e retorno curto. Estes são os modelos que uso de verdade.</p>
+
+    <div class="tabs" role="tablist" aria-label="Modelos de prompt">
+      <button class="tab" role="tab" id="t1" aria-selected="true" aria-controls="p1">Brief de tarefa</button>
+      <button class="tab" role="tab" id="t2" aria-selected="false" aria-controls="p2">Regra de uso de IA</button>
+      <button class="tab" role="tab" id="t3" aria-selected="false" aria-controls="p3">Diário de aprendizado</button>
+    </div>
+    <div class="panel" role="tabpanel" id="p1" aria-labelledby="t1">
+<pre><i>ID</i> · título curto                      cartão: link
+<i>OBJETIVO</i>  uma frase: o que muda para o usuário ou para o sistema
+<i>POR QUÊ</i>   uma frase
+<i>FAIXA</i>     verde | amarela | vermelha
+<i>REPO/BASE</i> frila-backend · develop   |   frila-frontend · main
+<i>ACEITE</i>    Dado/Quando/Então, ou o comando que prova
+<i>ESCOPO</i>    pode mexer: pastas/arquivos
+             não mexe:   proibidos; arquivos de um escritor só
+<i>CONTEXTO</i>  só ponteiros: arquivo:linha, seção, operação do contrato
+<i>GATE</i>      comandos exatos que precisam ficar verdes
+<i>FORA</i>      o que não é desta tarefa
+<i>ORDEM</i>     depende de: … · bloqueia: …
+<i>SÊNIOR?</i>   sim (motivo) | não</pre>
+      <div class="cap">Máximo de 40 linhas. Ninguém repassa conversa inteira nem cola log: só brief, despacho e retorno.</div>
+    </div>
+    <div class="panel" role="tabpanel" id="p2" aria-labelledby="t2" hidden>
+<pre><i>Gasto com sentido</i>
+- "Gastar" é uso real. Toda tarefa tem objetivo, aceite
+  verificável, prova e dono.
+- Proibido criar tarefa só para a barra de uso subir.
+- Se a fila útil acabar com cota sobrando, o Orquestrador
+  avisa. Não completar a fila para parecer cheia.
+
+<i>Como escolher quem faz</i>
+- Trabalho de volume (testes, documentação, auditoria,
+  refatoração): modelos de cota livre.
+- Claude: orquestração, decisão, síntese e revisão final.
+- Pedido extraordinário: agente temporário, dispensado depois.</pre>
+      <div class="cap">Trecho das regras de uso das IAs, aprovadas em 29/10/2026, escritas depois de medir o consumo de cada conta.</div>
+    </div>
+    <div class="panel" role="tabpanel" id="p3" aria-labelledby="t3" hidden>
+<pre><i>Regra</i>
+Toda frente começa lendo as últimas entradas da própria seção
+e termina com uma entrada de no máximo 5 linhas:
+
+  o que falhou e se repetiu  ·  o que resultou
+  ·  o que muda na próxima vez
+
+<i>Placar</i> (amostra mínima para virar regra: 3 ocorrências)
+  Delegações ............ chegaram na 1ª  ·  precisaram reenvio
+  Revisões independentes  com bloqueio real  ·  sem bloqueio
+  Trabalho refeito por falta de checagem prévia</pre>
+      <div class="cap">O erro registrado vira regra só depois de repetir. Um dia de dados é direção, não lei.</div>
+    </div>
+
+    <div class="exp">
+      <div data-r><h3>Teste do gancho</h3><p>Todo roteiro de vídeo passa por um teste de abertura antes de gravar. Cada tema gera versões diferentes de gancho, publicadas como teste e comparadas por métrica real.</p></div>
+      <div data-r><h3>Engenharia reversa dentro dos termos</h3><p>Estudei um produto concorrente só por produto e fluxo, sem endpoint interno e sem copiar identidade. O mapa de telas virou a arquitetura do Carteiro.</p></div>
+      <div data-r><h3>Modo eco</h3><p>Um comando liga a economia de tokens: leitura pesada vai para modelo barato, e o raciocínio caro fica para decisão, segurança e revisão.</p></div>
+      <div data-r><h3>361 skills com roteamento</h3><p>Curadoria de skills de design, vídeo, marca e código, com um mapa que diz qual usar em cada tipo de pedido.</p></div>
+      <div data-r><h3>Voz própria para a IA escrever</h3><p>Lista do que eu nunca diria e regras de linguagem simples, aplicadas em roteiro, post e resposta. A IA aprende com o que aprovo e com o que reprovo.</p></div>
+      <div data-r><h3>Medição antes de regra</h3><p>Cada regra de orquestração nasceu de um número: cota consumida por modelo, reenvios, bloqueios achados na revisão.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="stack">
+  <div class="w">
+    <div class="rule"></div>
+    <h2 data-r>Ferramentas e trajetória.</h2>
+    <div class="chips" data-r>
+      <span>Swift</span><span>SwiftUI</span><span>UIKit</span><span>MVVM, VIPER, Clean Architecture</span><span>CoreData, SwiftData</span><span>CoreML, CreateML</span><span>HealthKit</span><span>WatchConnectivity</span><span>XCTest, TDD</span><span>GitHub Actions</span>
+    </div>
+    <div class="chips" data-r style="margin-top:10px">
+      <span class="hot">Claude Code</span><span class="hot">Codex</span><span class="hot">Copilot</span><span class="hot">Antigravity</span><span class="hot">Servidores MCP</span><span class="hot">Maestri</span>
+      <span>Kotlin</span><span>Flutter</span><span>React Native, Expo</span>
+      <span>NestJS</span><span>Supabase</span><span>PostgreSQL, PostGIS</span><span>Terraform, AWS</span><span>Cloudflare Workers</span>
+      <span>Node.js</span><span>Python</span><span>Remotion</span><span>Playwright</span><span>Shopify</span><span>GSAP</span><span>Figma</span>
+    </div>
+    <div class="time">
+      <div data-r><b>2024 a 2027</b><p>Engenharia de Software na UCB. Em 2026, trilhas de IA Generativa e Engenharia de Prompt.</p></div>
+      <div data-r><b>Mar/2025 a dez/2026</b><p>Bolsista iOS na Apple Developer Academy. Revisão de código, Scrum e mentoria de colegas.</p></div>
+      <div data-r><b>2025</b><p>HackaTruck, do Instituto Eldorado e da IBM, em iOS, IoT e CreateML.</p></div>
+      <div data-r><b>21/10/2026</b><p>Abertura da Frila Tecnologia. Sigo coordenando produto e orquestração.</p></div>
+      <div data-r><b>13/11/2026</b><p>Lançamento previsto do Frila nas lojas.</p></div>
+    </div>
+    <p class="small" style="margin-top:34px;max-width:none" data-r>Certificações: iOS pela Apple Developer Academy · iOS pelo HackaTruck e IBM · IA Generativa pela UCB (2026) · Engenharia de Prompt, nível básico, pela UCB (2026) · Git e GitHub · Scrum.</p>
+  </div>
+</section>
+
+<section class="contact" id="contato">
+  <div class="w">
+    <h2 class="big" data-r>Vamos construir<span>.</span></h2>
+    <div class="links">
+      <button class="btn main" id="copy" type="button">cauecarneiroc@gmail.com</button>
+      <a class="btn" href="https://www.linkedin.com/in/cauê-carneiro" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://github.com/cauecarneiro" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="https://instagram.com/cauenovic" target="_blank" rel="noopener">Instagram</a>
+    </div>
+    <p class="small" id="copied" style="margin-top:16px;min-height:1.4em"></p>
+  </div>
+</section>
+
+<footer><div class="w"><span>Cauê Carneiro.</span><span>Brasília, 2026</span></div></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var hasGsap = typeof gsap !== "undefined";
+  if(hasGsap && !reduce){ document.documentElement.classList.add("js"); }
+
+  /* hero network: pontos à deriva, linhas azuis perto do cursor */
+  var cv = document.getElementById("net"), cx = cv.getContext("2d"), W=0,H=0,dpr=1, pts=[], mouse={x:-999,y:-999};
+  function size(){
+    var r = cv.parentElement.getBoundingClientRect();
+    dpr = Math.min(window.devicePixelRatio||1,2);
+    W = r.width; H = r.height;
+    cv.width = W*dpr; cv.height = H*dpr; cx.setTransform(dpr,0,0,dpr,0,0);
+    var n = Math.round(Math.min(90, Math.max(34, W*H/16000)));
+    pts = [];
+    for(var i=0;i<n;i++){ pts.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.22,vy:(Math.random()-.5)*.22}); }
+  }
+  function frame(){
+    cx.clearRect(0,0,W,H);
+    for(var i=0;i<pts.length;i++){
+      var p = pts[i];
+      if(!reduce){ p.x+=p.vx; p.y+=p.vy; if(p.x<0||p.x>W)p.vx*=-1; if(p.y<0||p.y>H)p.vy*=-1; }
+      var dm = Math.hypot(p.x-mouse.x,p.y-mouse.y);
+      for(var j=i+1;j<pts.length;j++){
+        var q = pts[j], d = Math.hypot(p.x-q.x,p.y-q.y);
+        if(d<130){
+          var near = dm<190 || Math.hypot(q.x-mouse.x,q.y-mouse.y)<190;
+          cx.strokeStyle = near ? "rgba(40,40,255,"+(1-d/130)*.95+")" : "rgba(140,140,150,"+(1-d/130)*.22+")";
+          cx.lineWidth = near ? 1.1 : .7;
+          cx.beginPath(); cx.moveTo(p.x,p.y); cx.lineTo(q.x,q.y); cx.stroke();
+        }
+      }
+      cx.fillStyle = dm<190 ? "#4A55FF" : "rgba(201,201,207,.55)";
+      cx.beginPath(); cx.arc(p.x,p.y,dm<190?2.2:1.4,0,6.283); cx.fill();
+    }
+    if(!reduce) requestAnimationFrame(frame);
+  }
+  size(); frame();
+  var rt; window.addEventListener("resize",function(){ clearTimeout(rt); rt=setTimeout(function(){size(); if(reduce)frame();},150); });
+  var hero = document.getElementById("topo");
+  hero.addEventListener("pointermove",function(e){ var r=cv.getBoundingClientRect(); mouse.x=e.clientX-r.left; mouse.y=e.clientY-r.top; });
+  hero.addEventListener("pointerleave",function(){ mouse.x=mouse.y=-999; });
+
+  if(hasGsap && !reduce){
+    gsap.registerPlugin(ScrollTrigger);
+
+    /* abertura: o nome sobe em máscara, depois o resto */
+    var tl = gsap.timeline({defaults:{ease:"power4.out"}});
+    tl.fromTo(".mask>span",{yPercent:112},{yPercent:0,duration:1.25,stagger:.14})
+      .fromTo("#lead",{opacity:0,y:18},{opacity:1,y:0,duration:.9},"-=.7")
+      .fromTo("#meta",{opacity:0},{opacity:1,duration:.9},"-=.5");
+
+    /* números */
+    document.querySelectorAll("[data-n]").forEach(function(el){
+      var end = +el.dataset.n, o={v:0};
+      ScrollTrigger.create({trigger:el,start:"top 92%",once:true,onEnter:function(){
+        gsap.to(o,{v:end,duration:1.6,ease:"power3.out",onUpdate:function(){
+          el.textContent = Math.round(o.v).toLocaleString("pt-BR");
+        }});
+      }});
+      el.textContent = "0";
+    });
+
+    /* entradas discretas ao rolar */
+    ScrollTrigger.batch("[data-r]",{start:"top 90%",once:true,onEnter:function(b){
+      gsap.fromTo(b,{opacity:0,y:22},{opacity:1,y:0,duration:.8,ease:"power3.out",stagger:.08,clearProps:"transform"});
+    }});
+    gsap.set("[data-r]",{opacity:0,y:22});
+    ScrollTrigger.refresh();
+
+    /* pipeline: a linha azul acompanha a rolagem */
+    var vertical = function(){ return window.matchMedia("(max-width:860px)").matches; };
+    var steps = gsap.utils.toArray(".step");
+    ScrollTrigger.create({trigger:"#pipe",start:"top 80%",end:"bottom 55%",scrub:.4,onUpdate:function(self){
+      var p=self.progress, f=document.querySelector("#pipe .fill");
+      f.style.transform = (vertical()?"scaleY(":"scaleX(")+p+")";
+      steps.forEach(function(s,i){ s.classList.toggle("on", p >= i/(steps.length-1)-.02); });
+    }});
+  }else{
+    document.querySelectorAll(".step").forEach(function(s){ s.classList.add("on"); });
+  }
+
+  /* abas de prompt */
+  var tabs = document.querySelectorAll(".tab");
+  tabs.forEach(function(t){
+    t.addEventListener("click",function(){
+      tabs.forEach(function(x){
+        var on = x===t; x.setAttribute("aria-selected",on);
+        document.getElementById(x.getAttribute("aria-controls")).hidden = !on;
+      });
+    });
+  });
+
+  /* copiar e-mail */
+  var btn = document.getElementById("copy"), msg = document.getElementById("copied");
+  btn.addEventListener("click",function(){
+    var txt = btn.textContent.trim();
+    var done = function(){ msg.textContent = "E-mail copiado."; };
+    var fail = function(){
+      var r = document.createRange(); r.selectNodeContents(btn);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      msg.textContent = "Selecionado. Copie com Ctrl+C ou Cmd+C.";
+    };
+    try{ navigator.clipboard.writeText(txt).then(done,fail); }catch(e){ fail(); }
+  });
+})();
+</script>
