@@ -1,6 +1,9 @@
 <title>Cauê Crillanovick</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Cauê Crillanovick, AI builder e desenvolvedor iOS. Três apps na App Store, times de agentes de IA, automações em produção e ferramentas abertas.">
+<meta name="description" content="Cauê Crillanovick, desenvolvedor iOS e AI builder. Quatro apps na App Store, agentes de IA em produção, automações e ferramentas de código aberto.">
+<meta property="og:title" content="Cauê Crillanovick, desenvolvedor iOS e AI builder">
+<meta property="og:description" content="Quatro apps na App Store, agentes de IA em produção, automações e ferramentas de código aberto.">
+<meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Tinos:ital@1&display=swap">
@@ -229,20 +232,54 @@ footer .w{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
   .pill,.brand,.menu,.card{backdrop-filter:none;-webkit-backdrop-filter:none;background:#10105A}
 }
 @supports not (backdrop-filter:blur(1px)){.pill,.brand,.menu{background:rgba(10,10,90,.85)}}
+/* vitrine de apps: texto de um lado, telas do outro */
+.apps{margin-top:clamp(40px,5vw,60px)}
+.app{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.2fr);gap:clamp(28px,4.5vw,72px);padding:clamp(36px,5vw,64px) 0;border-top:1px solid var(--line);align-items:start}
+.apps .app:last-child{border-bottom:1px solid var(--line)}
+@media(max-width:940px){.app{grid-template-columns:1fr}}
+.app-h{display:flex;align-items:center;gap:16px;margin-bottom:18px}
+.app-h img{width:64px;height:64px;border-radius:15px;border:1px solid var(--line);flex:none}
+.app-h h3{font-size:clamp(1.5rem,2.4vw,1.9rem);letter-spacing:-.025em}
+.app-h small{display:block;color:var(--gray);font-size:.84rem;font-weight:500;margin-top:8px;letter-spacing:0;line-height:1.35}
+.app p{color:var(--gray-2)}
+.facts{list-style:none;margin:20px 0 0;padding:0}
+.facts li{padding:12px 0;border-top:1px solid var(--line);color:var(--gray-2);font-size:.96rem;line-height:1.5}
+.facts b{color:var(--white);font-weight:500}
+.app .stack{margin-top:16px;color:var(--gray);font-size:.86rem;line-height:1.5}
+.links{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.pill.sm{min-height:40px;padding:0 17px;font-size:.88rem}
+.shots{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x proximity;padding-bottom:12px;scrollbar-width:thin;scrollbar-color:#3a3a44 transparent;-webkit-overflow-scrolling:touch}
+.shots button,.shots .vid{flex:none;scroll-snap-align:start;padding:0;border:1px solid var(--line);border-radius:22px;overflow:hidden;background:#0b0b0f;line-height:0}
+.shots button{cursor:zoom-in;transition:border-color .25s ease,translate .3s var(--ease)}
+.shots button:hover{border-color:var(--blue-soft);translate:0 -3px}
+.shots img,.shots video{display:block;height:clamp(360px,40vw,480px);width:auto}
+.fig{margin:clamp(28px,4vw,44px) 0 0}
+.fig button{display:block;width:100%;padding:0;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#0b0b0f;cursor:zoom-in;line-height:0;transition:border-color .25s ease}
+.fig button:hover{border-color:var(--blue-soft)}
+.fig img{width:100%;height:auto;display:block}
+.fig figcaption{margin-top:12px;font-size:.84rem;color:var(--gray);line-height:1.45;max-width:70ch}
+.figs{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
+.figs .fig{margin-top:clamp(28px,4vw,44px)}
+@media(max-width:820px){.figs{grid-template-columns:1fr}}
+.lab.more{margin-top:clamp(48px,6vw,80px);margin-bottom:0}
+.rows.tight{margin-top:16px}
+dialog.lb{border:0;padding:0;background:transparent;max-width:96vw;max-height:94vh;overflow:visible}
+dialog.lb::backdrop{background:rgba(0,0,0,.92)}
+dialog.lb img{max-width:96vw;max-height:94vh;width:auto;height:auto;display:block;border-radius:14px;cursor:zoom-out}
 </style>
 
 <a class="skip" href="#sobre">Pular para o conteúdo</a>
 
 <div class="bar">
   <nav class="menu" aria-label="Seções">
-    <a href="#sobre">sobre</a><a href="#orquestracao">orquestração</a><a href="#automacoes">automações</a><a href="#ferramentas">ferramentas</a><a href="#prompts">prompts</a><a href="#producao">em produção</a><a href="#codigo">código aberto</a><a href="#trajetoria">trajetória</a><a href="#redes">redes</a>
+    <a href="#sobre">sobre</a><a href="#apps">apps iOS</a><a href="#ia">IA na prática</a><a href="#automacoes">automações</a><a href="#ferramentas">ferramentas</a><a href="#codigo">código aberto</a><a href="#trajetoria">trajetória</a><a href="#redes">redes</a>
   </nav>
   <a class="pill solid cnav" href="#contato">falar comigo</a>
   <button class="pill burger" id="burger" type="button" aria-expanded="false" aria-controls="sheet">menu</button>
 </div>
 <div class="sheet" id="sheet" aria-hidden="true">
   <button class="pill x" id="close" type="button">fechar</button>
-  <a href="#sobre">sobre</a><a href="#orquestracao">orquestração</a><a href="#automacoes">automações</a><a href="#ferramentas">ferramentas</a><a href="#prompts">prompts</a><a href="#producao">em produção</a><a href="#codigo">código aberto</a><a href="#trajetoria">trajetória</a><a href="#redes">redes</a>
+  <a href="#sobre">sobre</a><a href="#apps">apps iOS</a><a href="#ia">IA na prática</a><a href="#automacoes">automações</a><a href="#ferramentas">ferramentas</a><a href="#codigo">código aberto</a><a href="#trajetoria">trajetória</a><a href="#redes">redes</a>
 </div>
 
 <header class="frame hero" id="topo">
@@ -273,69 +310,259 @@ footer .w{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
         <span class="mask"><span>Cauê</span></span>
         <span class="mask"><span>Crillanovick</span></span>
       </h1>
-      <p class="tag" id="tag">AI builder e desenvolvedor iOS. eu levo produto com IA da ideia até a loja: apps nativos, times de agentes, automações e as ferramentas internas que destravam o que impede a empresa de evoluir. <span class="wm">sem pressa, sem pausa, sem desculpa.</span></p>
+      <p class="tag" id="tag">Desenvolvedor iOS e AI builder. quatro apps na App Store, do Swift à loja, e sistemas com agentes de IA rodando em produção, com teste, revisão e custo medido. <span class="wm">sem pressa, sem pausa, sem desculpa.</span></p>
       <div class="ctas" id="ctas">
-        <a class="pill solid" href="#producao">ver meus projetos</a>
+        <a class="pill solid" href="#apps">ver os apps</a>
+        <a class="pill" href="#ia">ver o que faço com IA</a>
         <a class="pill" href="#contato">falar comigo</a>
       </div>
-      <p class="open"><i class="pulse"></i>aberto a vagas de AI builder, desenvolvedor iOS e mobile, e produto. CLT, PJ ou freela. Brasília, DF.</p>
+      <p class="open"><i class="pulse"></i>aberto a vagas de desenvolvedor iOS, mobile e AI builder. CLT ou PJ, remoto ou presencial. Brasília, DF.</p>
     </div>
   </div>
 
   <div class="strip">
-    <div><svg viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg>3 apps nativos na App Store</div>
-    <div><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M8 7.5l3 8M16 7.5l-3 8"/></svg>agentes de IA orquestrados</div>
+    <div><svg viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg>4 apps nativos na App Store</div>
+    <div><svg viewBox="0 0 24 24"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14"/></svg>Swift, SwiftUI e UIKit</div>
+    <div><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M8 7.5l3 8M16 7.5l-3 8"/></svg>agentes de IA com revisão e teste</div>
     <div><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3"/><path d="M18 3v4h-4M6 21v-4h4"/></svg>automações e ferramentas internas</div>
-    <div><svg viewBox="0 0 24 24"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14"/></svg>código aberto no GitHub</div>
-    <div><svg viewBox="0 0 24 24"><path d="M5 19V9M12 19V5M19 19v-7"/></svg>produto da ideia à loja</div>
+    <div><svg viewBox="0 0 24 24"><path d="M5 19V9M12 19V5M19 19v-7"/></svg>código aberto no GitHub</div>
   </div>
 </header>
 
 <div class="frame band">
   <div class="stats">
-    <div class="stat"><strong data-n="3">3</strong><span>apps publicados na App Store</span></div>
+    <div class="stat"><strong data-n="4">4</strong><span>apps publicados na App Store</span></div>
     <div class="stat"><strong>5,0</strong><span>nota pública do app SETE na App Store</span></div>
-    <div class="stat"><strong data-n="164">164</strong><span>posts publicados pelo meu sistema de automação desde 14/10/2026</span></div>
-    <div class="stat"><strong data-n="2749">2.749</strong><span>commits do time em três repositórios do Frila desde setembro</span></div>
+    <div class="stat"><strong data-n="1340">1.340</strong><span>pull requests mesclados nos repositórios públicos do Frila até 17/11/2026</span></div>
+    <div class="stat"><strong data-n="194">194</strong><span>posts publicados pelo meu sistema de automação desde 14/10/2026</span></div>
   </div>
 </div>
 
 <main>
 <section id="sobre">
   <div class="w">
-    <h2 data-r>dono do produto e do código.</h2>
-    <p class="sub" data-r>Sou Cauê Crillanovick, de Brasília. Estudo Engenharia de Software na UCB, sou bolsista iOS na Apple Developer Academy e construo com IA o que eu mesmo uso. Nos meus apps eu decido o que entra e o que fica de fora, e depois mantenho no ar.</p>
+    <h2 data-r>desenvolvedor iOS que constrói com IA.</h2>
+    <p class="sub" data-r>Sou Cauê Carneiro Crillanovick, de Brasília. Estudo Engenharia de Software na UCB e concluo em dezembro de 2026 a Apple Developer Academy, onde entrei em março de 2025. Publico apps nativos na App Store e uso agentes de IA como parte do processo de engenharia, com especificação, teste e revisão.</p>
     <div class="seek" data-r>
-      <div><span class="lab">o que eu procuro</span><p>Vagas de AI builder, desenvolvedor iOS e mobile, ou produto com IA. Quero um time onde eu construa, entregue e meça.</p></div>
-      <div><span class="lab">o que eu entrego</span><p>Produto ponta a ponta: especificação, app nativo, backend, automação e agentes de IA com revisão e métrica. Também desenvolvo ferramentas internas que removem gargalos e deixam a empresa evoluir mais rápido.</p></div>
+      <div><span class="lab">o que eu procuro</span><p>Vaga de desenvolvedor iOS ou mobile, ou de AI builder em time de produto. Quero um time onde eu construa, entregue e meça.</p></div>
+      <div><span class="lab">o que eu entrego</span><p>App nativo da especificação à App Store, com teste, entrega contínua e acessibilidade. Quando o time precisa, também backend, automação e ferramentas internas que tiram gargalos do caminho.</p></div>
       <div><span class="lab">como eu trabalho</span><p>Especifico antes de codar, divido em tarefas com critério de aceite, uso modelos de IA para ganhar volume e deixo a decisão final e a revisão com gente e com testes.</p></div>
     </div>
     <div class="about-g">
       <div data-r>
-        <span class="lab">como eu conduzo um produto</span>
+        <span class="lab">no iOS e no mobile</span>
         <ul class="list">
-          <li><b>Começo pelo problema real.</b> Profissional itinerante sem rede estável, fiel que precisa do folheto sem depender de sinal, atleta que precisa de dado em tempo real.</li>
-          <li><b>Especificação antes do código.</b> Cada feature nasce num documento com problema, escopo, fora de escopo e critério de aceite. Funciona como um PRD e deixa a revisão objetiva.</li>
-          <li><b>Corte de escopo.</b> Decido o que entra no MVP pesando valor, esforço e risco.</li>
-          <li><b>Ciclo completo.</b> Da ideia à App Store, e da publicação à manutenção.</li>
+          <li><b>Quatro apps publicados.</b> Frila, Prontu!, Liturgia Descomplicada e SETE, todos com página pública na App Store.</li>
+          <li><b>Swift, SwiftUI e UIKit.</b> Telas declarativas, UIKit com ViewCode e Storyboard, e os dois juntos no mesmo app quando o desempenho pede.</li>
+          <li><b>Arquitetura que aguenta crescer.</b> MVVM, MVVM-C com coordenadores, Clean Architecture e núcleo em pacote Swift testável.</li>
+          <li><b>Plataforma Apple a fundo.</b> SwiftData, Core Data, CloudKit, HealthKit, MapKit, WidgetKit, App Intents, push, Apple Watch e AVFoundation.</li>
+          <li><b>Qualidade e entrega.</b> XCTest, Swift Testing e XCUITest, TestFlight e App Store Connect por GitHub Actions, VoiceOver e Dynamic Type.</li>
         </ul>
       </div>
       <div data-r>
-        <span class="lab">liderança e negócio</span>
+        <span class="lab">com IA</span>
         <ul class="list">
-          <li><b>Revisão de código e mentoria.</b> Na Academy liderei revisões, defini padrões de qualidade e orientei colegas em arquitetura iOS.</li>
-          <li><b>Empreendedor formalizado.</b> CCMEI e, desde 21/10/2026, a Frila Tecnologia, com sócios do Challenge 18 da Academy.</li>
-          <li><b>Fomento.</b> Proposta START BSB/FAPDF de R$ 53 mil para o Frila.</li>
-          <li><b>Abertura.</b> Tenho interesse real em atuar como Product Owner ou Product Manager, com a profundidade técnica de quem programa. Aberto a CLT, PJ ou freela.</li>
+          <li><b>Agentes como time.</b> Orquestro Claude Code, Codex e Antigravity com papéis, brief curto e revisão cruzada entre modelos.</li>
+          <li><b>Prova antes do merge.</b> Teste e build verdes, revisão por outro modelo e aprovação humana no que vai para produção.</li>
+          <li><b>Custo medido.</b> Modelo certo em cada tarefa e consumo registrado por tarefa.</li>
+          <li><b>IA dentro do app.</b> Foundation Models, Core ML, Create ML e API da OpenAI em apps iOS.</li>
+          <li><b>Segurança primeiro.</b> Nenhum segredo em prompt ou log, conteúdo externo tratado como dado, e a regra de IA de cada empresa vem antes da minha.</li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<section id="orquestracao" class="alt">
+<section id="apps" class="alt">
   <div class="w">
-    <h2 data-r>um time de agentes com regras de empresa.</h2>
+    <h2 data-r>quatro apps na App Store.</h2>
+    <p class="sub" data-r>Do mais recente ao mais antigo. Todos têm página pública na loja, e as telas abaixo são as mesmas de lá. Em cada um eu digo o tamanho do time e qual foi a minha parte. Toque numa tela para ampliar.</p>
+
+    <div class="apps">
+      <article class="app" data-r>
+        <div>
+          <div class="app-h"><img src="assets/apps/frila-icone.png" width="64" height="64" alt="" loading="lazy"><h3>Frila: Turnos e Vagas<small>App Store · desde 06/11/2026 · versão 1.1.0</small></h3></div>
+          <p>Plataforma de turnos avulsos para bares, restaurantes e eventos do Distrito Federal. O estabelecimento publica o turno, profissionais próximos recebem o aviso, se candidatam e fazem check-in geolocalizado no local.</p>
+          <ul class="facts">
+            <li><b>Meu papel:</b> líder técnico e de produto num time de 4. Defino arquitetura e prioridade e orquestro os agentes de IA que escrevem boa parte do código, com revisão em todo PR.</li>
+            <li><b>App iOS nativo</b> em SwiftUI, com cerca de 136 mil linhas de Swift e mais de 2.600 testes entre Swift Testing e XCUITest.</li>
+            <li><b>Backend</b> em Supabase e PostgreSQL com PostGIS: 224 migrações, 13 Edge Functions e push por APNs.</li>
+            <li><b>Entrega contínua</b> por GitHub Actions para TestFlight e App Store Connect. Até 17/11/2026, 853 PRs mesclados no app e 487 no backend.</li>
+          </ul>
+          <p class="stack">SwiftUI, Swift Testing, XCUITest, MapKit, CoreLocation, APNs, Keychain, XcodeGen, Supabase, PostgreSQL. Android em Kotlin em desenvolvimento.</p>
+          <div class="links">
+            <a class="pill sm solid" href="https://apps.apple.com/br/app/frila-turnos-e-vagas/id6815311991" target="_blank" rel="noopener">ver na App Store</a>
+            <a class="pill sm" href="https://github.com/FrilaApp/frila-frontend" target="_blank" rel="noopener">código do app</a>
+            <a class="pill sm" href="https://github.com/FrilaApp/frila-backend" target="_blank" rel="noopener">código do backend</a>
+          </div>
+        </div>
+        <div class="shots" aria-label="Telas do Frila">
+          <button type="button" data-full="assets/apps/frila-1.jpg"><img src="assets/apps/frila-1.jpg" width="598" height="1300" alt="Frila: lista de turnos disponíveis" loading="lazy"></button>
+          <button type="button" data-full="assets/apps/frila-2.jpg"><img src="assets/apps/frila-2.jpg" width="598" height="1300" alt="Frila: detalhe de um turno" loading="lazy"></button>
+          <button type="button" data-full="assets/apps/frila-3.jpg"><img src="assets/apps/frila-3.jpg" width="598" height="1300" alt="Frila: como chegar ao local" loading="lazy"></button>
+          <button type="button" data-full="assets/apps/frila-4.jpg"><img src="assets/apps/frila-4.jpg" width="598" height="1300" alt="Frila: registro de presença" loading="lazy"></button>
+          <button type="button" data-full="assets/apps/frila-5.jpg"><img src="assets/apps/frila-5.jpg" width="598" height="1300" alt="Frila: visão do contratante" loading="lazy"></button>
+          <button type="button" data-full="assets/apps/frila-6.jpg"><img src="assets/apps/frila-6.jpg" width="598" height="1300" alt="Frila: benefícios" loading="lazy"></button>
+        </div>
+      </article>
+
+      <article class="app" data-r>
+        <div>
+          <div class="app-h"><img src="assets/apps/prontu-icone.png" width="64" height="64" alt="" loading="lazy"><h3>Prontu!<small>App Store · desde 29/04/2026 · Challenge 13 da Academy</small></h3></div>
+          <p>Agenda e clientes para profissionais que atendem em vários lugares. Funciona sem internet, sugere equipamentos para cada atendimento e tem um assistente que responde sobre a agenda em linguagem natural, direto no aparelho.</p>
+          <ul class="facts">
+            <li><b>Time de 5</b> na Apple Developer Academy. Criei e mantive o repositório, revisei e mesclei os PRs e publiquei o app na minha conta de desenvolvedor.</li>
+            <li><b>Minha parte no código:</b> importação de contatos do iPhone, telas de criar e editar cliente, relatórios, onboarding e correções depois do lançamento.</li>
+            <li><b>Privacidade:</b> os dados ficam só no iPhone, com acesso por Face ID ou Touch ID.</li>
+          </ul>
+          <p class="stack">SwiftUI, SwiftData, MVVM-C com coordenadores, Foundation Models, Core ML, Swift Charts, Contacts, LocalAuthentication.</p>
+          <div class="links">
+            <a class="pill sm solid" href="https://apps.apple.com/br/app/prontu/id6764180094" target="_blank" rel="noopener">ver na App Store</a>
+            <a class="pill sm" href="https://github.com/cauecarneiro/Prontu" target="_blank" rel="noopener">código</a>
+          </div>
+        </div>
+        <div class="shots" aria-label="Telas do Prontu!">
+          <button type="button" data-full="assets/apps/prontu-1.jpg"><img src="assets/apps/prontu-1.jpg" width="600" height="1299" alt="Prontu!: boas-vindas" loading="lazy"></button>
+          <button type="button" data-full="assets/apps/prontu-3.jpg"><img src="assets/apps/prontu-3.jpg" width="600" height="1299" alt="Prontu!: agenda de atendimentos" loading="lazy"></button>
+          <button type="button" data-full="assets/apps/prontu-2.jpg"><img src="assets/apps/prontu-2.jpg" width="600" height="1299" alt="Prontu!: histórico do cliente" loading="lazy"></button>
+          <button type="button" data-full="assets/apps/prontu-4.jpg"><img src="assets/apps/prontu-4.jpg" width="600" height="1299" alt="Prontu!: relatórios e métricas" loading="lazy"></button>
+          <button type="button" data-full="assets/apps/prontu-5.jpg"><img src="assets/apps/prontu-5.jpg" width="600" height="1299" alt="Prontu!: assistente da agenda" loading="lazy"></button>
+        </div>
+      </article>
+
+      <article class="app" data-r>
+        <div>
+          <div class="app-h"><img src="assets/apps/liturgia-icone.png" width="64" height="64" alt="" loading="lazy"><h3>Liturgia Descomplicada<small>App Store · desde 09/04/2026 · projeto solo</small></h3></div>
+          <p>O folheto completo da missa do dia no iPhone e no iPad. Leituras, salmo e evangelho chegam conforme o calendário litúrgico, e há um devocionário com busca e favoritos.</p>
+          <ul class="facts">
+            <li><b>Meu papel:</b> tudo, da arquitetura à publicação na loja.</li>
+            <li><b>Offline primeiro:</b> o app tenta a rede, guarda o conteúdo no aparelho e já deixa os próximos dias carregados. Dentro da igreja, sem sinal, continua funcionando.</li>
+            <li><b>Arquitetura em camadas:</b> domínio, dados e apresentação separados, com injeção de dependência.</li>
+          </ul>
+          <p class="stack">SwiftUI, SwiftData, Clean Architecture com MVVM, URLSession e Codable, XcodeGen. iPhone e iPad.</p>
+          <div class="links">
+            <a class="pill sm solid" href="https://apps.apple.com/br/app/liturgia-descomplicada/id6761694378" target="_blank" rel="noopener">ver na App Store</a>
+          </div>
+        </div>
+        <div class="shots" aria-label="Telas do Liturgia Descomplicada">
+          <button type="button" data-full="assets/apps/liturgia-1.jpg"><img src="assets/apps/liturgia-1.jpg" width="600" height="1299" alt="Liturgia Descomplicada: tela 1" loading="lazy"></button>
+          <button type="button" data-full="assets/apps/liturgia-2.jpg"><img src="assets/apps/liturgia-2.jpg" width="600" height="1299" alt="Liturgia Descomplicada: tela 2" loading="lazy"></button>
+          <button type="button" data-full="assets/apps/liturgia-3.jpg"><img src="assets/apps/liturgia-3.jpg" width="600" height="1299" alt="Liturgia Descomplicada: tela 3" loading="lazy"></button>
+          <button type="button" data-full="assets/apps/liturgia-4.jpg"><img src="assets/apps/liturgia-4.jpg" width="600" height="1299" alt="Liturgia Descomplicada: tela 4" loading="lazy"></button>
+          <button type="button" data-full="assets/apps/liturgia-5.jpg"><img src="assets/apps/liturgia-5.jpg" width="600" height="1299" alt="Liturgia Descomplicada: tela 5" loading="lazy"></button>
+        </div>
+      </article>
+
+      <article class="app" data-r>
+        <div>
+          <div class="app-h"><img src="assets/apps/sete-icone.png" width="64" height="64" alt="" loading="lazy"><h3>SETE: Esporte e Performance<small>App Store · desde 28/08/2025 · nota 5,0</small></h3></div>
+          <p>Performance para esportes de areia no iPhone e no Apple Watch. O treino é registrado no pulso, com frequência cardíaca, distância, mapas de calor e histórico completo.</p>
+          <ul class="facts">
+            <li><b>Time de 5</b> na Apple Developer Academy, publicado na minha conta de desenvolvedor e atualizado até a versão 1.6.0.</li>
+            <li><b>Apple Watch:</b> o algoritmo que estima a altura do salto pelos sensores do relógio é meu e está aberto no GitHub.</li>
+            <li><b>Nota 5,0</b> na App Store, com 6 avaliações.</li>
+          </ul>
+          <p class="stack">UIKit e SwiftUI, HealthKit, WatchConnectivity, watchOS, Core Motion, TestFlight.</p>
+          <div class="links">
+            <a class="pill sm solid" href="https://apps.apple.com/br/app/sete-esporte-e-performance/id6751563867" target="_blank" rel="noopener">ver na App Store</a>
+            <a class="pill sm" href="https://github.com/cauecarneiro/Calculo-altura-do-salto-com-Apple-Watch" target="_blank" rel="noopener">algoritmo do salto</a>
+          </div>
+        </div>
+        <div class="shots" aria-label="Telas do SETE">
+          <button type="button" data-full="assets/apps/sete-1.jpg"><img src="assets/apps/sete-1.jpg" width="600" height="1300" alt="SETE: tela 1" loading="lazy"></button>
+          <button type="button" data-full="assets/apps/sete-2.jpg"><img src="assets/apps/sete-2.jpg" width="600" height="1300" alt="SETE: tela 2" loading="lazy"></button>
+          <button type="button" data-full="assets/apps/sete-3.jpg"><img src="assets/apps/sete-3.jpg" width="600" height="1300" alt="SETE: tela 3" loading="lazy"></button>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="mais-apps">
+  <div class="w">
+    <h2 data-r>apps que eu fiz para usar todo dia.</h2>
+    <p class="sub" data-r>Não estão na loja, mas rodam no meu iPhone e no meu Mac. Aqui eu testo o que depois levo para os apps de time: desempenho medido, núcleo testado e plataforma Apple a fundo.</p>
+
+    <div class="apps">
+      <article class="app" data-r>
+        <div>
+          <div class="app-h"><h3>Perity<small>iPhone e Mac · uso pessoal · out/2026</small></h3></div>
+          <p>Controle financeiro pessoal: saldo, faturas, gastos do mês, contas fixas e investimentos. Os dados vêm de bancos reais por Open Finance, somente leitura, e cada compra no Apple Pay entra na hora.</p>
+          <ul class="facts">
+            <li><b>Projeto solo,</b> construído com agentes de IA sob especificação e revisão minhas.</li>
+            <li><b>Núcleo testado:</b> as regras ficam num pacote Swift separado, com 184 testes. Dinheiro é sempre guardado em centavos.</li>
+            <li><b>Desempenho medido:</b> a abertura do app caiu de cerca de 350 ms para 60 ms, medida com 1.937 lançamentos reais.</li>
+            <li><b>Segurança:</b> credenciais só no Keychain, nada sensível no código, e um modo que oculta os valores na tela.</li>
+            <li><b>Plataforma:</b> widgets no iPhone e no Mac, Atalhos e Siri, sincronização por iCloud e ícone na barra de menus do Mac.</li>
+          </ul>
+          <p class="stack">SwiftUI, SwiftData, CloudKit, WidgetKit, App Intents, Keychain, Core Animation, Open Finance (Pluggy). As telas mostram dados de exemplo.</p>
+        </div>
+        <div class="shots" aria-label="Telas do Perity no iPhone">
+          <div class="vid"><video muted loop playsinline preload="none" poster="assets/perity/perity-capa.jpg" width="480" height="1044" aria-label="Vídeo do Perity: abertura animada e troca de abas"><source src="assets/perity/perity.mp4" type="video/mp4"></video></div>
+          <button type="button" data-full="assets/perity/ios-inicio.jpg"><img src="assets/perity/ios-inicio.jpg" width="600" height="1304" alt="Perity: início com saldo, faturas e gastos" loading="lazy"></button>
+          <button type="button" data-full="assets/perity/ios-investimentos.jpg"><img src="assets/perity/ios-investimentos.jpg" width="600" height="1304" alt="Perity: investimentos comparados ao CDI" loading="lazy"></button>
+          <button type="button" data-full="assets/perity/ios-fixos.jpg"><img src="assets/perity/ios-fixos.jpg" width="600" height="1304" alt="Perity: contas fixas do mês" loading="lazy"></button>
+          <button type="button" data-full="assets/perity/ios-saude.jpg"><img src="assets/perity/ios-saude.jpg" width="600" height="1304" alt="Perity: saúde financeira" loading="lazy"></button>
+          <button type="button" data-full="assets/perity/ios-analise.jpg"><img src="assets/perity/ios-analise.jpg" width="600" height="1304" alt="Perity: gastos do mês por categoria" loading="lazy"></button>
+        </div>
+      </article>
+    </div>
+    <div class="figs" data-r>
+      <figure class="fig"><button type="button" data-full="assets/perity/mac-visaoGeral.jpg"><img src="assets/perity/mac-visaoGeral.jpg" width="1440" height="1050" alt="Perity no Mac: visão geral" loading="lazy"></button><figcaption>Perity no Mac: visão geral, com barra lateral de páginas.</figcaption></figure>
+      <figure class="fig"><button type="button" data-full="assets/perity/mac-investimentos.jpg"><img src="assets/perity/mac-investimentos.jpg" width="1440" height="1050" alt="Perity no Mac: investimentos" loading="lazy"></button><figcaption>Perity no Mac: investimentos e rendimento contra o CDI.</figcaption></figure>
+    </div>
+
+    <div class="apps">
+      <article class="app" data-r>
+        <div>
+          <div class="app-h"><h3>Teleprompter<small>iPhone · código aberto · out/2026</small></h3></div>
+          <p>Cola o roteiro, aperta gravar e o texto rola enquanto a câmera filma. Sem conta, sem internet e sem assinatura. É o app que eu uso para gravar meus vídeos.</p>
+          <ul class="facts">
+            <li><b>Leitura por voz:</b> reconhecimento de fala em português no aparelho. O texto anda quando eu falo e espera quando eu improviso, com alinhamento local entre o que foi dito e o roteiro.</li>
+            <li><b>UIKit dentro do SwiftUI:</b> a rolagem do texto é em UIKit, a 120 Hz, e o resto das telas em SwiftUI.</li>
+            <li><b>Câmera:</b> gravação em 4K com AVAssetWriter, sem recompressão, com microfone externo e controle pelos botões de volume.</li>
+            <li><b>Núcleo em pacote Swift</b> com 18 testes para leitura do roteiro, tempo e acompanhamento por voz.</li>
+          </ul>
+          <p class="stack">SwiftUI, UIKit, AVFoundation, Speech, PhotoKit, XCTest, XcodeGen.</p>
+          <div class="links">
+            <a class="pill sm solid" href="https://github.com/cauecarneiro/Teleprompter" target="_blank" rel="noopener">código</a>
+          </div>
+        </div>
+        <div class="shots" aria-label="Telas do Teleprompter">
+          <button type="button" data-full="assets/teleprompter/tela-1.jpg"><img src="assets/teleprompter/tela-1.jpg" width="600" height="1304" alt="Teleprompter: tela inicial" loading="lazy"></button>
+          <button type="button" data-full="assets/teleprompter/tela-2.jpg"><img src="assets/teleprompter/tela-2.jpg" width="600" height="1304" alt="Teleprompter: editor com tempo por seção" loading="lazy"></button>
+          <button type="button" data-full="assets/teleprompter/tela-3.jpg"><img src="assets/teleprompter/tela-3.jpg" width="600" height="1304" alt="Teleprompter: gravação com o texto rolando" loading="lazy"></button>
+        </div>
+      </article>
+    </div>
+
+    <span class="lab more" data-r>outros apps em que trabalhei</span>
+    <div class="rows tight">
+      <article class="row" data-r>
+        <div class="date">ago/2026<i>Challenge 17</i></div>
+        <h3>Flag<small>iPhone e Apple Watch</small></h3>
+        <div><p>Saúde da mulher: mostra como o ciclo afeta o dia, com dados lidos do HealthKit e tudo guardado no aparelho. Time de 4 na Academy.</p></div>
+        <div class="meta">SwiftUI, SwiftData, HealthKit, WatchConnectivity, complicações com WidgetKit, MVVM-C</div>
+      </article>
+      <article class="row" data-r>
+        <div class="date">jul/2026<i>Challenge 15</i></div>
+        <h3>Bubble<small>iPhone e Mac</small></h3>
+        <div><p>Rotina para estudantes de medicina, com um motor que realoca sozinho as tarefas flexíveis que não foram cumpridas. Funciona 100% offline. Feito em time na Academy.</p></div>
+        <div class="meta">SwiftUI, SwiftData, @Observable, async/await, MVVM em camadas</div>
+      </article>
+      <article class="row" data-r>
+        <div class="date">2026</div>
+        <h3>Racha<small>multiplataforma</small></h3>
+        <div><p>Divisão de despesas em grupo, com saldo, convites e push. App, API e infraestrutura em repositórios separados, com CI. Versão 1.0 pronta no código, ainda não publicada.</p></div>
+        <div class="meta">React Native com Expo, NestJS, PostgreSQL, Terraform na AWS</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="ia" class="alt">
+  <div class="w">
+    <h2 data-r>IA como engenharia: um time de agentes com regras.</h2>
     <p class="sub" data-r>Uso vários agentes de IA em paralelo, de modelos e contas diferentes. O que faz o time funcionar é a estratégia: quem decide, quem executa, quem confere e o que nunca sai sem a minha aprovação.</p>
     <p class="ca" data-r>estratégia antes de <mark>"ferramenta"</mark></p>
 
@@ -349,128 +576,35 @@ footer .w{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
       <div class="step"><h4>Aprovação</h4><p>Merge e tudo que sai para fora só com o meu OK.</p></div>
     </div>
 
+    <figure class="fig" data-r><button type="button" data-full="assets/ia/overview-painel.jpg"><img src="assets/ia/overview-painel.jpg" width="1440" height="900" alt="Overview-Painel: lista de agentes com ferramenta, modelo e estado de cada um" loading="lazy"></button><figcaption>O painel que eu fiz para acompanhar os agentes: quem está trabalhando, em qual modelo e o que depende de mim. Aqui com dados de exemplo. O código está aberto.</figcaption></figure>
+
     <div class="strat">
       <div data-r><h3>Camadas, cada uma com um papel</h3><p>Um orquestrador lê a demanda e escreve o brief. Líderes por área, como backend, app e marca, quebram em tarefas. Executores trabalham com escopo fechado. Um revisor independente confere. Eu decido o que vai a produção.</p></div>
       <div data-r><h3>Modelo certo no trabalho certo</h3><p>O raciocínio mais caro fica com decisão, arquitetura, segurança e revisão final. Trabalho de volume, como testes, documentação, refatoração e auditoria, vai para modelos com cota livre. Quanto custa cada tarefa é medido, não chutado.</p></div>
       <div data-r><h3>Contrato em vez de conversa</h3><p>Ninguém repassa conversa inteira nem cola log. Cada tarefa tem brief de até 40 linhas, despacho e retorno curto. O agente que recebe sabe o que fazer, o que não tocar e como provar que terminou.</p></div>
       <div data-r><h3>Frentes isoladas</h3><p>Cada tarefa roda numa área própria, com arquivos exclusivos, e só um agente faz o commit. Duas tentativas sem resolver viram bloqueio e sobem para um nível acima, em vez de rodar em círculos.</p></div>
-      <div data-r><h3>Quem faz não confere</h3><p>A revisão é de outro modelo, sem ver como o código foi gerado. Em todas as entregas revisadas até aqui, a revisão achou um problema real. Por isso ela é regra, não etapa opcional.</p></div>
-      <div data-r><h3>Recursos sob controle</h3><p>Um termômetro de cota decide se cabe mais um executor. Um script escolhe a conta que mais precisa de uso antes do reset semanal. Filas limitam simuladores e bancos locais. Os agentes limpam o próprio contexto sozinhos.</p></div>
+      <div data-r><h3>Quem faz não confere</h3><p>A revisão é de outro modelo, sem ver como o código foi gerado. Nas entregas que eu medi, a revisão independente achou problema real em todas. Por isso ela é regra, não etapa opcional.</p></div>
+      <div data-r><h3>Segredo não entra em prompt</h3><p>Senha, token e chave ficam fora de prompt, log e commit, e um porteiro nos ganchos dos agentes e do git barra o que tentar passar. Página, e-mail ou arquivo que o agente lê é dado, nunca ordem.</p></div>
     </div>
 
     <div class="cols">
       <div data-r>
         <span class="lab">onde eu aplico</span>
         <ul class="list">
-          <li><b>Frila.</b> Seis frentes em paralelo: backend, app, produto e jurídico, marca, marketing e coordenação. Cada uma com seus líderes e regras de revisão.</li>
-          <li><b>Produção de conteúdo.</b> Uma esteira diária: produção de madrugada, varredura de comentários às 07h30, carrossel à noite e edição de madrugada. Nada publica sem eu aprovar na tela.</li>
+          <li><b>Frila.</b> App iOS, backend, documentação e marca em frentes paralelas, cada uma com líder e regra de revisão. O resultado está na App Store.</li>
+          <li><b>Apps pessoais.</b> Perity e Teleprompter saíram com especificação escrita antes, núcleo testado e desempenho medido.</li>
+          <li><b>Automação de conteúdo.</b> Uma esteira diária de pesquisa, texto, carrossel e edição de vídeo. Nada publica sem eu aprovar na tela.</li>
         </ul>
       </div>
       <div data-r>
         <span class="lab">o que eu medi</span>
         <ul class="list">
+          <li><b>1.340</b> PRs mesclados nos repositórios públicos do Frila, de setembro a 17/11/2026.</li>
           <li><b>6 de 6</b> entregas revisadas por outro modelo tinham bloqueio real.</li>
-          <li><b>3 de 8</b> delegações precisaram de reenvio no dia medido. Virou regra de confirmação de recebimento.</li>
-          <li><b>46</b> cartões do Trello conferidos contra o repositório: 1 pronto, 24 parciais, 21 não.</li>
           <li><b>Consumo por tarefa e modelo</b> registrado, para calibrar quantas tarefas cabem por dia.</li>
           <li><b>Diário de aprendizado</b> com placar: o que falhou, se repetiu e virou regra.</li>
         </ul>
       </div>
-    </div>
-  </div>
-</section>
-
-<section id="automacoes">
-  <div class="w">
-    <h2 data-r>automações que trabalham sem mim.</h2>
-    <p class="sub" data-r>Cada uma troca um processo manual por uma fila, uma rotina ou um gatilho, com aprovação humana onde o risco pede. Da mais recente para a mais antiga.</p>
-    <div class="rows">
-      <article class="row" data-r>
-        <div class="date">01/11/2026<i>desde</i></div>
-        <h3>Aprendizado das edições<small>Carteiro</small></h3>
-        <div><p>O sistema guarda o antes e o depois de cada texto que eu edito antes de aprovar. Um relatório diário mostra o que passou sem mexer, o que mudou palavra por palavra e o que reprovei, e vira regra para as próximas.</p></div>
-        <div class="meta">Node, SQLite</div>
-      </article>
-      <article class="row" data-r>
-        <div class="date">20/10/2026<i>desde</i></div>
-        <h3>Varredura de comentários<small>Todo dia, 07h30</small></h3>
-        <div><p>Acha comentários sem resposta dos últimos dois dias no Instagram e no Threads e cria rascunhos de resposta para eu revisar. Nenhuma resposta sai sozinha.</p></div>
-        <div class="meta">Rotina agendada, leitura pela Windsor</div>
-      </article>
-      <article class="row" data-r>
-        <div class="date">19/10/2026<i>desde</i></div>
-        <h3>Gatilho<small>Comentário vira direct</small></h3>
-        <div><p>Quando alguém comenta a palavra combinada num vídeo, recebe uma mensagem privada com botão. O serviço usa webhook oficial da Meta e confere a cada minuto, para não perder ninguém.</p></div>
-        <div class="meta">Cloudflare Worker, banco D1</div>
-      </article>
-      <article class="row" data-r>
-        <div class="date">17/10/2026<i>desde</i></div>
-        <h3>Carrosséis da semana<small>Segunda, quarta, sexta e domingo</small></h3>
-        <div><p>Pesquisa de tendências em várias fontes, geração das lâminas pelo gerador de carrossel e agendamento direto para aprovação. Um modelo mais forte pesquisa e outro escreve.</p></div>
-        <div class="meta">Playwright, rotina agendada</div>
-      </article>
-      <article class="row" data-r>
-        <div class="date">14/10/2026<i>desde</i></div>
-        <h3>Teleprompter<small>App iOS</small></h3>
-        <div><p>Cola o roteiro e grava com leitura automática, por voz ou manual. Funciona sem conta, sem internet e sem nuvem. Eu mesmo uso para gravar.</p></div>
-        <div class="meta">SwiftUI, UIKit, AVAssetWriter</div>
-      </article>
-      <article class="row" data-r>
-        <div class="date">13/10/2026<i>desde</i></div>
-        <h3>Carteiro<small>Publicação em redes</small></h3>
-        <div>
-          <p>Antes, agendar à mão em cada rede. Agora há uma fila com rascunho, aprovação na tela e publicação pelas APIs oficiais de LinkedIn, Threads, Instagram e X.</p>
-          <p class="proof"><b>164</b> posts publicados desde 14/10/2026: 57 no Threads, 47 no Instagram, 38 no X e 22 no LinkedIn. <b>268</b> casos de teste. Nada publica sem aprovação.</p>
-          <p class="proof"><b>Meu papel:</b> idealizei e especifiquei o sistema e orquestrei os agentes que escreveram o código, com revisão e testes. Eu aprovo cada publicação.</p>
-        </div>
-        <div class="meta">Node, SQLite, chaves no Chaveiro do macOS</div>
-      </article>
-      <article class="row" data-r>
-        <div class="date">05/10/2026<i>desde</i></div>
-        <h3>Motor de edição<small>Vídeo e áudio</small></h3>
-        <div><p>Pacote de vídeo gerado em código, seguindo o brandbook, com cadeia de áudio padrão: redução de ruído, equalização, de-esser, compressor e normalização de volume.</p></div>
-        <div class="meta">Remotion, DeepFilterNet, ffmpeg</div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section id="ferramentas" class="alt">
-  <div class="w">
-    <h2 data-r>ferramentas internas que removem gargalos.</h2>
-    <p class="sub" data-r>Toda empresa tem algo que trava o time: um processo manual, um dado espalhado, um custo sem medida. Eu acho o gargalo, construo a ferramenta mínima que resolve e meço o efeito. Cada item abaixo diz qual gargalo removeu. Os públicos estão abertos no GitHub.</p>
-    <div class="rows">
-      <article class="row" data-r>
-        <div class="date">31/10/2026</div>
-        <h3>Life Track<small>Código aberto</small></h3>
-        <div><p>Painel local de saúde e treino com dados do Garmin: sono, variabilidade cardíaca, estresse e um mapa de calor de 12 meses. Não guarda nada em disco nem na nuvem.</p>
-          <p class="proof"><b>Gargalo removido:</b> dados de saúde e treino espalhados em apps do fabricante, sem visão única.</p></div>
-        <div class="meta">Web, API pessoal da Garmin. <a href="https://github.com/cauecarneiro/life-track" target="_blank" rel="noopener">Repositório</a></div>
-      </article>
-      <article class="row" data-r>
-        <div class="date">31/10/2026</div>
-        <h3>Scrolling<small>Código aberto</small></h3>
-        <div><p>Extensão de Chrome que captura a página inteira, divide capturas gigantes em várias imagens e copia para a área de transferência.</p>
-          <p class="proof"><b>Gargalo removido:</b> captura manual de páginas longas, em várias imagens coladas à mão.</p></div>
-        <div class="meta">JavaScript, Chrome. <a href="https://github.com/cauecarneiro/scrolling" target="_blank" rel="noopener">Repositório</a></div>
-      </article>
-      <article class="row" data-r>
-        <div class="date">out/2026</div>
-        <h3>Contexto<small>Uso interno</small></h3>
-        <div><p>Monitora a janela de contexto de cada agente e executa a limpeza ou a compactação quando o próprio agente pede, com protocolo, chave liga e desliga e diário.</p>
-          <p class="proof"><b>Gargalo removido:</b> agentes perdiam qualidade e tempo quando a janela de contexto enchia, e alguém precisava vigiar.</p></div>
-        <div class="meta">Shell, hooks do Claude Code</div>
-      </article>
-      <article class="row" data-r>
-        <div class="date">08/10/2026</div>
-        <h3>Overview-Painel<small>Código aberto</small></h3>
-        <div>
-          <p>Numa tela só: o que cada agente de IA está fazendo, quanto resta de cota no Claude Code, Codex e Antigravity, quais PRs estão abertos e o que depende de mim.</p>
-          <p class="proof"><b>Gargalo removido:</b> acompanhar vários agentes, cotas e PRs em terminais e sites diferentes, sem saber o que estava parado.</p>
-          <p class="proof">Nenhuma IA participa e nenhum token é gasto. Lê os terminais por tmux. <b>14</b> estrelas e <b>4</b> forks.</p>
-        </div>
-        <div class="meta">Python, só biblioteca padrão. <a href="https://github.com/cauecarneiro/Overview-Painel" target="_blank" rel="noopener">Repositório</a></div>
-      </article>
     </div>
   </div>
 </section>
@@ -535,110 +669,166 @@ e termina com uma entrada de no máximo 5 linhas:
       <div data-r><small>29/10/2026</small><h3>Medição antes de regra</h3><p>Cada regra de orquestração nasceu de um número: cota consumida por modelo, reenvios, bloqueios achados na revisão.</p></div>
       <div data-r><small>16/10/2026</small><h3>Modo eco</h3><p>Um comando liga a economia de tokens: leitura pesada vai para modelo barato e o raciocínio caro fica para decisão, segurança e revisão.</p></div>
       <div data-r><small>15/10/2026</small><h3>Guia de voz</h3><p>Lista do que eu nunca diria e regras de linguagem simples, aplicadas em roteiro, post e resposta. O sistema aprende com o que eu aprovo e reprovo.</p></div>
-      <div data-r><small>13/10/2026</small><h3>Engenharia reversa dentro dos termos</h3><p>Estudei um produto concorrente só por produto e fluxo, sem endpoint interno e sem copiar identidade. O mapa de telas virou a arquitetura do Carteiro.</p></div>
+      <div data-r><small>out/2026</small><h3>Especificação antes do código</h3><p>Cada feature nasce num documento com problema, escopo, fora de escopo e critério de aceite. O agente recebe o documento, não a conversa, e a revisão fica objetiva.</p></div>
       <div data-r><small>05/10/2026</small><h3>Skills com roteamento</h3><p>Curadoria de mais de 300 skills de design, vídeo, marca e código, com um mapa que diz qual usar em cada tipo de pedido.</p></div>
       <div data-r><small>05/10/2026</small><h3>Teste do gancho</h3><p>Todo roteiro de vídeo passa por um teste de abertura antes de gravar. Cada tema gera versões de gancho, publicadas como teste e comparadas por métrica real.</p></div>
     </div>
   </div>
 </section>
 
-<section id="producao">
+<section id="automacoes">
   <div class="w">
-    <h2 data-r>apps na loja e produtos em construção.</h2>
-    <p class="sub" data-r>Do mais recente ao mais antigo. Os três apps da App Store têm usuários reais. Frila, Racha e Newsole estão em construção ou em início de operação, e eu digo qual é o estado de cada um.</p>
+    <h2 data-r>automações que trabalham sem mim.</h2>
+    <p class="sub" data-r>Cada uma troca um processo manual por uma fila, uma rotina ou um gatilho, com aprovação humana onde o risco pede. O exemplo é o meu próprio perfil de conteúdo, que roda inteiro nesse sistema.</p>
+
+    <div class="figs" data-r>
+      <figure class="fig"><button type="button" data-full="assets/ia/carteiro-numeros.jpg"><img src="assets/ia/carteiro-numeros.jpg" width="1440" height="960" alt="Carteiro: painel de números com 194 posts publicados e 147,3 mil visualizações" loading="lazy"></button><figcaption>Carteiro, o sistema de publicação: 194 posts publicados em quatro redes e 147,3 mil visualizações no Instagram e no Threads, em 17/11/2026.</figcaption></figure>
+      <figure class="fig"><button type="button" data-full="assets/ia/carteiro-rotinas.jpg"><img src="assets/ia/carteiro-rotinas.jpg" width="1440" height="960" alt="Carteiro: tela de rotinas agendadas ao longo do dia" loading="lazy"></button><figcaption>As rotinas que rodam sozinhas ao longo do dia, cada uma com horário, dono e próxima execução.</figcaption></figure>
+    </div>
+
     <div class="rows">
       <article class="row" data-r>
-        <div class="date">set/2026<i>em diante</i></div>
-        <h3>Frila<small>em desenvolvimento, loja em 13/11/2026</small></h3>
+        <div class="date">13/10/2026<i>desde</i></div>
+        <h3>Carteiro<small>Publicação em redes</small></h3>
         <div>
-          <p>Plataforma de contratação por turno avulso, começando no Distrito Federal. O backend fecha o ciclo publicar, notificar, candidatar, confirmar, executar e avaliar, com despacho fora da requisição.</p>
-          <p class="proof"><b>769</b> commits no backend, <b>1.598</b> no app, <b>382</b> na documentação. <b>123</b> migrações, <b>10</b> Edge Functions, testes pgTAP e CI.</p>
-          <p class="proof"><b>Meu papel:</b> dono do produto e coordenação técnica, incluindo a orquestração dos agentes. Trabalho com sócios e revisão independente em todo PR.</p>
+          <p>Antes, agendar à mão em cada rede. Agora há uma fila com rascunho, aprovação na tela e publicação pelas APIs oficiais de LinkedIn, Threads, Instagram e X.</p>
+          <p class="proof"><b>194</b> posts publicados até 17/11/2026: 76 no Threads, 48 no Instagram, 47 no X e 23 no LinkedIn. <b>268</b> casos de teste. Nada publica sem aprovação registrada.</p>
+          <p class="proof"><b>Meu papel:</b> idealizei e especifiquei o sistema e orquestrei os agentes que escreveram o código, com revisão e testes. Eu aprovo cada publicação.</p>
         </div>
-        <div class="meta">Supabase (Postgres, PostGIS, pg_cron, pgmq), SwiftUI, Kotlin. Frila Tecnologia aberta em 21/10/2026.</div>
+        <div class="meta">TypeScript, Node, SQLite, chaves no Chaveiro do macOS</div>
       </article>
       <article class="row" data-r>
-        <div class="date">jun/2026</div>
-        <h3>Racha<small>em integração</small></h3>
-        <div>
-          <p>Divisão de despesas em grupo, com saldo, convites por @usuário e push. Mobile, API e infraestrutura em repositórios separados, com CI verde.</p>
-          <p class="proof">Pendências de produção mapeadas e priorizadas: <b>16</b>, sendo 2 críticas, 7 altas e 7 médias.</p>
-        </div>
-        <div class="meta">Expo, NestJS, Terraform</div>
+        <div class="date">01/11/2026<i>desde</i></div>
+        <h3>Aprendizado das edições<small>Carteiro</small></h3>
+        <div><p>O sistema guarda o antes e o depois de cada texto que eu edito antes de aprovar. Um relatório diário mostra o que passou sem mexer, o que mudou palavra por palavra e o que reprovei, e vira regra para as próximas.</p></div>
+        <div class="meta">Node, SQLite</div>
       </article>
       <article class="row" data-r>
-        <div class="date">2026</div>
-        <h3>Newsole<small>loja no ar</small></h3>
-        <div><p>Loja Shopify de meia invisível, com catálogo e fornecedor integrado pelo DSers.</p></div>
-        <div class="meta"><a href="https://newsole.com.br" target="_blank" rel="noopener">newsole.com.br</a></div>
+        <div class="date">20/10/2026<i>desde</i></div>
+        <h3>Varredura de comentários<small>Todo dia, 07h30</small></h3>
+        <div><p>Acha comentários sem resposta dos últimos dois dias no Instagram e no Threads e cria rascunhos de resposta para eu revisar. Nenhuma resposta sai sozinha.</p></div>
+        <div class="meta">Rotina agendada, leitura pela Windsor</div>
       </article>
       <article class="row" data-r>
-        <div class="date">2026</div>
-        <h3>Prontu!<small>App Store</small></h3>
-        <div>
-          <p>Gestão de atendimentos para profissionais em movimento, com disponibilidade total sem internet. Um modelo de machine learning no próprio aparelho sugere recursos conforme exercício, objetivo e região do corpo, sem chamar API externa.</p>
-          <p class="proof">Escopo, prioridade e especificação definidos por mim antes do código. Face ID e Touch ID, testes com XCTest.</p>
-          <p class="proof"><b>Meu papel:</b> dono do produto e desenvolvedor, da arquitetura à loja.</p>
-        </div>
-        <div class="meta">Swift, MVVM-C, CoreData, CreateML e CoreML, LocalAuthentication. <a href="https://github.com/cauecarneiro/Prontu" target="_blank" rel="noopener">Código</a></div>
+        <div class="date">19/10/2026<i>desde</i></div>
+        <h3>Gatilho<small>Comentário vira direct</small></h3>
+        <div><p>Quando alguém comenta a palavra combinada num vídeo, recebe uma mensagem privada com botão. O serviço usa webhook oficial da Meta e confere a cada minuto, para não perder ninguém.</p></div>
+        <div class="meta">Cloudflare Worker, banco D1, TypeScript</div>
       </article>
       <article class="row" data-r>
-        <div class="date">2025</div>
-        <h3>Liturgia Descomplicada<small>App Store</small></h3>
-        <div>
-          <p>Folheto completo da missa do dia, segundo o Missal Romano, com modo offline, cache inteligente e devocionário com busca e favoritos. Rápido mesmo em aparelhos com mais de quatro anos.</p>
-          <p class="proof">Acessibilidade com VoiceOver e Dynamic Type como decisão de produto. Desempenho ajustado com Instruments.</p>
-          <p class="proof"><b>Meu papel:</b> dono do produto e desenvolvedor, da arquitetura à manutenção.</p>
-        </div>
-        <div class="meta">Swift, CoreData, REST e Codable, XCTest. <a href="https://github.com/cauecarneiro/Liturgia-Descomplicada" target="_blank" rel="noopener">Código</a></div>
+        <div class="date">17/10/2026<i>desde</i></div>
+        <h3>Gerador de carrossel<small>Do tema às lâminas</small></h3>
+        <div><p>Pesquisa de tendências em várias fontes, geração das lâminas em código e envio direto para a fila de aprovação. Um modelo mais forte pesquisa e outro escreve.</p></div>
+        <div class="meta">Playwright, HTML e CSS, rotina agendada</div>
       </article>
       <article class="row" data-r>
-        <div class="date">2024</div>
-        <h3>SETE<small>App Store</small></h3>
-        <div>
-          <p>Performance esportiva para esportes de praia, no iPhone e no Apple Watch. A sincronização em tempo real entre os dois aparelhos é o valor central e guiou a arquitetura.</p>
-          <p class="proof">Nota <b>5,0</b> na App Store. Dashboards, mapas de calor e métricas com HealthKit. Beta por TestFlight.</p>
-          <p class="proof"><b>Meu papel:</b> dono do produto e desenvolvedor, do planejamento ao lançamento.</p>
-        </div>
-        <div class="meta">UIKit e SwiftUI, MVVM, Clean Architecture, WatchConnectivity, HealthKit</div>
+        <div class="date">05/10/2026<i>desde</i></div>
+        <h3>Motor de edição<small>Vídeo e áudio</small></h3>
+        <div><p>Pacote de vídeo gerado em código, seguindo o brandbook, com cadeia de áudio padrão: redução de ruído, equalização, de-esser, compressor e normalização de volume.</p></div>
+        <div class="meta">Remotion, DeepFilterNet, ffmpeg</div>
       </article>
+    </div>
+
+    <figure class="fig" data-r><button type="button" data-full="assets/ia/carrossel.jpg"><img src="assets/ia/carrossel.jpg" width="2800" height="500" alt="Sete lâminas de um carrossel gerado em código" loading="lazy"></button><figcaption>Um carrossel de sete lâminas gerado em código pelo sistema e publicado depois da minha aprovação.</figcaption></figure>
+  </div>
+</section>
+
+<section id="ferramentas" class="alt">
+  <div class="w">
+    <h2 data-r>ferramentas internas que removem gargalos.</h2>
+    <p class="sub" data-r>Todo time tem algo que trava: um processo manual, um dado espalhado, um custo sem medida. Eu acho o gargalo, construo a ferramenta mínima que resolve e meço o efeito. Cada item abaixo diz qual gargalo removeu. Os públicos estão abertos no GitHub.</p>
+    <div class="rows">
+      <article class="row" data-r>
+        <div class="date">07/11/2026</div>
+        <h3>Guarda de segredos<small>Uso interno</small></h3>
+        <div><p>Um porteiro nos ganchos dos agentes de IA e do git que barra senha, token e chave antes de chegarem a commit, log, documento ou serviço externo. Roda local, sem IA e sem servidor.</p>
+          <p class="proof"><b>Gargalo removido:</b> risco de credencial vazar quando vários agentes trabalham ao mesmo tempo.</p></div>
+        <div class="meta">Shell, hooks do git e dos agentes</div>
+      </article>
+      <article class="row" data-r>
+        <div class="date">31/10/2026</div>
+        <h3>Life Track<small>Código aberto</small></h3>
+        <div><p>Painel local de saúde e treino com dados do Garmin: sono, variabilidade cardíaca, estresse e um mapa de calor de 12 meses. Não guarda nada em disco nem na nuvem.</p>
+          <p class="proof"><b>Gargalo removido:</b> dados de saúde e treino espalhados em apps do fabricante, sem visão única.</p></div>
+        <div class="meta">Python, JavaScript, API pessoal da Garmin. <a href="https://github.com/cauecarneiro/life-track" target="_blank" rel="noopener">Repositório</a></div>
+      </article>
+      <article class="row" data-r>
+        <div class="date">31/10/2026</div>
+        <h3>Scrolling<small>Código aberto</small></h3>
+        <div><p>Extensão de Chrome que captura a página inteira, divide capturas gigantes em várias imagens e copia para a área de transferência.</p>
+          <p class="proof"><b>Gargalo removido:</b> captura manual de páginas longas, em várias imagens coladas à mão.</p></div>
+        <div class="meta">JavaScript, Chrome. <a href="https://github.com/cauecarneiro/scrolling" target="_blank" rel="noopener">Repositório</a></div>
+      </article>
+      <article class="row" data-r>
+        <div class="date">out/2026</div>
+        <h3>Contexto<small>Uso interno</small></h3>
+        <div><p>Monitora a janela de contexto de cada agente e executa a limpeza ou a compactação quando o próprio agente pede, com protocolo, chave liga e desliga e diário.</p>
+          <p class="proof"><b>Gargalo removido:</b> agentes perdiam qualidade e tempo quando a janela de contexto enchia, e alguém precisava vigiar.</p></div>
+        <div class="meta">Shell, hooks do Claude Code</div>
+      </article>
+      <article class="row" data-r>
+        <div class="date">08/10/2026</div>
+        <h3>Overview-Painel<small>Código aberto</small></h3>
+        <div>
+          <p>Numa tela só: o que cada agente de IA está fazendo, quanto resta de cota no Claude Code, Codex e Antigravity, quais PRs estão abertos e o que depende de mim.</p>
+          <p class="proof"><b>Gargalo removido:</b> acompanhar vários agentes, cotas e PRs em terminais e sites diferentes, sem saber o que estava parado.</p>
+          <p class="proof">Nenhuma IA participa e nenhum token é gasto. Lê os terminais por tmux. <b>14</b> estrelas e <b>4</b> forks.</p>
+        </div>
+        <div class="meta">Python, só biblioteca padrão. <a href="https://github.com/cauecarneiro/Overview-Painel" target="_blank" rel="noopener">Repositório</a></div>
+      </article>
+    </div>
+    <div class="figs" data-r>
+      <figure class="fig"><button type="button" data-full="assets/ferramentas/scrolling-resultado.jpg"><img src="assets/ferramentas/scrolling-resultado.jpg" width="1440" height="888" alt="Scrolling: resultado de uma captura de página inteira" loading="lazy"></button><figcaption>Scrolling: o resultado de uma captura de página inteira.</figcaption></figure>
+      <figure class="fig"><button type="button" data-full="assets/ferramentas/scrolling-opcoes.jpg"><img src="assets/ferramentas/scrolling-opcoes.jpg" width="900" height="995" alt="Scrolling: tela de opções da extensão" loading="lazy"></button><figcaption>Scrolling: as opções da extensão.</figcaption></figure>
     </div>
   </div>
 </section>
 
-<section id="codigo" class="alt">
+<section id="codigo">
   <div class="w">
     <h2 data-r>código aberto e estudos.</h2>
-    <p class="sub" data-r>34 repositórios públicos no GitHub. Estes mostram como eu estudo e experimento com o ecossistema Apple e com IA, do mais recente ao mais antigo.</p>
+    <p class="sub" data-r>35 repositórios públicos no GitHub. Estes mostram como eu estudo e experimento com o ecossistema Apple e com IA, do mais recente ao mais antigo.</p>
     <div class="rows">
       <article class="row" data-r>
+        <div class="date">14/10/2026</div>
+        <h3>Teleprompter</h3>
+        <div><p>App de iPhone completo, com núcleo testado: leitura por voz, rolagem em UIKit a 120 Hz e gravação em 4K.</p></div>
+        <div class="meta">SwiftUI, UIKit, AVFoundation. <a href="https://github.com/cauecarneiro/Teleprompter" target="_blank" rel="noopener">Repositório</a></div>
+      </article>
+      <article class="row" data-r>
         <div class="date">02/07/2026</div>
-        <h3>SwiftData contra CoreData</h3>
+        <h3>SwiftData contra Core Data</h3>
         <div><p>Estudo de caso para comparar as duas camadas de persistência da Apple, com o mesmo app construído nas duas. Acompanha um estudo de MVVM com lista de tarefas.</p></div>
         <div class="meta"><a href="https://github.com/cauecarneiro/SwiftDataCoreDataTest" target="_blank" rel="noopener">Repositório</a></div>
       </article>
       <article class="row" data-r>
         <div class="date">05/06/2026</div>
         <h3>EveryIn<small>uso pessoal</small></h3>
-        <div><p>App de organização de treinos e rotina, com interface minimalista. Feito para uso próprio e não publicado na loja.</p></div>
-        <div class="meta">Swift, SwiftUI. <a href="https://github.com/cauecarneiro/EveryIn" target="_blank" rel="noopener">Repositório</a></div>
+        <div><p>App de organização de treinos e rotina, com interface minimalista e sem nenhuma dependência externa. Feito para uso próprio e não publicado na loja.</p></div>
+        <div class="meta">Swift, SwiftUI, SwiftData. <a href="https://github.com/cauecarneiro/EveryIn" target="_blank" rel="noopener">Repositório</a></div>
+      </article>
+      <article class="row" data-r>
+        <div class="date">21/05/2026</div>
+        <h3>UIKit: Storyboard, ViewCode e ciclo de vida</h3>
+        <div><p>Dois estudos de UIKit: telas do WhatsApp replicadas com Storyboard, ViewCode e SwiftUI dentro do ciclo de vida do UIKit, e uma página de e-commerce.</p></div>
+        <div class="meta">UIKit, Auto Layout. <a href="https://github.com/cauecarneiro/UIKitStudy" target="_blank" rel="noopener">UIKitStudy</a> · <a href="https://github.com/cauecarneiro/EcommerceUIKit" target="_blank" rel="noopener">EcommerceUIKit</a></div>
       </article>
       <article class="row" data-r>
         <div class="date">07/11/2025</div>
         <h3>Clean Architecture com Strategy e Composite</h3>
-        <div><p>Implementação de referência para decisões arquiteturais em projetos maiores.</p></div>
-        <div class="meta">Swift. <a href="https://github.com/cauecarneiro/CleanArchitectureStrategyComposite" target="_blank" rel="noopener">Repositório</a></div>
+        <div><p>Implementação de referência em quatro camadas, com SwiftData e JSON, ordenação dinâmica e hierarquia de categorias.</p></div>
+        <div class="meta">Swift, SwiftUI. <a href="https://github.com/cauecarneiro/CleanArchitectureStrategyComposite" target="_blank" rel="noopener">Repositório</a></div>
       </article>
       <article class="row" data-r>
         <div class="date">13/10/2025</div>
         <h3>MoodMap</h3>
-        <div><p>Registro emocional geolocalizado: mapa interativo, sincronização por CloudKit e sugestões contextuais com IA no aparelho, via Foundation Models.</p></div>
-        <div class="meta">MapKit, CloudKit, Foundation Models. <a href="https://github.com/cauecarneiro/MoodMap" target="_blank" rel="noopener">Repositório</a></div>
+        <div><p>Mapa social do clima de cada lugar: mapa interativo, sincronização por CloudKit e IA no aparelho, via Foundation Models, que lê o tom das mensagens e avisa todos por push.</p></div>
+        <div class="meta">MapKit, CloudKit, Foundation Models, APNs. <a href="https://github.com/cauecarneiro/MoodMap" target="_blank" rel="noopener">Repositório</a></div>
       </article>
       <article class="row" data-r>
         <div class="date">10/2025</div>
         <h3>Fundamentos da plataforma</h3>
-        <div><p>Estudos isolados de MapKit, EventKit, notificações locais, push e widgets, para dominar cada framework antes de usar num produto.</p></div>
+        <div><p>Estudos isolados de MapKit, EventKit, Contatos, notificações locais, push por APNs e widgets com App Intents, para dominar cada framework antes de usar num produto.</p></div>
         <div class="meta"><a href="https://github.com/cauecarneiro?tab=repositories" target="_blank" rel="noopener">Todos os repositórios</a></div>
       </article>
       <article class="row" data-r>
@@ -650,105 +840,99 @@ e termina com uma entrada de no máximo 5 linhas:
       <article class="row" data-r>
         <div class="date">28/08/2025</div>
         <h3>Altura do salto com Apple Watch</h3>
-        <div><p>Algoritmo para watchOS que detecta decolagem e aterrissagem pelos sensores, mede o tempo de voo e estima a altura por h = g·t²/8. Pensado para futevôlei.</p></div>
+        <div><p>Algoritmo para watchOS que detecta decolagem e aterrissagem pelos sensores, mede o tempo de voo e estima a altura por h = g·t²/8. Usado no SETE.</p></div>
         <div class="meta">watchOS, Swift. <a href="https://github.com/cauecarneiro/Calculo-altura-do-salto-com-Apple-Watch" target="_blank" rel="noopener">Repositório</a></div>
       </article>
       <article class="row" data-r>
         <div class="date">25/05/2025</div>
         <h3>Kadush</h3>
-        <div><p>App SwiftUI que integra a API da OpenAI e guarda as conversas com SwiftData. Estudo de arquitetura para apps com IA generativa.</p></div>
+        <div><p>App SwiftUI que gera roteiros de vídeo com a API da OpenAI e guarda tudo com SwiftData. Estudo de arquitetura para apps com IA generativa.</p></div>
         <div class="meta">SwiftUI, SwiftData. <a href="https://github.com/cauecarneiro/Kadush" target="_blank" rel="noopener">Repositório</a></div>
       </article>
       <article class="row" data-r>
         <div class="date">24/05/2025</div>
         <h3>Rolezando</h3>
-        <div><p>Descoberta de eventos próximos num mapa, com filtros por categoria, distância e data. Feito no HackaTruck, do Instituto Eldorado e da IBM.</p></div>
+        <div><p>Descoberta de eventos próximos num mapa, com filtros por categoria, distância e data. Projeto final do HackaTruck, do Instituto Eldorado e da IBM.</p></div>
         <div class="meta">MapKit, CoreLocation. <a href="https://github.com/cauecarneiro/Rolezando" target="_blank" rel="noopener">Repositório</a></div>
       </article>
     </div>
   </div>
 </section>
 
-<section id="trajetoria">
+<section id="trajetoria" class="alt">
   <div class="w">
     <h2 data-r>trajetória e ferramentas.</h2>
     <p class="sub" data-r>Do mais recente ao mais antigo.</p>
     <div class="rows">
       <article class="row" data-r>
-        <div class="date">13/11/2026<i>previsto</i></div>
-        <h3>Lançamento do Frila</h3>
-        <div><p>Primeira versão nas lojas de aplicativos.</p></div>
+        <div class="date">06/11/2026</div>
+        <h3>Frila na App Store</h3>
+        <div><p>Versão 1.0 aprovada pela Apple e publicada. A 1.1.0 saiu em 13/11/2026.</p></div>
         <div class="meta">Brasília, DF</div>
       </article>
       <article class="row" data-r>
-        <div class="date">21/10/2026</div>
-        <h3>Frila Tecnologia</h3>
-        <div><p>Abertura da empresa. Sigo coordenando produto e a orquestração dos agentes.</p></div>
-        <div class="meta">Inova Simples</div>
-      </article>
-      <article class="row" data-r>
         <div class="date">2026</div>
-        <h3>IA Generativa e Engenharia de Prompt</h3>
-        <div><p>Trilhas complementares na UCB, aplicadas ao meu fluxo real de desenvolvimento.</p></div>
-        <div class="meta">UCB</div>
+        <h3>Certificações na UCB</h3>
+        <div><p>Desenvolvimento de Produtos Avançados (450 h), IA Generativa (30 h) e Engenharia de Prompt (30 h), pelo programa TIC em Trilhas.</p></div>
+        <div class="meta">UCB, Softex e MCTI Futuro</div>
       </article>
       <article class="row" data-r>
         <div class="date">mar/2025<i>a dez/2026</i></div>
         <h3>Apple Developer Academy<small>bolsista iOS</small></h3>
-        <div><p>Swift e SwiftUI com Clean Code, SOLID, MVVM e VIPER em projetos reais com times multidisciplinares. Revisão de código, Scrum e mentoria de colegas.</p></div>
+        <div><p>Programa da Apple com a UCB, com aprendizado por desafios em times de desenvolvimento, design e negócio. Dos desafios saíram SETE, Prontu! e Frila, hoje na App Store, além de Bubble e Flag.</p></div>
         <div class="meta">UCB, Brasília</div>
       </article>
       <article class="row" data-r>
-        <div class="date">2025</div>
-        <h3>HackaTruck</h3>
-        <div><p>Programa imersivo de iOS, IoT e CreateML, com entrega contínua de apps integrados a APIs REST.</p></div>
+        <div class="date">2025<i>a 2026</i></div>
+        <h3>HackaTruck MakerSpace</h3>
+        <div><p>Programa imersivo de desenvolvimento iOS com Swift, com entrega de apps integrados a APIs REST.</p></div>
         <div class="meta">Instituto Eldorado e IBM</div>
       </article>
       <article class="row" data-r>
-        <div class="date">2024<i>a 2027</i></div>
+        <div class="date">em curso</div>
         <h3>Engenharia de Software</h3>
-        <div><p>Bacharelado em andamento, com certificações em Git e GitHub e Scrum.</p></div>
+        <div><p>Bacharelado em andamento.</p></div>
         <div class="meta">Universidade Católica de Brasília</div>
       </article>
     </div>
     <div class="skills" data-r>
-      <div><span class="lab">IA e agentes</span><div class="chips"><span class="hot">Claude Code</span><span class="hot">Codex</span><span class="hot">Copilot</span><span class="hot">Antigravity</span><span class="hot">Servidores MCP</span><span>Orquestração de agentes</span><span>Prompts como contrato</span><span>CoreML e CreateML</span><span>Foundation Models</span><span>API da OpenAI</span><span>Medição de custo e qualidade</span></div></div>
-      <div><span class="lab">Mobile</span><div class="chips"><span>Swift</span><span>SwiftUI</span><span>UIKit</span><span>MVVM, VIPER, Clean Architecture</span><span>CoreData, SwiftData</span><span>HealthKit</span><span>WatchConnectivity</span><span>XCTest, TDD</span><span>Kotlin</span><span>Flutter</span><span>React Native, Expo</span></div></div>
-      <div><span class="lab">Backend, infra e automação</span><div class="chips"><span>Supabase</span><span>PostgreSQL, PostGIS</span><span>NestJS</span><span>Node.js</span><span>Python</span><span>Terraform, AWS</span><span>Cloudflare Workers</span><span>GitHub Actions</span><span>Playwright</span><span>Remotion</span><span>Shopify</span></div></div>
+      <div><span class="lab">iOS e mobile</span><div class="chips"><span class="hot">Swift</span><span class="hot">SwiftUI</span><span class="hot">UIKit</span><span>MVVM, MVVM-C, Clean Architecture</span><span>SwiftData, Core Data, CloudKit</span><span>async/await</span><span>HealthKit, WatchConnectivity, watchOS</span><span>MapKit, CoreLocation</span><span>WidgetKit, App Intents</span><span>AVFoundation, Speech</span><span>APNs</span><span>Keychain, Face ID</span><span>XCTest, Swift Testing, XCUITest</span><span>TestFlight, App Store Connect</span><span>Acessibilidade</span><span>Kotlin</span><span>React Native, Expo</span><span>Flutter</span></div></div>
+      <div><span class="lab">IA e agentes</span><div class="chips"><span class="hot">Claude Code</span><span class="hot">Codex</span><span class="hot">Antigravity</span><span class="hot">Servidores MCP</span><span>Copilot</span><span>Orquestração de agentes</span><span>Prompts como contrato</span><span>Revisão cruzada entre modelos</span><span>Foundation Models</span><span>Core ML e Create ML</span><span>API da OpenAI</span><span>Medição de custo e qualidade</span></div></div>
+      <div><span class="lab">backend, infra e automação</span><div class="chips"><span>Supabase</span><span>PostgreSQL, PostGIS</span><span>TypeScript, Node.js</span><span>NestJS</span><span>Python</span><span>Cloudflare Workers</span><span>GitHub Actions</span><span>Terraform, AWS</span><span>Playwright</span><span>Remotion</span></div></div>
     </div>
-    <p class="small" data-r>Certificações: iOS pela Apple Developer Academy · iOS pelo HackaTruck e IBM · IA Generativa pela UCB (2026) · Engenharia de Prompt, nível básico, pela UCB (2026) · Git e GitHub · Scrum.</p>
+    <p class="small" data-r>Idiomas: português nativo e inglês intermediário. Além do código: comunidade CocoaHeads Brasília, jiu-jitsu (faixa azul) e meia maratona.</p>
   </div>
 </section>
 
-<section id="redes" class="alt">
+<section id="redes">
   <div class="w">
     <h2 data-r>onde me encontrar.</h2>
-    <p class="sub" data-r>LinkedIn e GitHub para vagas e código. Instagram, Threads e X para o que eu construo no dia a dia, sobre empreender com IA. As prévias são posts reais meus.</p>
+    <p class="sub" data-r>LinkedIn e GitHub para vagas e código. Instagram, Threads e X para o que eu construo no dia a dia com IA.</p>
     <div class="soc">
       <a class="card" href="https://www.linkedin.com/in/cau%C3%AA-carneiro" target="_blank" rel="noopener" data-r>
         <header><span class="ring">cc</span><div><b>Cauê Carneiro Crillanovick</b><span>LinkedIn</span></div><em>profissional</em></header>
         <blockquote>Desenvolvedor iOS, Apple Developer Academy e Engenharia de Software. Notícias de tecnologia e IA com número e contexto, em linguagem simples.</blockquote>
-        <div class="ft"><span>22 posts desde 14/10/2026</span><span class="go">abrir perfil</span></div>
+        <div class="ft"><span>23 posts desde 14/10/2026</span><span class="go">abrir perfil</span></div>
       </a>
       <a class="card" href="https://github.com/cauecarneiro" target="_blank" rel="noopener" data-r>
         <header><span class="ring">cc</span><div><b>Cauê Carneiro</b><span>GitHub · cauecarneiro</span></div><em>código</em></header>
-        <blockquote>Apps iOS publicados, estudos de arquitetura e as ferramentas que eu uso para orquestrar agentes, como o Overview-Painel, com 14 estrelas.</blockquote>
-        <div class="ft"><span>34 repositórios públicos</span><span class="go">abrir perfil</span></div>
+        <blockquote>Apps iOS, estudos de arquitetura e as ferramentas que eu uso para orquestrar agentes, como o Overview-Painel, com 14 estrelas.</blockquote>
+        <div class="ft"><span>35 repositórios públicos</span><span class="go">abrir perfil</span></div>
       </a>
       <a class="card" href="https://instagram.com/cauenovic" target="_blank" rel="noopener" data-r>
-        <header><span class="ring">cc</span><div><b>Cauê Crillanovick | Startups e IA</b><span>Instagram · @cauenovic</span></div><em>vídeos</em></header>
-        <blockquote>Aprendendo a empreender na prática. Mostrando o que eu construo com IA. Lifestyle.</blockquote>
-        <div class="ft"><span>47 posts publicados pelo Carteiro desde 17/10/2026</span><span class="go">abrir perfil</span></div>
+        <header><span class="ring">cc</span><div><b>Cauê Crillanovick</b><span>Instagram · @cauenovic</span></div><em>vídeos</em></header>
+        <blockquote>Vídeos curtos mostrando o que eu construo com IA, gravados com o meu Teleprompter e editados pelo meu motor de vídeo.</blockquote>
+        <div class="ft"><span>48 posts publicados pelo Carteiro</span><span class="go">abrir perfil</span></div>
       </a>
       <a class="card" href="https://www.threads.com/@cauenovic" target="_blank" rel="noopener" data-r>
-        <header><span class="ring">cc</span><div><b>Cauê Crillanovick</b><span>Threads · @cauenovic</span></div><em>01/11/2026</em></header>
+        <header><span class="ring">cc</span><div><b>Cauê Crillanovick</b><span>Threads · @cauenovic</span></div><em>texto</em></header>
         <blockquote>mudei o lugar onde guardo meus roteiros. saiu o notion, entrou uma página minha. são mais de 70 ideias, cada uma com gancho, fala, cena e a pasta onde o vídeo vai ficar.</blockquote>
-        <div class="ft"><span>57 posts desde 15/10/2026</span><span class="go">abrir perfil</span></div>
+        <div class="ft"><span>76 posts desde 15/10/2026</span><span class="go">abrir perfil</span></div>
       </a>
       <a class="card" href="https://x.com/cauenovic" target="_blank" rel="noopener" data-r>
-        <header><span class="ring">cc</span><div><b>Cauê Crillanovick</b><span>X · @cauenovic</span></div><em>25/10/2026</em></header>
+        <header><span class="ring">cc</span><div><b>Cauê Crillanovick</b><span>X · @cauenovic</span></div><em>texto</em></header>
         <blockquote>quando você complicou o que um pedido simples resolvia?</blockquote>
-        <div class="ft"><span>38 posts desde 14/10/2026</span><span class="go">abrir perfil</span></div>
+        <div class="ft"><span>47 posts desde 14/10/2026</span><span class="go">abrir perfil</span></div>
       </a>
     </div>
   </div>
@@ -768,6 +952,8 @@ e termina com uma entrada de no máximo 5 linhas:
 </main>
 
 <footer><div class="w"><span>Cauê Crillanovick <span class="wm">cauenovic</span></span><span>Brasília, 2026</span></div></footer>
+
+<dialog class="lb" id="lb" aria-label="Imagem ampliada"><img id="lbimg" alt=""></dialog>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -861,6 +1047,20 @@ e termina com uma entrada de no máximo 5 linhas:
     var ok=function(){ msg.textContent="E-mail copiado."; };
     var fail=function(){ var r=document.createRange(); r.selectNodeContents(btn); var s=window.getSelection(); s.removeAllRanges(); s.addRange(r); msg.textContent="Selecionado. Copie com Cmd+C ou Ctrl+C."; };
     try{ navigator.clipboard.writeText(txt).then(ok,fail); }catch(e){ fail(); }
+  });
+  /* telas: toque amplia */
+  var lb=document.getElementById("lb"), lbimg=document.getElementById("lbimg");
+  if(lb && typeof lb.showModal==="function"){
+    document.querySelectorAll("[data-full]").forEach(function(b){
+      b.addEventListener("click",function(){ var im=b.querySelector("img"); lbimg.src=b.dataset.full; lbimg.alt=im?im.alt:""; lb.showModal(); });
+    });
+    lb.addEventListener("click",function(){ lb.close(); });
+  }
+
+  /* vídeos: tocam só quando aparecem; com movimento reduzido ficam com controles */
+  document.querySelectorAll(".vid video").forEach(function(v){
+    if(reduce || !("IntersectionObserver" in window)){ v.controls=true; return; }
+    new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ var p=v.play(); if(p&&p.catch) p.catch(function(){ v.controls=true; }); } else { v.pause(); } }); },{threshold:.4}).observe(v);
   });
 })();
 </script>
