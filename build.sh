@@ -1,5 +1,6 @@
 #!/bin/sh
-# Gera docs/index.html (documento completo para o GitHub Pages) a partir de index.html (trecho usado no artefato).
+# Gera docs/index.html (documento completo para o GitHub Pages) a partir de index.html (trecho usado no artefato)
+# e as páginas internas (docs/<nome>.html) a partir de paginas.py.
 set -e
 cd "$(dirname "$0")"
 mkdir -p docs
@@ -8,3 +9,4 @@ mkdir -p docs
   cat index.html
   printf '\n</body>\n</html>\n'
 } > docs/index.html
+python3 paginas.py
