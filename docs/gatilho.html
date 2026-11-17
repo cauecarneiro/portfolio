@@ -298,7 +298,7 @@ dialog.lb img{max-width:96vw;max-height:94vh;width:auto;height:auto;display:bloc
 .bloco .list{margin-top:26px;max-width:860px}
 .galeria{padding-block:clamp(8px,2vw,24px)}
 .galeria .shots img,.galeria .shots video{height:clamp(420px,52vw,620px)}
-.prox{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:clamp(40px,6vw,80px) 0}
+.prox{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:12px;padding:clamp(40px,6vw,80px) 0}
 .bloco .pipe{grid-template-columns:repeat(var(--n,5),minmax(0,1fr))}
 .bloco .step::before{background:var(--blue);border-color:var(--blue-soft)}
 .bloco .pipe .fill{transform:none}
@@ -308,7 +308,7 @@ dialog.lb img{max-width:96vw;max-height:94vh;width:auto;height:auto;display:bloc
 </head>
 <body>
 <div class="subbar">
-  <a class="pill" href="index.html#automacoes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>voltar ao portfólio</a>
+  <a class="pill" id="voltar" href="index.html#automacoes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>voltar ao portfólio</a>
   <a class="pill solid" href="index.html#contato">falar comigo</a>
 </div>
 <main>
@@ -321,7 +321,6 @@ dialog.lb img{max-width:96vw;max-height:94vh;width:auto;height:auto;display:bloc
 </div></section>
 <section class="bloco"><div class="w"><h2>o caminho de um comentário</h2><div class="pipe" style="--n:5" aria-label="Fluxo"><div class="fill"></div><div class="step on"><h4>Comentário</h4><p>A pessoa comenta a palavra da campanha no vídeo.</p></div><div class="step on"><h4>Aviso</h4><p>A Meta avisa o serviço. Uma conferência a cada minuto cobre falhas do aviso.</p></div><div class="step on"><h4>Fila</h4><p>O pedido entra numa fila no banco, sem duplicar.</p></div><div class="step on"><h4>Mensagem</h4><p>A pessoa recebe uma mensagem privada com um botão.</p></div><div class="step on"><h4>Entrega</h4><p>Ao tocar no botão, recebe o material. A entrega fica registrada.</p></div></div></div></section><section class="bloco alt"><div class="w"><h2>o que deu trabalho</h2><ul class="list"><li><b>Não perder ninguém.</b> Aviso em tempo real e conferência por minuto se complementam. A fila gira e tenta de novo quando a rede recusa.</li><li><b>Não mandar duas vezes.</b> Cada comentário tem um registro único, e a entrega só conta quando a rede confirma.</li><li><b>Segredos.</b> As chaves vão do Chaveiro do Mac direto para o cofre da Cloudflare, por um script que não mostra os valores.</li><li><b>Diagnóstico.</b> Quando uma entrega atrasou, a causa foi achada pelo registro da fila e corrigida, e o passo a passo do diagnóstico ficou documentado.</li></ul></div></section>
 <div class="w"><nav class="prox" aria-label="Outras páginas">
-  <a class="pill" href="index.html#automacoes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>voltar ao portfólio</a>
   <a class="pill solid" href="carrossel.html">a seguir: Gerador de carrossel</a>
 </nav></div>
 </main>
@@ -330,6 +329,13 @@ dialog.lb img{max-width:96vw;max-height:94vh;width:auto;height:auto;display:bloc
 <script>
 (function(){
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  /* voltar: retorna ao ponto exato da página principal quando a pessoa veio de lá */
+  var voltar=document.getElementById("voltar");
+  if(voltar){
+    var veioDoPortfolio=false;
+    try{ veioDoPortfolio=sessionStorage.getItem("pf-y")!==null; }catch(err){}
+    if(veioDoPortfolio) voltar.setAttribute("href","index.html");
+  }
   var lb=document.getElementById("lb"), lbimg=document.getElementById("lbimg");
   if(lb && typeof lb.showModal==="function"){
     document.querySelectorAll("[data-full]").forEach(function(b){

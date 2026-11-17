@@ -298,7 +298,7 @@ dialog.lb img{max-width:96vw;max-height:94vh;width:auto;height:auto;display:bloc
 .bloco .list{margin-top:26px;max-width:860px}
 .galeria{padding-block:clamp(8px,2vw,24px)}
 .galeria .shots img,.galeria .shots video{height:clamp(420px,52vw,620px)}
-.prox{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:clamp(40px,6vw,80px) 0}
+.prox{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:12px;padding:clamp(40px,6vw,80px) 0}
 .bloco .pipe{grid-template-columns:repeat(var(--n,5),minmax(0,1fr))}
 .bloco .step::before{background:var(--blue);border-color:var(--blue-soft)}
 .bloco .pipe .fill{transform:none}
@@ -308,7 +308,7 @@ dialog.lb img{max-width:96vw;max-height:94vh;width:auto;height:auto;display:bloc
 </head>
 <body>
 <div class="subbar">
-  <a class="pill" href="index.html#ferramentas"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>voltar ao portfólio</a>
+  <a class="pill" id="voltar" href="index.html#ferramentas"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>voltar ao portfólio</a>
   <a class="pill solid" href="index.html#contato">falar comigo</a>
 </div>
 <main>
@@ -321,7 +321,6 @@ dialog.lb img{max-width:96vw;max-height:94vh;width:auto;height:auto;display:bloc
 </div></section>
 <section class="bloco"><div class="w"><figure class="fig"><button type="button" data-full="assets/ferramentas/scrolling-resultado.jpg"><img src="assets/ferramentas/scrolling-resultado.jpg" width="1440" height="888" alt="Scrolling: resultado de uma captura" loading="lazy"></button><figcaption>A tela de resultado: a página inteira capturada e já copiada para a área de transferência.</figcaption></figure><div class="figs"><figure class="fig"><button type="button" data-full="assets/ferramentas/scrolling-opcoes.jpg"><img src="assets/ferramentas/scrolling-opcoes.jpg" width="900" height="995" alt="Scrolling: opções" loading="lazy"></button><figcaption>As opções: formato, cópia automática e nome do arquivo.</figcaption></figure><figure class="fig"><button type="button" data-full="assets/ferramentas/scrolling-popup.jpg"><img src="assets/ferramentas/scrolling-popup.jpg" width="648" height="240" alt="Scrolling: janela da extensão durante a captura" loading="lazy"></button><figcaption>A janela da extensão durante a captura.</figcaption></figure></div></div></section><section class="bloco alt"><div class="w"><h2>o que ela faz</h2><ul class="list"><li><b>Captura rolando e costurando.</b> Funciona também quando quem rola é uma área interna da página, ou quando o conteúdo está dentro de outra página embutida.</li><li><b>Prepara a página.</b> Desliga animações, carrega as imagens que só aparecem ao rolar e evita que menus fixos se repitam em cada fatia.</li><li><b>Páginas gigantes.</b> Avisa e divide em duas ou mais imagens, em vez de travar.</li><li><b>Copia sozinha.</b> A imagem vai para a área de transferência assim que a captura termina.</li><li><b>Arquivos.</b> Histórico local com seleção, exclusão e download em lote, em PNG ou JPG.</li></ul></div></section>
 <div class="w"><nav class="prox" aria-label="Outras páginas">
-  <a class="pill" href="index.html#ferramentas"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>voltar ao portfólio</a>
   <a class="pill solid" href="life-track.html">a seguir: Life Track</a>
 </nav></div>
 </main>
@@ -330,6 +329,13 @@ dialog.lb img{max-width:96vw;max-height:94vh;width:auto;height:auto;display:bloc
 <script>
 (function(){
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  /* voltar: retorna ao ponto exato da página principal quando a pessoa veio de lá */
+  var voltar=document.getElementById("voltar");
+  if(voltar){
+    var veioDoPortfolio=false;
+    try{ veioDoPortfolio=sessionStorage.getItem("pf-y")!==null; }catch(err){}
+    if(veioDoPortfolio) voltar.setAttribute("href","index.html");
+  }
   var lb=document.getElementById("lb"), lbimg=document.getElementById("lbimg");
   if(lb && typeof lb.showModal==="function"){
     document.querySelectorAll("[data-full]").forEach(function(b){

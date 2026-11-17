@@ -298,7 +298,7 @@ dialog.lb img{max-width:96vw;max-height:94vh;width:auto;height:auto;display:bloc
 .bloco .list{margin-top:26px;max-width:860px}
 .galeria{padding-block:clamp(8px,2vw,24px)}
 .galeria .shots img,.galeria .shots video{height:clamp(420px,52vw,620px)}
-.prox{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:clamp(40px,6vw,80px) 0}
+.prox{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:12px;padding:clamp(40px,6vw,80px) 0}
 .bloco .pipe{grid-template-columns:repeat(var(--n,5),minmax(0,1fr))}
 .bloco .step::before{background:var(--blue);border-color:var(--blue-soft)}
 .bloco .pipe .fill{transform:none}
@@ -308,7 +308,7 @@ dialog.lb img{max-width:96vw;max-height:94vh;width:auto;height:auto;display:bloc
 </head>
 <body>
 <div class="subbar">
-  <a class="pill" href="index.html#mais-apps"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>voltar ao portfólio</a>
+  <a class="pill" id="voltar" href="index.html#mais-apps"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>voltar ao portfólio</a>
   <a class="pill solid" href="index.html#contato">falar comigo</a>
 </div>
 <main>
@@ -333,7 +333,6 @@ dialog.lb img{max-width:96vw;max-height:94vh;width:auto;height:auto;display:bloc
 <button type="button" data-full="assets/racha/entrar.jpg"><img src="assets/racha/entrar.jpg" alt="Racha: tela de entrada" loading="lazy"></button>
 </div><p class="nota">Telas tiradas do app rodando no simulador, com um grupo de exemplo. As pessoas e os valores são fictícios.</p></div></section><section class="bloco alt"><div class="w"><h2>o que o app faz</h2><ul class="list"><li><b>Grupos.</b> Viagem, casa, evento ou outro, com convite por código, por link ou por @usuário.</li><li><b>Despesas.</b> Divisão igual, por valor fixo, por percentual ou por cotas, com categoria, local e recibo em foto.</li><li><b>Saldos.</b> Cada pessoa vê quanto tem a receber e a pagar. O app simplifica as dívidas para reduzir o número de acertos.</li><li><b>Acerto.</b> Mostra a chave Pix de quem recebe e registra o pagamento, total ou parcial. O app não movimenta dinheiro.</li><li><b>Avisos.</b> Feed de atividade, notificações e lembrete de prazo de dívida.</li></ul></div></section><section class="bloco"><div class="w"><h2>como foi construído</h2><div class="txt"><p>São três repositórios: o app, a API e a infraestrutura. O app conversa com a API por um contrato estável, e toda lacuna de API se resolve no backend, não com remendo no app.</p><p>A API tem um módulo por domínio: autenticação, usuários, grupos, convites, despesas, pagamentos, notificações e envio de arquivos. O cálculo de saldo e a simplificação de dívidas são funções puras, testadas à parte. Dinheiro é sempre guardado em centavos.</p></div><ul class="list"><li><b>Prova antes do merge.</b> Tipos, lint, formatação e testes precisam passar. O CI também confere se o esquema do banco bate com as migrações.</li><li><b>Segurança.</b> Sessão guardada no cofre do aparelho, login com Apple, limite de tentativas na autenticação e exclusão de conta pelo próprio usuário.</li><li><b>Entrada de desenvolvimento.</b> Existe um atalho de login só para testes, e a API se recusa a subir em produção com ele ligado.</li></ul></div></section><section class="bloco alt"><div class="w"><h2>a página de apresentação</h2><figure class="fig"><button type="button" data-full="assets/racha/landing.jpg"><img src="assets/racha/landing.jpg" width="1440" height="1100" alt="Página de apresentação do Racha" loading="lazy"></button><figcaption>A página que apresenta o app, também feita por mim.</figcaption></figure></div></section>
 <div class="w"><nav class="prox" aria-label="Outras páginas">
-  <a class="pill" href="index.html#mais-apps"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>voltar ao portfólio</a>
   <a class="pill solid" href="perity.html">a seguir: Perity</a>
 </nav></div>
 </main>
@@ -342,6 +341,13 @@ dialog.lb img{max-width:96vw;max-height:94vh;width:auto;height:auto;display:bloc
 <script>
 (function(){
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  /* voltar: retorna ao ponto exato da página principal quando a pessoa veio de lá */
+  var voltar=document.getElementById("voltar");
+  if(voltar){
+    var veioDoPortfolio=false;
+    try{ veioDoPortfolio=sessionStorage.getItem("pf-y")!==null; }catch(err){}
+    if(veioDoPortfolio) voltar.setAttribute("href","index.html");
+  }
   var lb=document.getElementById("lb"), lbimg=document.getElementById("lbimg");
   if(lb && typeof lb.showModal==="function"){
     document.querySelectorAll("[data-full]").forEach(function(b){

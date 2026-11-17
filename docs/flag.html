@@ -298,7 +298,7 @@ dialog.lb img{max-width:96vw;max-height:94vh;width:auto;height:auto;display:bloc
 .bloco .list{margin-top:26px;max-width:860px}
 .galeria{padding-block:clamp(8px,2vw,24px)}
 .galeria .shots img,.galeria .shots video{height:clamp(420px,52vw,620px)}
-.prox{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:clamp(40px,6vw,80px) 0}
+.prox{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:12px;padding:clamp(40px,6vw,80px) 0}
 .bloco .pipe{grid-template-columns:repeat(var(--n,5),minmax(0,1fr))}
 .bloco .step::before{background:var(--blue);border-color:var(--blue-soft)}
 .bloco .pipe .fill{transform:none}
@@ -308,7 +308,7 @@ dialog.lb img{max-width:96vw;max-height:94vh;width:auto;height:auto;display:bloc
 </head>
 <body>
 <div class="subbar">
-  <a class="pill" href="index.html#mais-apps"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>voltar ao portfólio</a>
+  <a class="pill" id="voltar" href="index.html#mais-apps"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>voltar ao portfólio</a>
   <a class="pill solid" href="index.html#contato">falar comigo</a>
 </div>
 <main>
@@ -325,7 +325,6 @@ dialog.lb img{max-width:96vw;max-height:94vh;width:auto;height:auto;display:bloc
 <button type="button" data-full="assets/flag/treino.jpg"><img src="assets/flag/treino.jpg" alt="Flag: treino recomendado para a fase" loading="lazy"></button>
 </div><p class="nota">Telas tiradas do app rodando no simulador, com um ciclo de exemplo. Os cartões de sono e batimento aparecem vazios porque o simulador não tem dados do relógio.</p></div></section><section class="bloco alt"><div class="w"><h2>como funciona</h2><ul class="list"><li><b>Privacidade.</b> Não há servidor nem conta. Tudo fica no aparelho.</li><li><b>HealthKit só para leitura.</b> Frequência cardíaca, sono, temperatura e treinos vêm do HealthKit. O fluxo menstrual e o check-in do dia ficam no banco local do app, por decisão do time.</li><li><b>Apple Watch.</b> O relógio tem app próprio, com check-in diário e complicação no mostrador, e sincroniza com o iPhone.</li><li><b>Fases.</b> Menstrual, folicular, ovulação e lútea, cada uma com recado, dica e treino sugerido.</li></ul></div></section>
 <div class="w"><nav class="prox" aria-label="Outras páginas">
-  <a class="pill" href="index.html#mais-apps"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>voltar ao portfólio</a>
   <a class="pill solid" href="bubble.html">a seguir: Bubble</a>
 </nav></div>
 </main>
@@ -334,6 +333,13 @@ dialog.lb img{max-width:96vw;max-height:94vh;width:auto;height:auto;display:bloc
 <script>
 (function(){
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  /* voltar: retorna ao ponto exato da página principal quando a pessoa veio de lá */
+  var voltar=document.getElementById("voltar");
+  if(voltar){
+    var veioDoPortfolio=false;
+    try{ veioDoPortfolio=sessionStorage.getItem("pf-y")!==null; }catch(err){}
+    if(veioDoPortfolio) voltar.setAttribute("href","index.html");
+  }
   var lb=document.getElementById("lb"), lbimg=document.getElementById("lbimg");
   if(lb && typeof lb.showModal==="function"){
     document.querySelectorAll("[data-full]").forEach(function(b){

@@ -298,7 +298,7 @@ dialog.lb img{max-width:96vw;max-height:94vh;width:auto;height:auto;display:bloc
 .bloco .list{margin-top:26px;max-width:860px}
 .galeria{padding-block:clamp(8px,2vw,24px)}
 .galeria .shots img,.galeria .shots video{height:clamp(420px,52vw,620px)}
-.prox{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:clamp(40px,6vw,80px) 0}
+.prox{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:12px;padding:clamp(40px,6vw,80px) 0}
 .bloco .pipe{grid-template-columns:repeat(var(--n,5),minmax(0,1fr))}
 .bloco .step::before{background:var(--blue);border-color:var(--blue-soft)}
 .bloco .pipe .fill{transform:none}
@@ -308,7 +308,7 @@ dialog.lb img{max-width:96vw;max-height:94vh;width:auto;height:auto;display:bloc
 </head>
 <body>
 <div class="subbar">
-  <a class="pill" href="index.html#ferramentas"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>voltar ao portfólio</a>
+  <a class="pill" id="voltar" href="index.html#ferramentas"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>voltar ao portfólio</a>
   <a class="pill solid" href="index.html#contato">falar comigo</a>
 </div>
 <main>
@@ -321,7 +321,6 @@ dialog.lb img{max-width:96vw;max-height:94vh;width:auto;height:auto;display:bloc
 </div></section>
 <section class="bloco"><div class="w"><h2>como funciona</h2><div class="pipe" style="--n:3" aria-label="Fluxo"><div class="fill"></div><div class="step on"><h4>Navegador</h4><p>Mostra os gráficos.</p></div><div class="step on"><h4>Servidor local</h4><p>Traduz os dados e guarda só em memória.</p></div><div class="step on"><h4>API do fabricante</h4><p>A chave nunca sai do servidor.</p></div></div></div></section><section class="bloco alt"><div class="w"><h2>o que o painel mostra</h2><ul class="list"><li><b>Resumo do dia</b> em texto, escrito a partir dos números, com aviso quando o relógio não sincroniza.</li><li><b>Cada indicador</b> com o dia no topo, a semana em gráfico próprio e as médias: sono, passos, estresse, calorias, frequência cardíaca e variabilidade.</li><li><b>Treinos</b> com mapa, ritmo, frequência, altimetria, zonas e voltas, além do mapa de calor do ano.</li><li><b>Teclado e acessibilidade.</b> Setas trocam de dia e de semana, há busca rápida e um estudo de usabilidade documentado no repositório.</li></ul></div></section><section class="bloco"><div class="w"><p class="nota">Esta página não tem imagens porque o painel só mostra os meus dados reais de saúde. O modo de demonstração com dados fictícios está no roteiro do projeto.</p></div></section>
 <div class="w"><nav class="prox" aria-label="Outras páginas">
-  <a class="pill" href="index.html#ferramentas"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>voltar ao portfólio</a>
   <a class="pill solid" href="guarda-de-segredos.html">a seguir: Guarda de segredos</a>
 </nav></div>
 </main>
@@ -330,6 +329,13 @@ dialog.lb img{max-width:96vw;max-height:94vh;width:auto;height:auto;display:bloc
 <script>
 (function(){
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  /* voltar: retorna ao ponto exato da página principal quando a pessoa veio de lá */
+  var voltar=document.getElementById("voltar");
+  if(voltar){
+    var veioDoPortfolio=false;
+    try{ veioDoPortfolio=sessionStorage.getItem("pf-y")!==null; }catch(err){}
+    if(veioDoPortfolio) voltar.setAttribute("href","index.html");
+  }
   var lb=document.getElementById("lb"), lbimg=document.getElementById("lbimg");
   if(lb && typeof lb.showModal==="function"){
     document.querySelectorAll("[data-full]").forEach(function(b){

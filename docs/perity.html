@@ -298,7 +298,7 @@ dialog.lb img{max-width:96vw;max-height:94vh;width:auto;height:auto;display:bloc
 .bloco .list{margin-top:26px;max-width:860px}
 .galeria{padding-block:clamp(8px,2vw,24px)}
 .galeria .shots img,.galeria .shots video{height:clamp(420px,52vw,620px)}
-.prox{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:clamp(40px,6vw,80px) 0}
+.prox{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:12px;padding:clamp(40px,6vw,80px) 0}
 .bloco .pipe{grid-template-columns:repeat(var(--n,5),minmax(0,1fr))}
 .bloco .step::before{background:var(--blue);border-color:var(--blue-soft)}
 .bloco .pipe .fill{transform:none}
@@ -308,7 +308,7 @@ dialog.lb img{max-width:96vw;max-height:94vh;width:auto;height:auto;display:bloc
 </head>
 <body>
 <div class="subbar">
-  <a class="pill" href="index.html#mais-apps"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>voltar ao portfólio</a>
+  <a class="pill" id="voltar" href="index.html#mais-apps"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>voltar ao portfólio</a>
   <a class="pill solid" href="index.html#contato">falar comigo</a>
 </div>
 <main>
@@ -328,7 +328,6 @@ dialog.lb img{max-width:96vw;max-height:94vh;width:auto;height:auto;display:bloc
 <button type="button" data-full="assets/perity/ios-analise.jpg"><img src="assets/perity/ios-analise.jpg" alt="Perity: gastos por categoria" loading="lazy"></button>
 </div><p class="nota">Todas as telas mostram os dados de exemplo que vêm no app. Nenhum dado real aparece.</p></div></section><section class="bloco alt"><div class="w"><h2>no Mac, outro conceito</h2><div class="txt"><p>No iPhone são três abas. No Mac o app é organizado como um caderno, com barra lateral de páginas, tabelas com contagem e soma e um ícone na barra de menus com o gasto do dia.</p></div><div class="figs"><figure class="fig"><button type="button" data-full="assets/perity/mac-visaoGeral.jpg"><img src="assets/perity/mac-visaoGeral.jpg" width="1440" height="1050" alt="Perity no Mac: visão geral" loading="lazy"></button><figcaption>Visão geral.</figcaption></figure><figure class="fig"><button type="button" data-full="assets/perity/mac-investimentos.jpg"><img src="assets/perity/mac-investimentos.jpg" width="1440" height="1050" alt="Perity no Mac: investimentos" loading="lazy"></button><figcaption>Investimentos e rendimento contra o CDI.</figcaption></figure><figure class="fig"><button type="button" data-full="assets/perity/mac-gastos.jpg"><img src="assets/perity/mac-gastos.jpg" width="1440" height="1050" alt="Perity no Mac: gastos do mês" loading="lazy"></button><figcaption>Gastos do mês por categoria.</figcaption></figure></div></div></section><section class="bloco"><div class="w"><h2>decisões de engenharia</h2><ul class="list"><li><b>Somente leitura.</b> O app lê os bancos por Open Finance e nunca move dinheiro. Não há engenharia reversa de aplicativo de banco.</li><li><b>Credenciais só no Keychain.</b> Nada sensível fica em código, arquivo ou iCloud.</li><li><b>Dinheiro em centavos.</b> Todo valor é inteiro, com sinal. As contas ficam num lugar só e as telas apenas mostram.</li><li><b>Sem contar duas vezes.</b> Quando o banco confirma uma compra que o Apple Pay já tinha avisado, o app junta as duas.</li><li><b>Desempenho medido.</b> A abertura caiu de cerca de 350 ms para 60 ms, medida com 1.937 lançamentos reais, antes e depois.</li><li><b>Sem servidor.</b> Os dados ficam no aparelho e no iCloud privado de quem usa.</li></ul></div></section><section class="bloco alt"><div class="w"><h2>plataforma Apple</h2><ul class="list"><li><b>Widgets</b> no iPhone, no Mac e na tela de bloqueio.</li><li><b>Atalhos e Siri,</b> com o registro automático de cada compra feita no Apple Pay.</li><li><b>Privacidade na tela:</b> um toque oculta os valores, e a tela fica borrada na lista de apps recentes.</li><li><b>Importação</b> de extratos em OFX e CSV para bancos fora do Open Finance.</li></ul></div></section>
 <div class="w"><nav class="prox" aria-label="Outras páginas">
-  <a class="pill" href="index.html#mais-apps"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>voltar ao portfólio</a>
   <a class="pill solid" href="teleprompter.html">a seguir: Teleprompter</a>
 </nav></div>
 </main>
@@ -337,6 +336,13 @@ dialog.lb img{max-width:96vw;max-height:94vh;width:auto;height:auto;display:bloc
 <script>
 (function(){
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  /* voltar: retorna ao ponto exato da página principal quando a pessoa veio de lá */
+  var voltar=document.getElementById("voltar");
+  if(voltar){
+    var veioDoPortfolio=false;
+    try{ veioDoPortfolio=sessionStorage.getItem("pf-y")!==null; }catch(err){}
+    if(veioDoPortfolio) voltar.setAttribute("href","index.html");
+  }
   var lb=document.getElementById("lb"), lbimg=document.getElementById("lbimg");
   if(lb && typeof lb.showModal==="function"){
     document.querySelectorAll("[data-full]").forEach(function(b){

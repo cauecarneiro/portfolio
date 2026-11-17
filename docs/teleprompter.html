@@ -298,7 +298,7 @@ dialog.lb img{max-width:96vw;max-height:94vh;width:auto;height:auto;display:bloc
 .bloco .list{margin-top:26px;max-width:860px}
 .galeria{padding-block:clamp(8px,2vw,24px)}
 .galeria .shots img,.galeria .shots video{height:clamp(420px,52vw,620px)}
-.prox{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:clamp(40px,6vw,80px) 0}
+.prox{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:12px;padding:clamp(40px,6vw,80px) 0}
 .bloco .pipe{grid-template-columns:repeat(var(--n,5),minmax(0,1fr))}
 .bloco .step::before{background:var(--blue);border-color:var(--blue-soft)}
 .bloco .pipe .fill{transform:none}
@@ -308,7 +308,7 @@ dialog.lb img{max-width:96vw;max-height:94vh;width:auto;height:auto;display:bloc
 </head>
 <body>
 <div class="subbar">
-  <a class="pill" href="index.html#mais-apps"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>voltar ao portfólio</a>
+  <a class="pill" id="voltar" href="index.html#mais-apps"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>voltar ao portfólio</a>
   <a class="pill solid" href="index.html#contato">falar comigo</a>
 </div>
 <main>
@@ -325,7 +325,6 @@ dialog.lb img{max-width:96vw;max-height:94vh;width:auto;height:auto;display:bloc
 <button type="button" data-full="assets/teleprompter/tela-3.jpg"><img src="assets/teleprompter/tela-3.jpg" alt="Teleprompter: gravação com o texto rolando" loading="lazy"></button>
 </div></div></section><section class="bloco alt"><div class="w"><h2>o que ele faz</h2><ul class="list"><li><b>Roteiro com seções.</b> Linhas em caixa alta viram seções com atalho na tela de gravação. O que está entre parênteses aparece em cinza e fica fora da leitura.</li><li><b>Três modos de leitura.</b> Automático, com velocidade em palavras por minuto, por voz ou manual.</li><li><b>Tempo sob controle.</b> O editor mostra o tempo de cada seção e ajusta a velocidade para caber em 30, 45, 60 ou 90 segundos.</li><li><b>Gravação.</b> Vertical, em 4K ou 1080p, sem filtro e sem recompressão. O arquivo original vai para a galeria.</li><li><b>Controles físicos.</b> Botões de volume, Controle da Câmera, teclado ou controle Bluetooth.</li></ul></div></section><section class="bloco"><div class="w"><h2>o que foi difícil</h2><div class="txt"><p>A leitura por voz usa o reconhecimento de fala do próprio aparelho, em português. O texto anda quando eu falo e espera quando eu improviso. Para isso o app alinha o que foi dito com o roteiro numa janela de palavras, com um algoritmo de alinhamento local.</p><p>A rolagem do texto é feita em UIKit, a 120 Hz, dentro de um app SwiftUI, porque a rolagem declarativa não entregava a mesma suavidade. O texto fica no alto da tela, colado à câmera frontal, para o olhar não fugir da lente.</p><p>Antes de dizer que salvou, o app confere se o vídeo tem áudio. Se uma ligação interromper a gravação, o take é salvo.</p></div></div></section>
 <div class="w"><nav class="prox" aria-label="Outras páginas">
-  <a class="pill" href="index.html#mais-apps"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>voltar ao portfólio</a>
   <a class="pill solid" href="flag.html">a seguir: Flag</a>
 </nav></div>
 </main>
@@ -334,6 +333,13 @@ dialog.lb img{max-width:96vw;max-height:94vh;width:auto;height:auto;display:bloc
 <script>
 (function(){
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  /* voltar: retorna ao ponto exato da página principal quando a pessoa veio de lá */
+  var voltar=document.getElementById("voltar");
+  if(voltar){
+    var veioDoPortfolio=false;
+    try{ veioDoPortfolio=sessionStorage.getItem("pf-y")!==null; }catch(err){}
+    if(veioDoPortfolio) voltar.setAttribute("href","index.html");
+  }
   var lb=document.getElementById("lb"), lbimg=document.getElementById("lbimg");
   if(lb && typeof lb.showModal==="function"){
     document.querySelectorAll("[data-full]").forEach(function(b){

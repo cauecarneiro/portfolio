@@ -298,7 +298,7 @@ dialog.lb img{max-width:96vw;max-height:94vh;width:auto;height:auto;display:bloc
 .bloco .list{margin-top:26px;max-width:860px}
 .galeria{padding-block:clamp(8px,2vw,24px)}
 .galeria .shots img,.galeria .shots video{height:clamp(420px,52vw,620px)}
-.prox{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:clamp(40px,6vw,80px) 0}
+.prox{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:12px;padding:clamp(40px,6vw,80px) 0}
 .bloco .pipe{grid-template-columns:repeat(var(--n,5),minmax(0,1fr))}
 .bloco .step::before{background:var(--blue);border-color:var(--blue-soft)}
 .bloco .pipe .fill{transform:none}
@@ -308,7 +308,7 @@ dialog.lb img{max-width:96vw;max-height:94vh;width:auto;height:auto;display:bloc
 </head>
 <body>
 <div class="subbar">
-  <a class="pill" href="index.html#mais-apps"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>voltar ao portfólio</a>
+  <a class="pill" id="voltar" href="index.html#mais-apps"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>voltar ao portfólio</a>
   <a class="pill solid" href="index.html#contato">falar comigo</a>
 </div>
 <main>
@@ -321,7 +321,6 @@ dialog.lb img{max-width:96vw;max-height:94vh;width:auto;height:auto;display:bloc
 </div></section>
 <section class="bloco"><div class="w"><div class="figs"><figure class="fig"><button type="button" data-full="assets/bubble/dia.jpg"><img src="assets/bubble/dia.jpg" width="1600" height="969" alt="Bubble: linha do tempo do dia" loading="lazy"></button><figcaption>A linha do tempo do dia, com prioridade e categoria de cada tarefa.</figcaption></figure><figure class="fig"><button type="button" data-full="assets/bubble/resumo.jpg"><img src="assets/bubble/resumo.jpg" width="1600" height="969" alt="Bubble: resumo semanal" loading="lazy"></button><figcaption>O resumo semanal, com a distribuição por categoria.</figcaption></figure><figure class="fig"><button type="button" data-full="assets/bubble/tarefas.jpg"><img src="assets/bubble/tarefas.jpg" width="1600" height="969" alt="Bubble: todas as tarefas" loading="lazy"></button><figcaption>Todas as tarefas da semana, com busca e filtro.</figcaption></figure><figure class="fig"><button type="button" data-full="assets/bubble/boasvindas.jpg"><img src="assets/bubble/boasvindas.jpg" width="1600" height="969" alt="Bubble: boas-vindas" loading="lazy"></button><figcaption>As boas-vindas, que montam a primeira rotina.</figcaption></figure></div><p class="nota">Telas tiradas do app rodando no Mac, com um dia de exemplo.</p></div></section><section class="bloco alt"><div class="w"><h2>o motor de realocação</h2><div class="txt"><p>O motor é Swift puro, sem interface, e recebe a hora atual como parâmetro, o que deixa cada regra testável. Ele roda de tempos em tempos e decide o que fazer com cada tarefa atrasada.</p></div><ul class="list"><li><b>Prioridade.</b> Alta, média e baixa têm pesos diferentes na hora de escolher quem ganha o próximo horário livre.</li><li><b>Regras por categoria.</b> Estudos podem se empilhar no mesmo dia. Saúde e lazer não.</li><li><b>Permissão.</b> Só é realocada a tarefa que a pessoa marcou como flexível.</li><li><b>Histórico.</b> Cada realocação fica registrada e pode ser cancelada.</li></ul></div></section>
 <div class="w"><nav class="prox" aria-label="Outras páginas">
-  <a class="pill" href="index.html#mais-apps"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>voltar ao portfólio</a>
   <a class="pill solid" href="carteiro.html">a seguir: Carteiro</a>
 </nav></div>
 </main>
@@ -330,6 +329,13 @@ dialog.lb img{max-width:96vw;max-height:94vh;width:auto;height:auto;display:bloc
 <script>
 (function(){
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  /* voltar: retorna ao ponto exato da página principal quando a pessoa veio de lá */
+  var voltar=document.getElementById("voltar");
+  if(voltar){
+    var veioDoPortfolio=false;
+    try{ veioDoPortfolio=sessionStorage.getItem("pf-y")!==null; }catch(err){}
+    if(veioDoPortfolio) voltar.setAttribute("href","index.html");
+  }
   var lb=document.getElementById("lb"), lbimg=document.getElementById("lbimg");
   if(lb && typeof lb.showModal==="function"){
     document.querySelectorAll("[data-full]").forEach(function(b){

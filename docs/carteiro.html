@@ -298,7 +298,7 @@ dialog.lb img{max-width:96vw;max-height:94vh;width:auto;height:auto;display:bloc
 .bloco .list{margin-top:26px;max-width:860px}
 .galeria{padding-block:clamp(8px,2vw,24px)}
 .galeria .shots img,.galeria .shots video{height:clamp(420px,52vw,620px)}
-.prox{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:clamp(40px,6vw,80px) 0}
+.prox{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:12px;padding:clamp(40px,6vw,80px) 0}
 .bloco .pipe{grid-template-columns:repeat(var(--n,5),minmax(0,1fr))}
 .bloco .step::before{background:var(--blue);border-color:var(--blue-soft)}
 .bloco .pipe .fill{transform:none}
@@ -308,7 +308,7 @@ dialog.lb img{max-width:96vw;max-height:94vh;width:auto;height:auto;display:bloc
 </head>
 <body>
 <div class="subbar">
-  <a class="pill" href="index.html#automacoes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>voltar ao portfólio</a>
+  <a class="pill" id="voltar" href="index.html#automacoes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>voltar ao portfólio</a>
   <a class="pill solid" href="index.html#contato">falar comigo</a>
 </div>
 <main>
@@ -321,7 +321,6 @@ dialog.lb img{max-width:96vw;max-height:94vh;width:auto;height:auto;display:bloc
 </div></section>
 <section class="bloco"><div class="w"><figure class="fig"><button type="button" data-full="assets/ia/carteiro-calendario.jpg"><img src="assets/ia/carteiro-calendario.jpg" width="1440" height="800" alt="Carteiro: calendário semanal com posts agendados" loading="lazy"></button><figcaption>O calendário da semana, com os horários de cada rede. Esta semana é uma demonstração montada com textos de posts meus já publicados.</figcaption></figure><div class="figs"><figure class="fig"><button type="button" data-full="assets/ia/carteiro-aprovacao.jpg"><img src="assets/ia/carteiro-aprovacao.jpg" width="1440" height="960" alt="Carteiro: tela de aprovação de um post" loading="lazy"></button><figcaption>A aprovação: prévia do post como vai sair na rede, estado e notas. Também em modo de demonstração.</figcaption></figure><figure class="fig"><button type="button" data-full="assets/ia/carteiro-numeros.jpg"><img src="assets/ia/carteiro-numeros.jpg" width="1440" height="960" alt="Carteiro: painel de números" loading="lazy"></button><figcaption>Os números reais em 17/11/2026.</figcaption></figure></div></div></section><section class="bloco alt"><div class="w"><h2>como um post sai</h2><div class="pipe" style="--n:5" aria-label="Fluxo"><div class="fill"></div><div class="step on"><h4>Rascunho</h4><p>Um agente escreve a partir da pauta do dia e da minha voz.</p></div><div class="step on"><h4>Aprovação</h4><p>Eu leio a prévia, edito se quiser e aprovo na tela.</p></div><div class="step on"><h4>Agenda</h4><p>O post entra no próximo horário livre da grade daquela rede.</p></div><div class="step on"><h4>Publicação</h4><p>Sai pela API oficial da rede, com limite de tentativas.</p></div><div class="step on"><h4>Leitura</h4><p>Os números voltam para o painel e alimentam as próximas pautas.</p></div></div></div></section><section class="bloco"><div class="w"><h2>cuidados de segurança</h2><ul class="list"><li><b>Aprovação assinada.</b> Cada aprovação grava quem aprovou. Um agente nunca assina com o meu nome.</li><li><b>Chaves fora do código.</b> Tokens e segredos ficam no Chaveiro do macOS. Nenhum vai para arquivo, log ou repositório.</li><li><b>Só APIs oficiais.</b> Login por OAuth em cada rede, com renovação automática de acesso.</li><li><b>Arquivos servidos só na hora.</b> Para as redes que buscam a mídia por endereço, o Carteiro abre um túnel temporário com caminho sorteado, só para os arquivos registrados, e fecha sozinho.</li></ul></div></section><section class="bloco alt" id="rotinas"><div class="w"><h2>as rotinas que rodam sozinhas</h2><div class="txt"><p>O Carteiro também mostra o que roda sem mim ao longo do dia: pesquisa de pautas, produção dos textos, varredura de comentários e conferência de que tudo rodou.</p></div><figure class="fig"><button type="button" data-full="assets/ia/carteiro-rotinas.jpg"><img src="assets/ia/carteiro-rotinas.jpg" width="1440" height="960" alt="Carteiro: rotinas agendadas" loading="lazy"></button><figcaption>Cada rotina com horário, dono e próxima execução.</figcaption></figure></div></section><section class="bloco" id="aprendizado"><div class="w"><h2>aprendizado das edições</h2><div class="txt"><p>Desde 01/11/2026 o sistema guarda o antes e o depois de cada texto que eu edito antes de aprovar. Um relatório diário mostra o que passou sem mexer, o que mudou palavra por palavra e o que eu reprovei.</p><p>O que se repete vira regra para os próximos rascunhos. Assim o texto que chega para aprovação fica cada vez mais parecido com o que eu escreveria.</p></div><div class="pipe" style="--n:5" aria-label="Fluxo"><div class="fill"></div><div class="step on"><h4>Rascunho</h4><p>O agente entrega o texto.</p></div><div class="step on"><h4>Edição</h4><p>Eu mudo o que não gostei.</p></div><div class="step on"><h4>Comparação</h4><p>O sistema guarda o antes e o depois.</p></div><div class="step on"><h4>Relatório</h4><p>Todo dia: o que passou, o que mudou, o que caiu.</p></div><div class="step on"><h4>Regra</h4><p>O padrão repetido entra no guia de voz.</p></div></div></div></section><section class="bloco alt" id="comentarios"><div class="w"><h2>varredura de comentários</h2><div class="txt"><p>Todo dia, às 07h30, uma rotina acha os comentários sem resposta dos últimos dois dias no Instagram e no Threads e escreve rascunhos de resposta. Eu reviso e aprovo numa aba própria. Nenhuma resposta sai sozinha.</p></div><div class="pipe" style="--n:4" aria-label="Fluxo"><div class="fill"></div><div class="step on"><h4>07h30</h4><p>A rotina lê os comentários recentes.</p></div><div class="step on"><h4>Filtro</h4><p>Ficam só os sem resposta, dos últimos dois dias.</p></div><div class="step on"><h4>Rascunho</h4><p>Um agente escreve cada resposta.</p></div><div class="step on"><h4>Revisão</h4><p>Eu aprovo, edito ou descarto.</p></div></div></div></section>
 <div class="w"><nav class="prox" aria-label="Outras páginas">
-  <a class="pill" href="index.html#automacoes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>voltar ao portfólio</a>
   <a class="pill solid" href="gatilho.html">a seguir: Gatilho</a>
 </nav></div>
 </main>
@@ -330,6 +329,13 @@ dialog.lb img{max-width:96vw;max-height:94vh;width:auto;height:auto;display:bloc
 <script>
 (function(){
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  /* voltar: retorna ao ponto exato da página principal quando a pessoa veio de lá */
+  var voltar=document.getElementById("voltar");
+  if(voltar){
+    var veioDoPortfolio=false;
+    try{ veioDoPortfolio=sessionStorage.getItem("pf-y")!==null; }catch(err){}
+    if(veioDoPortfolio) voltar.setAttribute("href","index.html");
+  }
   var lb=document.getElementById("lb"), lbimg=document.getElementById("lbimg");
   if(lb && typeof lb.showModal==="function"){
     document.querySelectorAll("[data-full]").forEach(function(b){

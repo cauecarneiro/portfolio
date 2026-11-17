@@ -298,7 +298,7 @@ dialog.lb img{max-width:96vw;max-height:94vh;width:auto;height:auto;display:bloc
 .bloco .list{margin-top:26px;max-width:860px}
 .galeria{padding-block:clamp(8px,2vw,24px)}
 .galeria .shots img,.galeria .shots video{height:clamp(420px,52vw,620px)}
-.prox{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:clamp(40px,6vw,80px) 0}
+.prox{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:12px;padding:clamp(40px,6vw,80px) 0}
 .bloco .pipe{grid-template-columns:repeat(var(--n,5),minmax(0,1fr))}
 .bloco .step::before{background:var(--blue);border-color:var(--blue-soft)}
 .bloco .pipe .fill{transform:none}
@@ -308,7 +308,7 @@ dialog.lb img{max-width:96vw;max-height:94vh;width:auto;height:auto;display:bloc
 </head>
 <body>
 <div class="subbar">
-  <a class="pill" href="index.html#automacoes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>voltar ao portfólio</a>
+  <a class="pill" id="voltar" href="index.html#automacoes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>voltar ao portfólio</a>
   <a class="pill solid" href="index.html#contato">falar comigo</a>
 </div>
 <main>
@@ -323,7 +323,6 @@ dialog.lb img{max-width:96vw;max-height:94vh;width:auto;height:auto;display:bloc
 <div class="vid"><video muted loop playsinline preload="none" poster="assets/ia/motor-reel-capa.jpg" aria-label="Trecho de um vídeo editado pelo motor, com corte e legenda automáticos"><source src="assets/ia/motor-reel.mp4" type="video/mp4"></video></div>
 </div><p class="nota">Trecho de um vídeo meu editado pelo motor: corte automático e legenda sincronizada com a fala. Toque no vídeo para ver os controles e ligar o som.</p></div></section><section class="bloco alt"><div class="w"><h2>as etapas</h2><div class="pipe" style="--n:6" aria-label="Fluxo"><div class="fill"></div><div class="step on"><h4>Entrada</h4><p>O vídeo bruto chega pela pasta combinada.</p></div><div class="step on"><h4>Transcrição</h4><p>A fala vira texto com o tempo de cada palavra.</p></div><div class="step on"><h4>Corte</h4><p>Silêncios e erros saem.</p></div><div class="step on"><h4>Montagem</h4><p>Legenda, inserções e ritmo seguem o padrão visual.</p></div><div class="step on"><h4>Áudio</h4><p>A cadeia padrão trata a voz.</p></div><div class="step on"><h4>Revisão</h4><p>Um revisor confere antes de virar rascunho.</p></div></div></div></section>
 <div class="w"><nav class="prox" aria-label="Outras páginas">
-  <a class="pill" href="index.html#automacoes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>voltar ao portfólio</a>
   <a class="pill solid" href="overview-painel.html">a seguir: Overview-Painel</a>
 </nav></div>
 </main>
@@ -332,6 +331,13 @@ dialog.lb img{max-width:96vw;max-height:94vh;width:auto;height:auto;display:bloc
 <script>
 (function(){
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  /* voltar: retorna ao ponto exato da página principal quando a pessoa veio de lá */
+  var voltar=document.getElementById("voltar");
+  if(voltar){
+    var veioDoPortfolio=false;
+    try{ veioDoPortfolio=sessionStorage.getItem("pf-y")!==null; }catch(err){}
+    if(veioDoPortfolio) voltar.setAttribute("href","index.html");
+  }
   var lb=document.getElementById("lb"), lbimg=document.getElementById("lbimg");
   if(lb && typeof lb.showModal==="function"){
     document.querySelectorAll("[data-full]").forEach(function(b){

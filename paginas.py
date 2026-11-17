@@ -29,7 +29,7 @@ SUB_CSS = """
 .bloco .list{margin-top:26px;max-width:860px}
 .galeria{padding-block:clamp(8px,2vw,24px)}
 .galeria .shots img,.galeria .shots video{height:clamp(420px,52vw,620px)}
-.prox{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:clamp(40px,6vw,80px) 0}
+.prox{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:12px;padding:clamp(40px,6vw,80px) 0}
 .bloco .pipe{grid-template-columns:repeat(var(--n,5),minmax(0,1fr))}
 .bloco .step::before{background:var(--blue);border-color:var(--blue-soft)}
 .bloco .pipe .fill{transform:none}
@@ -543,7 +543,7 @@ def render(p, css):
 </head>
 <body>
 <div class="subbar">
-  <a class="pill" href="index.html#{p["secao"]}">{SETA}voltar ao portfólio</a>
+  <a class="pill" id="voltar" href="index.html#{p["secao"]}">{SETA}voltar ao portfólio</a>
   <a class="pill solid" href="index.html#contato">falar comigo</a>
 </div>
 <main>
@@ -556,7 +556,6 @@ def render(p, css):
 </div></section>
 {"".join(p["corpo"])}
 <div class="w"><nav class="prox" aria-label="Outras páginas">
-  <a class="pill" href="index.html#{p["secao"]}">{SETA}voltar ao portfólio</a>
   <a class="pill solid" href="{prox["slug"]}.html">a seguir: {e(prox["nome"])}</a>
 </nav></div>
 </main>
@@ -565,6 +564,13 @@ def render(p, css):
 <script>
 (function(){{
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  /* voltar: retorna ao ponto exato da página principal quando a pessoa veio de lá */
+  var voltar=document.getElementById("voltar");
+  if(voltar){{
+    var veioDoPortfolio=false;
+    try{{ veioDoPortfolio=sessionStorage.getItem("pf-y")!==null; }}catch(err){{}}
+    if(veioDoPortfolio) voltar.setAttribute("href","index.html");
+  }}
   var lb=document.getElementById("lb"), lbimg=document.getElementById("lbimg");
   if(lb && typeof lb.showModal==="function"){{
     document.querySelectorAll("[data-full]").forEach(function(b){{

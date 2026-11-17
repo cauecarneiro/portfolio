@@ -1082,6 +1082,25 @@ e termina com uma entrada de no máximo 5 linhas:
     });
   });
 
+  /* ida e volta das páginas internas: guarda o ponto da rolagem e devolve a pessoa a ele */
+  try{
+    document.querySelectorAll('a[href$=".html"],a[href*=".html#"]').forEach(function(l){
+      var h=l.getAttribute("href")||"";
+      if(/^https?:/.test(h)) return;
+      l.addEventListener("click",function(){ sessionStorage.setItem("pf-y",String(window.scrollY)); });
+    });
+    /* voltou pelo botão do navegador: ele mesmo devolve a rolagem, então o ponto guardado perde a validade */
+    window.addEventListener("pageshow",function(ev){ if(ev.persisted) sessionStorage.removeItem("pf-y"); });
+    var guardado=sessionStorage.getItem("pf-y");
+    if(guardado!==null && !location.hash){
+      sessionStorage.removeItem("pf-y");
+      var y=parseInt(guardado,10)||0;
+      var ir=function(){ var r=document.documentElement; var antes=r.style.scrollBehavior; r.style.scrollBehavior="auto"; window.scrollTo(0,y); r.style.scrollBehavior=antes; };
+      if("scrollRestoration" in history) history.scrollRestoration="manual";
+      ir(); window.addEventListener("load",function(){ ir(); setTimeout(ir,250); setTimeout(ir,900); });
+    }
+  }catch(err){}
+
   /* copiar e-mail */
   var btn=document.getElementById("copy"), msg=document.getElementById("copied");
   btn.addEventListener("click",function(){
