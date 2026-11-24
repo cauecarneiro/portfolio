@@ -278,6 +278,18 @@ footer .w{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 dialog.lb{border:0;padding:0;background:transparent;max-width:96vw;max-height:94vh;overflow:visible}
 dialog.lb::backdrop{background:rgba(0,0,0,.92)}
 dialog.lb img{max-width:96vw;max-height:94vh;width:auto;height:auto;display:block;border-radius:14px;cursor:zoom-out}
+.provas{position:relative;margin-top:clamp(26px,3vw,36px);font-size:.86rem;line-height:1.6;color:rgba(255,255,255,.82)}
+.provas a{color:#fff;text-decoration:underline;text-decoration-color:rgba(255,255,255,.5);text-underline-offset:3px}
+.gostos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:22px;overflow:hidden;margin-top:clamp(40px,5vw,60px)}
+.gostos article{background:#06060A;padding:22px 22px 28px;min-width:0}
+.gostos h3{margin:0 0 8px}
+.gostos p{color:var(--gray-2);font-size:.95rem;line-height:1.5}
+.gostos a{color:var(--white);text-decoration:underline;text-decoration-color:var(--blue-soft);text-underline-offset:3px}
+.m3d{aspect-ratio:1/1;border-radius:16px;margin-bottom:20px;display:grid;place-items:center;background:radial-gradient(120% 90% at 30% 20%,rgba(5,5,245,.55),rgba(5,5,245,.08) 60%,transparent),#0B0B12;border:1px solid var(--line)}
+.m3d svg{width:44px;height:44px;stroke:var(--white);fill:none;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;opacity:.9}
+#apps .app>.fig{margin:0}
+@media(max-width:900px){.gostos{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.gostos{grid-template-columns:1fr}}
 
 .subbar{position:fixed;z-index:50;left:0;right:0;top:calc(env(safe-area-inset-top,0px) + 14px);display:flex;justify-content:space-between;gap:12px;padding-left:max(24px,var(--gl));padding-right:max(24px,var(--gr));pointer-events:none}
 .subbar>*{pointer-events:auto}
@@ -304,6 +316,9 @@ dialog.lb img{max-width:96vw;max-height:94vh;width:auto;height:auto;display:bloc
 .bloco .pipe .fill{transform:none}
 @media(max-width:860px){.bloco .pipe{grid-template-columns:1fr}}
 .nota{font-size:.86rem;color:var(--gray);margin-top:18px;max-width:70ch}
+.ptit{margin:40px 0 0;font-size:1.25rem}
+.ptit small{margin-left:12px;color:#666;font-size:.82rem;font-weight:500}
+.paper .bloco h2,.bloco.paper h2{color:var(--black)}
 </style>
 </head>
 <body>
@@ -317,11 +332,11 @@ dialog.lb img{max-width:96vw;max-height:94vh;width:auto;height:auto;display:bloc
   <h1 class="h1">Contexto</h1>
   <p class="sub">Cuida da memória de trabalho dos agentes de IA. Quando a janela de contexto de um agente enche, ele perde qualidade. Esta ferramenta mede, avisa e executa a limpeza ou o resumo na hora certa.</p>
   
-  <div class="ficha"><div><span class="lab">gargalo removido</span><p>Agentes perdiam qualidade e tempo quando a janela de contexto enchia, e alguém precisava vigiar.</p></div><div><span class="lab">meu papel</span><p>Defini o protocolo: quando limpar, quando resumir e quando terminar a tarefa antes.</p></div><div><span class="lab">controle</span><p>Tem chave de liga e desliga e um diário de cada ação.</p></div><div><span class="lab">stack</span><p>Shell e ganchos do Claude Code.</p></div></div>
+  <div class="ficha"><div><span class="lab">problema</span><p>Agentes perdiam qualidade e tempo quando a janela de contexto enchia, e alguém precisava vigiar.</p></div><div><span class="lab">meu papel</span><p>Defini o protocolo: quando limpar, quando resumir e quando terminar a tarefa antes.</p></div><div><span class="lab">resultado</span><p>Mede, avisa e executa a limpeza ou o resumo na hora certa, com chave de liga e desliga e diário de cada ação. Limite: funciona com os ganchos do Claude Code.</p></div><div><span class="lab">stack</span><p>Shell e ganchos do Claude Code.</p></div></div>
 </div></section>
 <section class="bloco"><div class="w"><h2>o protocolo</h2><div class="pipe" style="--n:4" aria-label="Fluxo"><div class="fill"></div><div class="step on"><h4>Medir</h4><p>A ferramenta acompanha quanto da janela cada agente já usou.</p></div><div class="step on"><h4>Decidir</h4><p>Trocou de tarefa: limpa. Tarefa longa e janela cheia: resume.</p></div><div class="step on"><h4>Executar</h4><p>O próprio agente pede e a ferramenta executa.</p></div><div class="step on"><h4>Registrar</h4><p>Cada ação vai para um diário.</p></div></div></div></section><section class="bloco alt"><div class="w"><h2>por que importa</h2><div class="txt"><p>Com muitos agentes em paralelo, o custo e a qualidade dependem de cada um trabalhar com o contexto certo. Um agente com a janela cheia erra mais e gasta mais.</p><p>A regra nasceu de medição: limpar ao trocar de tarefa, resumir só com a janela entre 65% e 75% e trabalho ainda por fazer.</p></div></div></section>
 <div class="w"><nav class="prox" aria-label="Outras páginas">
-  <a class="pill solid" href="racha.html">a seguir: Racha</a>
+  <a class="pill solid" href="prompts.html">a seguir: Prompts como contrato</a>
 </nav></div>
 </main>
 <footer><div class="w"><span>Cauê Crillanovick <span class="wm">cauenovic</span></span><span>Brasília, 2026</span></div></footer>

@@ -278,6 +278,18 @@ footer .w{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 dialog.lb{border:0;padding:0;background:transparent;max-width:96vw;max-height:94vh;overflow:visible}
 dialog.lb::backdrop{background:rgba(0,0,0,.92)}
 dialog.lb img{max-width:96vw;max-height:94vh;width:auto;height:auto;display:block;border-radius:14px;cursor:zoom-out}
+.provas{position:relative;margin-top:clamp(26px,3vw,36px);font-size:.86rem;line-height:1.6;color:rgba(255,255,255,.82)}
+.provas a{color:#fff;text-decoration:underline;text-decoration-color:rgba(255,255,255,.5);text-underline-offset:3px}
+.gostos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:22px;overflow:hidden;margin-top:clamp(40px,5vw,60px)}
+.gostos article{background:#06060A;padding:22px 22px 28px;min-width:0}
+.gostos h3{margin:0 0 8px}
+.gostos p{color:var(--gray-2);font-size:.95rem;line-height:1.5}
+.gostos a{color:var(--white);text-decoration:underline;text-decoration-color:var(--blue-soft);text-underline-offset:3px}
+.m3d{aspect-ratio:1/1;border-radius:16px;margin-bottom:20px;display:grid;place-items:center;background:radial-gradient(120% 90% at 30% 20%,rgba(5,5,245,.55),rgba(5,5,245,.08) 60%,transparent),#0B0B12;border:1px solid var(--line)}
+.m3d svg{width:44px;height:44px;stroke:var(--white);fill:none;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;opacity:.9}
+#apps .app>.fig{margin:0}
+@media(max-width:900px){.gostos{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.gostos{grid-template-columns:1fr}}
 
 .subbar{position:fixed;z-index:50;left:0;right:0;top:calc(env(safe-area-inset-top,0px) + 14px);display:flex;justify-content:space-between;gap:12px;padding-left:max(24px,var(--gl));padding-right:max(24px,var(--gr));pointer-events:none}
 .subbar>*{pointer-events:auto}
@@ -304,6 +316,9 @@ dialog.lb img{max-width:96vw;max-height:94vh;width:auto;height:auto;display:bloc
 .bloco .pipe .fill{transform:none}
 @media(max-width:860px){.bloco .pipe{grid-template-columns:1fr}}
 .nota{font-size:.86rem;color:var(--gray);margin-top:18px;max-width:70ch}
+.ptit{margin:40px 0 0;font-size:1.25rem}
+.ptit small{margin-left:12px;color:#666;font-size:.82rem;font-weight:500}
+.paper .bloco h2,.bloco.paper h2{color:var(--black)}
 </style>
 </head>
 <body>
@@ -316,8 +331,8 @@ dialog.lb img{max-width:96vw;max-height:94vh;width:auto;height:auto;display:bloc
   <span class="lab">ferramenta · código aberto · desde 08/10/2026</span>
   <h1 class="h1">Overview-Painel</h1>
   <p class="sub">Numa tela só: o que cada agente de IA está fazendo, quanto resta de cota em cada ferramenta, quais PRs estão abertos e o que depende de mim.</p>
-  <div class="links"><a class="pill sm solid" href="https://github.com/cauecarneiro/Overview-Painel" target="_blank" rel="noopener">código</a></div>
-  <div class="ficha"><div><span class="lab">gargalo removido</span><p>Acompanhar vários agentes, cotas e PRs em terminais e sites diferentes, sem saber o que estava parado.</p></div><div><span class="lab">meu papel</span><p>Projeto meu, de código aberto, com 14 estrelas e 4 forks no GitHub.</p></div><div><span class="lab">custo</span><p>Nenhuma IA participa e nenhum token é gasto. O painel só lê.</p></div><div><span class="lab">stack</span><p>Python, só com a biblioteca padrão, tmux e uma página estática.</p></div></div>
+  <div class="links"><a class="pill sm solid" href="https://github.com/cauecarneiro/overview-painel" target="_blank" rel="noopener">código</a></div>
+  <div class="ficha"><div><span class="lab">problema</span><p>Acompanhar vários agentes, cotas e PRs em terminais e sites diferentes, sem saber o que estava parado.</p></div><div><span class="lab">meu papel</span><p>Projeto meu, de código aberto. A leitura de cotas e o desenho dos cards vêm do cotas-dashboard, de fbtostadev, com a licença MIT.</p></div><div><span class="lab">resultado</span><p>Uma tela só, sem IA e sem gastar token. 15 estrelas e 4 forks no GitHub. Limite: lê os terminais pelo tmux, então agente fora dele não aparece.</p></div><div><span class="lab">stack</span><p>Python, só com a biblioteca padrão, tmux e uma página estática.</p></div></div>
 </div></section>
 <section class="bloco"><div class="w"><figure class="fig"><button type="button" data-full="assets/ia/overview-painel.jpg"><img src="assets/ia/overview-painel.jpg" width="1440" height="900" alt="Overview-Painel com treze agentes" loading="lazy"></button><figcaption>O painel com as telas de exemplo que acompanham o repositório.</figcaption></figure></div></section><section class="bloco alt"><div class="w"><h2>como funciona</h2><ul class="list"><li><b>Lê os terminais.</b> Cada agente roda num terminal. O painel lê a tela de cada um e descobre se está trabalhando, ocioso ou esperando por mim.</li><li><b>Lê as cotas pela própria ferramenta.</b> Claude Code, Codex e Antigravity informam quanto resta, sem gastar token.</li><li><b>Mostra o que depende de mim.</b> PRs abertos, estado dos testes e pedidos de aprovação ficam numa lista só.</li><li><b>Fica na máquina.</b> Nada escuta em porta pública e nada sai do computador. Há um modo de privacidade que esconde contas e e-mails.</li><li><b>Nunca inventa número.</b> Terminal que não dá para ler aparece como sem leitura, com o motivo.</li></ul></div></section>
 <div class="w"><nav class="prox" aria-label="Outras páginas">

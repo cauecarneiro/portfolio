@@ -35,6 +35,9 @@ SUB_CSS = """
 .bloco .pipe .fill{transform:none}
 @media(max-width:860px){.bloco .pipe{grid-template-columns:1fr}}
 .nota{font-size:.86rem;color:var(--gray);margin-top:18px;max-width:70ch}
+.ptit{margin:40px 0 0;font-size:1.25rem}
+.ptit small{margin-left:12px;color:#666;font-size:.82rem;font-weight:500}
+.paper .bloco h2,.bloco.paper h2{color:var(--black)}
 """
 
 SETA = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>'
@@ -96,11 +99,11 @@ P = []  # páginas
 P.append(dict(
     slug="racha", secao="mais-apps", tipo="app multiplataforma · 2026", nome="Racha",
     resumo="Divide despesas em grupo e mostra quem paga a quem. Viagem, casa ou rolê: cada pessoa vê o próprio saldo e acerta por Pix, sem o app movimentar dinheiro.",
-    links=[("página de apresentação", "https://landingpageracha.vercel.app")],
+    links=[],
     ficha=[
-        ("situação", "Versão 1.0 pronta no código desde 08/10/2026, com CI verde. Ainda não publicada nas lojas."),
-        ("meu papel", "Produto e engenharia: defini as regras, a arquitetura e orquestrei os agentes de IA que escreveram o código, com teste e revisão em cada PR."),
-        ("tamanho", "49 telas no app, 37 arquivos de teste no app e 39 no backend, 15 migrações de banco."),
+        ("problema", "Dividir despesas de grupo costuma virar planilha e cobrança em conversa, e ninguém sabe ao certo quem deve a quem."),
+        ("meu papel", "Produto e engenharia: defini as regras e a arquitetura e orquestrei os agentes de IA que escreveram o código, com teste e revisão em cada PR."),
+        ("resultado", "Versão 1.0 pronta desde 08/10/2026, com CI verde: 49 telas, 37 arquivos de teste no app e 39 no backend, 15 migrações. Ainda não publicada nas lojas."),
         ("stack", "React Native com Expo, TypeScript, NestJS, PostgreSQL com TypeORM, Terraform na AWS."),
     ],
     corpo=[
@@ -132,18 +135,17 @@ P.append(dict(
             ("Segurança.", "Sessão guardada no cofre do aparelho, login com Apple, limite de tentativas na autenticação e exclusão de conta pelo próprio usuário."),
             ("Entrada de desenvolvimento.", "Existe um atalho de login só para testes, e a API se recusa a subir em produção com ele ligado."),
         ]),
-        '<section class="bloco alt"><div class="w"><h2>a página de apresentação</h2>' + figura("assets/racha/landing.jpg", "Página de apresentação do Racha", "A página que apresenta o app, também feita por mim.", 1440, 1100) + "</div></section>",
     ],
 ))
 
 P.append(dict(
     slug="perity", secao="mais-apps", tipo="app para iPhone e Mac · 2026", nome="Perity",
     resumo="Controle financeiro pessoal: saldo, faturas, gastos do mês, contas fixas e investimentos, com dados de bancos reais por Open Finance e cada compra do Apple Pay registrada na hora.",
-    links=[("código da versão aberta", "https://github.com/cauecarneiro/Perity-Comunidade")],
+    links=[("código da versão aberta", "https://github.com/cauecarneiro/perity-comunidade")],
     ficha=[
-        ("situação", "Uso pessoal no iPhone e no Mac desde 13/10/2026. A versão aberta está no GitHub, com licença MIT."),
-        ("meu papel", "Projeto solo. Especifiquei, orquestrei os agentes de IA, revisei e medi o resultado."),
-        ("tamanho", "Núcleo de regras em pacote Swift separado, com 184 testes."),
+        ("problema", "Ver saldo, faturas, gastos e investimentos de vários bancos exigia abrir um app por banco e somar à mão."),
+        ("meu papel", "Projeto solo. Escrevi a especificação e as regras de dinheiro, orquestrei os agentes de IA, revisei e medi cada entrega."),
+        ("resultado", "Em uso no iPhone e no Mac desde 13/10/2026. Abertura de cerca de 350 ms para 60 ms e núcleo com 184 testes. Versão aberta no GitHub, licença MIT."),
         ("stack", "SwiftUI, SwiftData, CloudKit, WidgetKit, App Intents, Keychain, Core Animation."),
     ],
     corpo=[
@@ -180,11 +182,11 @@ P.append(dict(
 P.append(dict(
     slug="teleprompter", secao="mais-apps", tipo="app para iPhone · código aberto · 2026", nome="Teleprompter",
     resumo="Cola o roteiro, aperta gravar e o texto rola enquanto a câmera filma. Sem conta, sem internet e sem assinatura. É o app que eu uso para gravar meus vídeos.",
-    links=[("código", "https://github.com/cauecarneiro/Teleprompter")],
+    links=[("código", "https://github.com/cauecarneiro/teleprompter")],
     ficha=[
-        ("situação", "Em uso no meu iPhone desde 14/10/2026. Código aberto no GitHub."),
-        ("meu papel", "Projeto solo, feito com agentes de IA a partir de um estudo de dez apps do mercado."),
-        ("tamanho", "Núcleo em pacote Swift com 18 testes: leitura do roteiro, tempo e acompanhamento por voz."),
+        ("problema", "Gravar vídeo lendo o roteiro sem perder o olhar para a câmera, sem assinatura e sem depender de internet."),
+        ("meu papel", "Projeto solo, feito com agentes de IA a partir de um estudo de dez apps do mercado. Especifiquei, revisei e testei no meu iPhone."),
+        ("resultado", "Em uso no meu iPhone desde 14/10/2026 para gravar meus vídeos. Núcleo em pacote Swift com 18 testes. Código aberto."),
         ("stack", "SwiftUI, UIKit, AVFoundation, Speech, PhotoKit, XCTest, XcodeGen."),
     ],
     corpo=[
@@ -213,9 +215,9 @@ P.append(dict(
     resumo="Saúde da mulher. Em vez de só registrar ou prever o ciclo, o app mostra como a fase atual afeta o dia: sono, disposição e o treino recomendado.",
     links=[],
     ficha=[
-        ("situação", "Desafio da Apple Developer Academy, desenvolvido de 10 a 28/08/2026. Não publicado."),
+        ("problema", "Apps de ciclo registram e preveem, mas não dizem como a fase atual afeta o dia: sono, disposição e treino."),
         ("meu papel", "Time de 4. Fiz a camada de domínio com as entidades e os modelos do HealthKit, o serviço de insights, o serviço de dicas de treino por fase e o modelo da tela de treino no iPhone."),
-        ("arquitetura", "MVVM-C com fábrica de telas e injeção de dependência. A tela só desenha, o modelo fala com serviços, e só o serviço toca o HealthKit ou o banco."),
+        ("resultado", "Entregue no desafio da Apple Developer Academy, de 10 a 28/08/2026. Arquitetura MVVM-C com fábrica de telas e injeção de dependência. Não publicado."),
         ("stack", "SwiftUI, SwiftData, HealthKit, WatchConnectivity, WorkoutKit, complicações com WidgetKit."),
     ],
     corpo=[
@@ -234,22 +236,21 @@ P.append(dict(
 ))
 
 P.append(dict(
-    slug="bubble", secao="mais-apps", tipo="app para Mac · Challenge 15 · jul/2026", nome="Bubble",
-    resumo="Rotina para estudantes de medicina. Quando uma tarefa flexível não é cumprida, um motor realoca sozinho para o próximo horário livre, em vez de deixar o dia desmoronar. No código o projeto se chama Easy2Do.",
-    links=[],
+    slug="easy2do", secao="apps", tipo="app para Mac · App Store · Challenge 15 · jul/2026", nome="Easy2Do",
+    resumo="Organizador de rotina para Mac. Quando uma tarefa flexível não é cumprida, um motor realoca sozinho para o próximo horário livre, em vez de deixar o dia desmoronar. No desafio, o app se chamava Bubble e era pensado para estudantes de medicina.",
+    links=[("ver na App Store", "https://apps.apple.com/br/app/easy2do/id6786818379")],
     ficha=[
-        ("situação", "Desafio da Apple Developer Academy, entregue em 10/07/2026. Não publicado."),
-        ("meu papel", "Time de 4. Trabalhei na tela de histórico de realocações e nas regras do motor, seguindo o documento de requisitos."),
-        ("arquitetura", "MVVM em camadas: tela, modelo de tela, serviços e repositórios. O modelo de tela nunca toca o banco."),
-        ("stack", "SwiftUI, SwiftData, @Observable, async/await. Funciona 100% offline."),
+        ("problema", "Quando uma tarefa da rotina não é cumprida, o resto do dia desmorona e a pessoa precisa replanejar tudo à mão."),
+        ("meu papel", "Time de 4 na Apple Developer Academy. Trabalhei na tela de histórico de realocações e nas regras do motor, seguindo o documento de requisitos."),
+        ("resultado", "Na App Store para Mac desde 06/07/2026, publicado na conta de um colega do time. Funciona 100% offline."),
+        ("stack", "SwiftUI, SwiftData, @Observable, async/await, MVVM em camadas."),
     ],
     corpo=[
         '<section class="bloco"><div class="w"><div class="figs">'
-        + figura("assets/bubble/dia.jpg", "Bubble: linha do tempo do dia", "A linha do tempo do dia, com prioridade e categoria de cada tarefa.", 1600, 969)
-        + figura("assets/bubble/resumo.jpg", "Bubble: resumo semanal", "O resumo semanal, com a distribuição por categoria.", 1600, 969)
-        + figura("assets/bubble/tarefas.jpg", "Bubble: todas as tarefas", "Todas as tarefas da semana, com busca e filtro.", 1600, 969)
-        + figura("assets/bubble/boasvindas.jpg", "Bubble: boas-vindas", "As boas-vindas, que montam a primeira rotina.", 1600, 969)
-        + '</div><p class="nota">Telas tiradas do app rodando no Mac, com um dia de exemplo.</p></div></section>',
+        + figura("assets/apps/easy2do-1.jpg", "Easy2Do: a rotina do dia", "A rotina do dia, com prioridade de cada tarefa.", 1440, 900)
+        + figura("assets/apps/easy2do-2.jpg", "Easy2Do: tela da App Store", "Tela da página do app na App Store.", 1440, 900)
+        + figura("assets/apps/easy2do-3.jpg", "Easy2Do: tela da App Store", "Tela da página do app na App Store.", 1440, 900)
+        + '</div><p class="nota">Telas da página do Easy2Do na App Store.</p></div></section>',
         bloco("o motor de realocação", [
             "O motor é Swift puro, sem interface, e recebe a hora atual como parâmetro, o que deixa cada regra testável. Ele roda de tempos em tempos e decide o que fazer com cada tarefa atrasada.",
         ], lista=[
@@ -258,6 +259,9 @@ P.append(dict(
             ("Permissão.", "Só é realocada a tarefa que a pessoa marcou como flexível."),
             ("Histórico.", "Cada realocação fica registrada e pode ser cancelada."),
         ], alt=True),
+        bloco("arquitetura", [
+            "MVVM em camadas: tela, modelo de tela, serviços e repositórios. O modelo de tela nunca toca o banco.",
+        ]),
     ],
 ))
 
@@ -267,9 +271,9 @@ P.append(dict(
     resumo="Um sistema de publicação em redes sociais com aprovação humana. Os rascunhos entram numa fila, eu aprovo na tela e o Carteiro publica no horário pelas APIs oficiais de LinkedIn, Threads, Instagram e X.",
     links=[],
     ficha=[
-        ("resultado", "194 posts publicados em quatro redes até 17/11/2026 e 147,3 mil visualizações no Instagram e no Threads."),
+        ("problema", "Publicar em quatro redes, cada uma no seu horário, era trabalho manual e fácil de esquecer."),
         ("meu papel", "Idealizei e especifiquei o sistema e orquestrei os agentes que escreveram o código, com revisão e testes. Eu aprovo cada publicação."),
-        ("qualidade", "268 casos de teste. Nada publica sem aprovação registrada, com o nome de quem aprovou."),
+        ("resultado", "194 posts publicados em quatro redes até 17/11/2026 e 147,3 mil visualizações no Instagram e no Threads. 268 casos de teste, e nada publica sem aprovação registrada."),
         ("stack", "TypeScript, Node, SQLite, página estática sem dependências, chaves no Chaveiro do macOS."),
     ],
     corpo=[
@@ -318,9 +322,9 @@ P.append(dict(
     resumo="Quando alguém comenta a palavra combinada num vídeo do Instagram, recebe uma mensagem privada com o material prometido. Roda sozinho, na nuvem, o tempo todo.",
     links=[],
     ficha=[
-        ("o que resolve", "Entregar um material para cada pessoa que pede nos comentários, sem eu responder um por um."),
+        ("problema", "Entregar um material para cada pessoa que pede nos comentários, sem responder um por um."),
         ("meu papel", "Especifiquei o fluxo, as regras de entrega e os testes, e orquestrei os agentes que escreveram o código."),
-        ("confiabilidade", "Recebe o aviso oficial da Meta e ainda confere a cada minuto, para não perder ninguém. Fila com prova de entrega."),
+        ("resultado", "Roda sozinho na nuvem desde 19/10/2026. Recebe o aviso oficial da Meta e ainda confere a cada minuto, com fila e prova de entrega, para não perder ninguém."),
         ("stack", "Cloudflare Workers, banco D1, TypeScript, API oficial do Instagram."),
     ],
     corpo=[
@@ -345,9 +349,9 @@ P.append(dict(
     resumo="Do tema às lâminas prontas. Um agente pesquisa o assunto em várias fontes, outro escreve, e o sistema desenha as lâminas em código, no meu padrão visual, e manda para a fila de aprovação.",
     links=[],
     ficha=[
-        ("o que resolve", "Fazer um carrossel com pesquisa, texto e desenho levava horas. Agora chega pronto para revisar."),
+        ("problema", "Fazer um carrossel com pesquisa, texto e desenho levava horas."),
         ("meu papel", "Defini o padrão visual, os modelos de lâmina e as regras de fonte, e orquestrei os agentes."),
-        ("regra", "Os números vêm com a fonte, e a lâmina mostra o trecho de onde saíram. Nada publica sem a minha aprovação."),
+        ("resultado", "Desde 17/10/2026 o carrossel chega pronto para revisar, com cada número ligado à fonte. Nada publica sem a minha aprovação."),
         ("stack", "HTML e CSS para as lâminas, Playwright para gerar as imagens, rotina agendada."),
     ],
     corpo=[
@@ -370,9 +374,9 @@ P.append(dict(
     resumo="Edição de vídeo feita em código. Eu gravo, subo o arquivo e o motor corta os silêncios, coloca a legenda no meu padrão visual e trata o áudio. Um revisor confere cada vídeo antes de virar rascunho.",
     links=[],
     ficha=[
-        ("o que resolve", "Editar cada vídeo à mão. Agora a edição roda de madrugada e eu só aprovo."),
+        ("problema", "Editar cada vídeo à mão: cortar silêncios, legendar e tratar o áudio."),
         ("meu papel", "Defini o padrão visual, a cadeia de áudio e os critérios de revisão, e orquestrei os agentes."),
-        ("áudio", "Redução de ruído, equalização, de-esser, compressor e normalização de volume, sempre na mesma ordem."),
+        ("resultado", "Desde 05/10/2026 a edição roda de madrugada, sempre com a mesma cadeia de áudio, e um revisor confere cada vídeo antes de virar rascunho. Eu só aprovo."),
         ("stack", "Remotion, TypeScript, DeepFilterNet, ffmpeg."),
     ],
     corpo=[
@@ -394,11 +398,11 @@ P.append(dict(
 P.append(dict(
     slug="overview-painel", secao="ferramentas", tipo="ferramenta · código aberto · desde 08/10/2026", nome="Overview-Painel",
     resumo="Numa tela só: o que cada agente de IA está fazendo, quanto resta de cota em cada ferramenta, quais PRs estão abertos e o que depende de mim.",
-    links=[("código", "https://github.com/cauecarneiro/Overview-Painel")],
+    links=[("código", "https://github.com/cauecarneiro/overview-painel")],
     ficha=[
-        ("gargalo removido", "Acompanhar vários agentes, cotas e PRs em terminais e sites diferentes, sem saber o que estava parado."),
-        ("meu papel", "Projeto meu, de código aberto, com 14 estrelas e 4 forks no GitHub."),
-        ("custo", "Nenhuma IA participa e nenhum token é gasto. O painel só lê."),
+        ("problema", "Acompanhar vários agentes, cotas e PRs em terminais e sites diferentes, sem saber o que estava parado."),
+        ("meu papel", "Projeto meu, de código aberto. A leitura de cotas e o desenho dos cards vêm do cotas-dashboard, de fbtostadev, com a licença MIT."),
+        ("resultado", "Uma tela só, sem IA e sem gastar token. 15 estrelas e 4 forks no GitHub. Limite: lê os terminais pelo tmux, então agente fora dele não aparece."),
         ("stack", "Python, só com a biblioteca padrão, tmux e uma página estática."),
     ],
     corpo=[
@@ -418,9 +422,9 @@ P.append(dict(
     resumo="Extensão para Chrome e navegadores parecidos que tira um print da página inteira, do topo ao fim, em um clique. Se a página for gigante, divide a captura em várias imagens.",
     links=[("código", "https://github.com/cauecarneiro/scrolling")],
     ficha=[
-        ("gargalo removido", "Capturar páginas longas à mão, em vários prints colados depois."),
+        ("problema", "Capturar páginas longas à mão, em vários prints colados depois."),
         ("meu papel", "Projeto meu, de código aberto."),
-        ("privacidade", "Não envia nada para a internet. O histórico das capturas fica só no navegador."),
+        ("resultado", "Um clique captura do topo ao fim e divide páginas gigantes em várias imagens, sem enviar nada para a internet. Limite: páginas internas do navegador não deixam capturar, e o corte é em 60 mil pixels de altura."),
         ("stack", "JavaScript puro, Manifest V3, sem etapa de build e sem dependências."),
     ],
     corpo=[
@@ -445,9 +449,9 @@ P.append(dict(
     resumo="Painel local de saúde e treino com os dados do relógio Garmin: sono, variabilidade cardíaca, estresse, treinos e um mapa de calor de 12 meses.",
     links=[("código", "https://github.com/cauecarneiro/life-track")],
     ficha=[
-        ("gargalo removido", "Dados de saúde e treino espalhados nos apps do fabricante, sem uma visão única."),
+        ("problema", "Dados de saúde e treino espalhados nos apps do fabricante, sem uma visão única."),
         ("meu papel", "Projeto meu, de código aberto."),
-        ("privacidade", "Não guarda nada em disco. Os dados ficam só na memória, por poucos minutos."),
+        ("resultado", "Uma tela com sono, variabilidade cardíaca, estresse, treinos e 12 meses de histórico, sem guardar nada em disco. Limite: hoje só lê dados do Garmin."),
         ("stack", "Python com FastAPI, JavaScript, API pessoal da Garmin."),
     ],
     corpo=[
@@ -471,9 +475,9 @@ P.append(dict(
     resumo="Um porteiro que barra senha, token e chave antes de chegarem a um commit, um log, um documento ou um serviço externo. Roda nos ganchos dos agentes de IA e do git.",
     links=[],
     ficha=[
-        ("gargalo removido", "O risco de uma credencial vazar quando vários agentes trabalham ao mesmo tempo no mesmo computador."),
+        ("problema", "O risco de uma credencial vazar quando vários agentes trabalham ao mesmo tempo no mesmo computador."),
         ("meu papel", "Defini a regra e os pontos de bloqueio."),
-        ("como roda", "Local, sem IA e sem servidor. É uma conferência por padrão de texto, rápida e previsível."),
+        ("resultado", "Em uso desde 07/11/2026 nos ganchos dos agentes e do git, local, sem IA e sem servidor. Limite: confere por padrão de texto, então um segredo sem padrão reconhecível pode passar."),
         ("stack", "Shell, ganchos do git e dos agentes."),
     ],
     corpo=[
@@ -499,9 +503,9 @@ P.append(dict(
     resumo="Cuida da memória de trabalho dos agentes de IA. Quando a janela de contexto de um agente enche, ele perde qualidade. Esta ferramenta mede, avisa e executa a limpeza ou o resumo na hora certa.",
     links=[],
     ficha=[
-        ("gargalo removido", "Agentes perdiam qualidade e tempo quando a janela de contexto enchia, e alguém precisava vigiar."),
+        ("problema", "Agentes perdiam qualidade e tempo quando a janela de contexto enchia, e alguém precisava vigiar."),
         ("meu papel", "Defini o protocolo: quando limpar, quando resumir e quando terminar a tarefa antes."),
-        ("controle", "Tem chave de liga e desliga e um diário de cada ação."),
+        ("resultado", "Mede, avisa e executa a limpeza ou o resumo na hora certa, com chave de liga e desliga e diário de cada ação. Limite: funciona com os ganchos do Claude Code."),
         ("stack", "Shell e ganchos do Claude Code."),
     ],
     corpo=[
@@ -516,6 +520,20 @@ P.append(dict(
             "A regra nasceu de medição: limpar ao trocar de tarefa, resumir só com a janela entre 65% e 75% e trabalho ainda por fazer.",
         ], alt=True),
     ],
+))
+
+
+P.append(dict(
+    slug="prompts", secao="ia", tipo="IA com critério · modelos de prompt", nome="Prompts como contrato",
+    resumo="Formato fixo, aceite verificável e retorno curto. Estes são os modelos de prompt que eu uso de verdade com os agentes de IA, do mais recente ao mais antigo, e os experimentos que viraram regra.",
+    links=[],
+    ficha=[
+        ("problema", "Repassar conversa inteira ou log para um agente gasta contexto e gera trabalho fora do escopo."),
+        ("meu papel", "Escrevi os modelos e as regras a partir do que medi no uso diário dos agentes."),
+        ("resultado", "Cada tarefa cabe em até 40 linhas, com objetivo, aceite, escopo e o que não tocar."),
+        ("stack", "Claude Code, Codex e Antigravity, com o mesmo formato de brief."),
+    ],
+    corpo=['<section class="bloco paper"><div class="w"><h2>três modelos que eu uso de verdade</h2><h3 class="ptit">Diário de aprendizado<small>30/10/2026</small></h3><div class="panel">\n<pre><i>Regra</i>\nToda frente começa lendo as últimas entradas da própria seção\ne termina com uma entrada de no máximo 5 linhas:\n\n  o que falhou e se repetiu  ·  o que resultou\n  ·  o que muda na próxima vez\n\n<i>Placar</i> (amostra mínima para virar regra: 3 ocorrências)\n  Delegações ............ chegaram na 1ª  ·  precisaram reenvio\n  Revisões independentes  com bloqueio real  ·  sem bloqueio\n  Trabalho refeito por falta de checagem prévia</pre>\n      <div class="cap">O erro registrado só vira regra depois de repetir. Um dia de dados é direção, não lei.</div>\n</div><h3 class="ptit">Regra de uso de IA<small>29/10/2026</small></h3><div class="panel">\n<pre><i>Gasto com sentido</i>\n- "Gastar" é uso real. Toda tarefa tem objetivo, aceite\n  verificável, prova e dono.\n- Proibido criar tarefa só para a barra de uso subir.\n- Se a fila útil acabar com cota sobrando, o Orquestrador\n  avisa. Não completar a fila para parecer cheia.\n\n<i>Como escolher quem faz</i>\n- Trabalho de volume (testes, documentação, auditoria,\n  refatoração): modelos de cota livre.\n- Claude: orquestração, decisão, síntese e revisão final.\n- Pedido extraordinário: agente temporário, dispensado depois.</pre>\n      <div class="cap">Trecho das regras de uso das IAs, escritas depois de medir o consumo de cada conta.</div>\n</div><h3 class="ptit">Brief de tarefa<small>27/10/2026</small></h3><div class="panel">\n<pre><i>ID</i> · título curto                      cartão: link\n<i>OBJETIVO</i>  uma frase: o que muda para o usuário ou para o sistema\n<i>POR QUÊ</i>   uma frase\n<i>FAIXA</i>     verde | amarela | vermelha\n<i>REPO/BASE</i> backend · develop   |   app · main\n<i>ACEITE</i>    Dado/Quando/Então, ou o comando que prova\n<i>ESCOPO</i>    pode mexer: pastas/arquivos\n             não mexe:   proibidos; arquivos de um escritor só\n<i>CONTEXTO</i>  só ponteiros: arquivo:linha, seção, operação do contrato\n<i>GATE</i>      comandos exatos que precisam ficar verdes\n<i>FORA</i>      o que não é desta tarefa\n<i>ORDEM</i>     depende de: … · bloqueia: …\n<i>SÊNIOR?</i>   sim (motivo) | não</pre>\n      <div class="cap">Máximo de 40 linhas. Ninguém repassa conversa inteira nem cola log: só brief, despacho e retorno.</div>\n</div></div></section><section class="bloco"><div class="w"><h2>experimentos com LLMs</h2><div class="exp">\n      <div><small>29/10/2026</small><h3>Medição antes de regra</h3><p>Cada regra de orquestração nasceu de um número: cota consumida por modelo, reenvios, bloqueios achados na revisão.</p></div>\n      <div><small>16/10/2026</small><h3>Modo eco</h3><p>Um comando liga a economia de tokens: leitura pesada vai para modelo barato e o raciocínio caro fica para decisão, segurança e revisão.</p></div>\n      <div><small>15/10/2026</small><h3>Guia de voz</h3><p>Lista do que eu nunca diria e regras de linguagem simples, aplicadas em roteiro, post e resposta. O sistema aprende com o que eu aprovo e reprovo.</p></div>\n      <div><small>out/2026</small><h3>Especificação antes do código</h3><p>Cada feature nasce num documento com problema, escopo, fora de escopo e critério de aceite. O agente recebe o documento, não a conversa, e a revisão fica objetiva.</p></div>\n      <div><small>05/10/2026</small><h3>Skills com roteamento</h3><p>Curadoria de mais de 300 skills de design, vídeo, marca e código, com um mapa que diz qual usar em cada tipo de pedido.</p></div>\n      <div><small>05/10/2026</small><h3>Teste do gancho</h3><p>Todo roteiro de vídeo passa por um teste de abertura antes de gravar. Cada tema gera versões de gancho, publicadas como teste e comparadas por métrica real.</p></div>\n    </div></div></section>'],
 ))
 
 

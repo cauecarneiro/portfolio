@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#000000">
-<title>Bubble · Cauê Crillanovick</title>
-<meta name="description" content="Rotina para estudantes de medicina. Quando uma tarefa flexível não é cumprida, um motor realoca sozinho para o próximo horário livre, em vez de deixar o dia desmoronar. No código o projeto se chama Easy2Do.">
+<title>Easy2Do · Cauê Crillanovick</title>
+<meta name="description" content="Organizador de rotina para Mac. Quando uma tarefa flexível não é cumprida, um motor realoca sozinho para o próximo horário livre, em vez de deixar o dia desmoronar. No desafio, o app se chamava Bubble e era pensado para estudantes de medicina.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Tinos:ital@1&display=swap">
@@ -278,6 +278,18 @@ footer .w{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 dialog.lb{border:0;padding:0;background:transparent;max-width:96vw;max-height:94vh;overflow:visible}
 dialog.lb::backdrop{background:rgba(0,0,0,.92)}
 dialog.lb img{max-width:96vw;max-height:94vh;width:auto;height:auto;display:block;border-radius:14px;cursor:zoom-out}
+.provas{position:relative;margin-top:clamp(26px,3vw,36px);font-size:.86rem;line-height:1.6;color:rgba(255,255,255,.82)}
+.provas a{color:#fff;text-decoration:underline;text-decoration-color:rgba(255,255,255,.5);text-underline-offset:3px}
+.gostos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:22px;overflow:hidden;margin-top:clamp(40px,5vw,60px)}
+.gostos article{background:#06060A;padding:22px 22px 28px;min-width:0}
+.gostos h3{margin:0 0 8px}
+.gostos p{color:var(--gray-2);font-size:.95rem;line-height:1.5}
+.gostos a{color:var(--white);text-decoration:underline;text-decoration-color:var(--blue-soft);text-underline-offset:3px}
+.m3d{aspect-ratio:1/1;border-radius:16px;margin-bottom:20px;display:grid;place-items:center;background:radial-gradient(120% 90% at 30% 20%,rgba(5,5,245,.55),rgba(5,5,245,.08) 60%,transparent),#0B0B12;border:1px solid var(--line)}
+.m3d svg{width:44px;height:44px;stroke:var(--white);fill:none;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;opacity:.9}
+#apps .app>.fig{margin:0}
+@media(max-width:900px){.gostos{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.gostos{grid-template-columns:1fr}}
 
 .subbar{position:fixed;z-index:50;left:0;right:0;top:calc(env(safe-area-inset-top,0px) + 14px);display:flex;justify-content:space-between;gap:12px;padding-left:max(24px,var(--gl));padding-right:max(24px,var(--gr));pointer-events:none}
 .subbar>*{pointer-events:auto}
@@ -304,22 +316,25 @@ dialog.lb img{max-width:96vw;max-height:94vh;width:auto;height:auto;display:bloc
 .bloco .pipe .fill{transform:none}
 @media(max-width:860px){.bloco .pipe{grid-template-columns:1fr}}
 .nota{font-size:.86rem;color:var(--gray);margin-top:18px;max-width:70ch}
+.ptit{margin:40px 0 0;font-size:1.25rem}
+.ptit small{margin-left:12px;color:#666;font-size:.82rem;font-weight:500}
+.paper .bloco h2,.bloco.paper h2{color:var(--black)}
 </style>
 </head>
 <body>
 <div class="subbar">
-  <a class="pill" id="voltar" href="index.html#mais-apps"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>voltar ao portfólio</a>
+  <a class="pill" id="voltar" href="index.html#apps"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>voltar ao portfólio</a>
   <a class="pill solid" href="index.html#contato">falar comigo</a>
 </div>
 <main>
 <section class="top"><div class="w">
-  <span class="lab">app para Mac · Challenge 15 · jul/2026</span>
-  <h1 class="h1">Bubble</h1>
-  <p class="sub">Rotina para estudantes de medicina. Quando uma tarefa flexível não é cumprida, um motor realoca sozinho para o próximo horário livre, em vez de deixar o dia desmoronar. No código o projeto se chama Easy2Do.</p>
-  
-  <div class="ficha"><div><span class="lab">situação</span><p>Desafio da Apple Developer Academy, entregue em 10/07/2026. Não publicado.</p></div><div><span class="lab">meu papel</span><p>Time de 4. Trabalhei na tela de histórico de realocações e nas regras do motor, seguindo o documento de requisitos.</p></div><div><span class="lab">arquitetura</span><p>MVVM em camadas: tela, modelo de tela, serviços e repositórios. O modelo de tela nunca toca o banco.</p></div><div><span class="lab">stack</span><p>SwiftUI, SwiftData, @Observable, async/await. Funciona 100% offline.</p></div></div>
+  <span class="lab">app para Mac · App Store · Challenge 15 · jul/2026</span>
+  <h1 class="h1">Easy2Do</h1>
+  <p class="sub">Organizador de rotina para Mac. Quando uma tarefa flexível não é cumprida, um motor realoca sozinho para o próximo horário livre, em vez de deixar o dia desmoronar. No desafio, o app se chamava Bubble e era pensado para estudantes de medicina.</p>
+  <div class="links"><a class="pill sm solid" href="https://apps.apple.com/br/app/easy2do/id6786818379" target="_blank" rel="noopener">ver na App Store</a></div>
+  <div class="ficha"><div><span class="lab">problema</span><p>Quando uma tarefa da rotina não é cumprida, o resto do dia desmorona e a pessoa precisa replanejar tudo à mão.</p></div><div><span class="lab">meu papel</span><p>Time de 4 na Apple Developer Academy. Trabalhei na tela de histórico de realocações e nas regras do motor, seguindo o documento de requisitos.</p></div><div><span class="lab">resultado</span><p>Na App Store para Mac desde 06/07/2026, publicado na conta de um colega do time. Funciona 100% offline.</p></div><div><span class="lab">stack</span><p>SwiftUI, SwiftData, @Observable, async/await, MVVM em camadas.</p></div></div>
 </div></section>
-<section class="bloco"><div class="w"><div class="figs"><figure class="fig"><button type="button" data-full="assets/bubble/dia.jpg"><img src="assets/bubble/dia.jpg" width="1600" height="969" alt="Bubble: linha do tempo do dia" loading="lazy"></button><figcaption>A linha do tempo do dia, com prioridade e categoria de cada tarefa.</figcaption></figure><figure class="fig"><button type="button" data-full="assets/bubble/resumo.jpg"><img src="assets/bubble/resumo.jpg" width="1600" height="969" alt="Bubble: resumo semanal" loading="lazy"></button><figcaption>O resumo semanal, com a distribuição por categoria.</figcaption></figure><figure class="fig"><button type="button" data-full="assets/bubble/tarefas.jpg"><img src="assets/bubble/tarefas.jpg" width="1600" height="969" alt="Bubble: todas as tarefas" loading="lazy"></button><figcaption>Todas as tarefas da semana, com busca e filtro.</figcaption></figure><figure class="fig"><button type="button" data-full="assets/bubble/boasvindas.jpg"><img src="assets/bubble/boasvindas.jpg" width="1600" height="969" alt="Bubble: boas-vindas" loading="lazy"></button><figcaption>As boas-vindas, que montam a primeira rotina.</figcaption></figure></div><p class="nota">Telas tiradas do app rodando no Mac, com um dia de exemplo.</p></div></section><section class="bloco alt"><div class="w"><h2>o motor de realocação</h2><div class="txt"><p>O motor é Swift puro, sem interface, e recebe a hora atual como parâmetro, o que deixa cada regra testável. Ele roda de tempos em tempos e decide o que fazer com cada tarefa atrasada.</p></div><ul class="list"><li><b>Prioridade.</b> Alta, média e baixa têm pesos diferentes na hora de escolher quem ganha o próximo horário livre.</li><li><b>Regras por categoria.</b> Estudos podem se empilhar no mesmo dia. Saúde e lazer não.</li><li><b>Permissão.</b> Só é realocada a tarefa que a pessoa marcou como flexível.</li><li><b>Histórico.</b> Cada realocação fica registrada e pode ser cancelada.</li></ul></div></section>
+<section class="bloco"><div class="w"><div class="figs"><figure class="fig"><button type="button" data-full="assets/apps/easy2do-1.jpg"><img src="assets/apps/easy2do-1.jpg" width="1440" height="900" alt="Easy2Do: a rotina do dia" loading="lazy"></button><figcaption>A rotina do dia, com prioridade de cada tarefa.</figcaption></figure><figure class="fig"><button type="button" data-full="assets/apps/easy2do-2.jpg"><img src="assets/apps/easy2do-2.jpg" width="1440" height="900" alt="Easy2Do: tela da App Store" loading="lazy"></button><figcaption>Tela da página do app na App Store.</figcaption></figure><figure class="fig"><button type="button" data-full="assets/apps/easy2do-3.jpg"><img src="assets/apps/easy2do-3.jpg" width="1440" height="900" alt="Easy2Do: tela da App Store" loading="lazy"></button><figcaption>Tela da página do app na App Store.</figcaption></figure></div><p class="nota">Telas da página do Easy2Do na App Store.</p></div></section><section class="bloco alt"><div class="w"><h2>o motor de realocação</h2><div class="txt"><p>O motor é Swift puro, sem interface, e recebe a hora atual como parâmetro, o que deixa cada regra testável. Ele roda de tempos em tempos e decide o que fazer com cada tarefa atrasada.</p></div><ul class="list"><li><b>Prioridade.</b> Alta, média e baixa têm pesos diferentes na hora de escolher quem ganha o próximo horário livre.</li><li><b>Regras por categoria.</b> Estudos podem se empilhar no mesmo dia. Saúde e lazer não.</li><li><b>Permissão.</b> Só é realocada a tarefa que a pessoa marcou como flexível.</li><li><b>Histórico.</b> Cada realocação fica registrada e pode ser cancelada.</li></ul></div></section><section class="bloco"><div class="w"><h2>arquitetura</h2><div class="txt"><p>MVVM em camadas: tela, modelo de tela, serviços e repositórios. O modelo de tela nunca toca o banco.</p></div></div></section>
 <div class="w"><nav class="prox" aria-label="Outras páginas">
   <a class="pill solid" href="carteiro.html">a seguir: Carteiro</a>
 </nav></div>
